@@ -1,0 +1,480 @@
+/* =========================================================
+   ISTAWRA CONSULTING — STYLE.CSS
+   Sovereign-grade, institutional visual system
+   ========================================================= */
+
+/* -------------------------
+   Reset & Base
+   ------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: #111;
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* -------------------------
+   Accessibility
+   ------------------------- */
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+  padding: 0.6rem 0.8rem;
+  background: #111;
+  color: #fff;
+  border-radius: 10px;
+  z-index: 9999;
+}
+
+/* -------------------------
+   Links & Media
+   ------------------------- */
+
+a {
+  color: inherit;
+}
+
+a:not(.button) {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  text-decoration-color: rgba(0,0,0,0.35);
+}
+
+a:not(.button):hover {
+  text-decoration-color: rgba(0,0,0,0.8);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* -------------------------
+   Layout
+   ------------------------- */
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1.2rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 860px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* -------------------------
+   Typography
+   ------------------------- */
+
+h1, h2, h3 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 2.2rem;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+}
+
+h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.8rem;
+}
+
+h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
+}
+
+p {
+  margin: 0.4rem 0 0.8rem;
+  max-width: 85ch;
+}
+
+.lead {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  max-width: 70ch;
+}
+
+.small {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.muted {
+  opacity: 0.72;
+}
+
+.fineprint {
+  font-size: 0.92rem;
+  opacity: 0.8;
+}
+
+ul, ol {
+  padding-left: 1.2rem;
+}
+
+li {
+  margin-bottom: 0.4rem;
+  max-width: 85ch;
+}
+
+/* -------------------------
+   Header & Navigation
+   ------------------------- */
+
+.site-header {
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 0;
+  gap: 1rem;
+}
+
+.brand {
+  text-decoration: none !important;
+  color: #111;
+  min-width: 180px;
+}
+
+.brand-name {
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+}
+
+.brand-sub {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  opacity: 0.75;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.65rem 1rem;
+}
+
+.site-nav a {
+  text-decoration: none !important;
+  font-weight: 500;
+  color: #111;
+  opacity: 0.85;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid transparent;
+}
+
+.site-nav a:hover {
+  opacity: 1;
+}
+
+.site-nav a.active,
+.site-nav a[aria-current="page"] {
+  font-weight: 600;
+  opacity: 1;
+  border-bottom-color: #111;
+}
+
+/* -------------------------
+   Sections
+   ------------------------- */
+
+.section {
+  padding: 4.5rem 0;
+}
+
+.section-alt {
+  background: #fafafa;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.hero {
+  padding: 4.8rem 0 3.2rem;
+}
+
+.hero-tight {
+  padding: 3.6rem 0 2.4rem;
+}
+
+/* -------------------------
+   Cards / Panels
+   ------------------------- */
+
+.card,
+.panel {
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 14px;
+  padding: 1.35rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+}
+
+.hero-cards {
+  margin-top: 1.5rem;
+  margin-bottom: 1.6rem;
+  gap: 1rem;
+}
+
+.note {
+  margin-top: 1.25rem;
+  border-left: 3px solid rgba(0,0,0,0.45);
+  padding: 0.9rem 1.1rem;
+  background: rgba(0,0,0,0.02);
+  border-radius: 12px;
+}
+
+/* -------------------------
+   Steps / Process
+   ------------------------- */
+
+.steps {
+  margin-top: 1.25rem;
+  padding-left: 1.1rem;
+}
+
+.steps li {
+  margin-bottom: 1.1rem;
+}
+
+.steps h3 {
+  margin-bottom: 0.35rem;
+}
+
+/* -------------------------
+   Buttons & CTAs
+   ------------------------- */
+
+.button {
+  display: inline-block;
+  padding: 0.7rem 1rem;
+  border-radius: 12px;
+  border: 1px solid #111;
+  background: #111;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none !important;
+}
+
+.button:hover {
+  filter: brightness(0.95);
+}
+
+.button-secondary {
+  background: transparent;
+  color: #111;
+}
+
+.cta {
+  margin-top: 1rem;
+}
+
+.cta-links .button {
+  margin-right: 0.65rem;
+  margin-top: 0.4rem;
+}
+
+/* -------------------------
+   Forms
+   ------------------------- */
+
+.contact-form {
+  margin-top: 1rem;
+}
+
+.form-row {
+  margin-bottom: 0.95rem;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.75rem 0.85rem;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.15);
+  font-size: 1rem;
+  background: #fff;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: rgba(0,0,0,0.55);
+  box-shadow: 0 0 0 4px rgba(0,0,0,0.06);
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+/* -------------------------
+   Footer
+   ------------------------- */
+
+.site-footer {
+  border-top: 1px solid rgba(0,0,0,0.08);
+  padding: 2.4rem 0;
+}
+
+.footer-row {
+  margin-bottom: 0.6rem;
+}
+
+.footer-brand {
+  font-weight: 700;
+}
+
+.footer-note {
+  opacity: 0.75;
+}
+
+.footer-links a {
+  margin-right: 0.9rem;
+  text-decoration: none !important;
+  color: #111;
+  opacity: 0.8;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+}
+
+.footer-legal {
+  font-size: 0.85rem;
+  opacity: 0.65;
+}
+
+/* -------------------------
+   Responsive
+   ------------------------- */
+
+@media (max-width: 860px) {
+  .section {
+    padding: 3.6rem 0;
+  }
+
+  .hero {
+    padding: 3.8rem 0 2.4rem;
+  }
+
+  .header-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .site-nav {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 420px) {
+  h1 {
+    font-size: 1.9rem;
+  }
+
+  .lead {
+    font-size: 1.05rem;
+  }
+}
+
+/* -------------------------
+   Print / PDF
+   ------------------------- */
+
+@media print {
+  body {
+    color: #000;
+    background: #fff;
+  }
+
+  .site-header,
+  .site-footer,
+  .cta-links,
+  .button,
+  .skip-link {
+    display: none !important;
+  }
+
+  .section,
+  .hero,
+  .hero-tight {
+    padding: 0.75rem 0 !important;
+    background: transparent !important;
+    border: none !important;
+  }
+
+  .card,
+  .panel,
+  .note {
+    box-shadow: none !important;
+    border: 1px solid #000 !important;
+  }
+
+  a {
+    text-decoration: none !important;
+    color: #000 !important;
+  }
+
+  @page {
+    margin: 18mm;
+  }
+}
