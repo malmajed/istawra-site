@@ -3,54 +3,239 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact — Istawra Consulting</title>
-  <meta name="description" content="Contact Istawra — controlled access for serious inbound inquiries." />
-  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="assets/css/main.css" />
+  <title>Contact | Istawra Consulting</title>
+  <meta name="description" content="Client support and governed inquiries for active Istawra mandates. Formal engagements are initiated offline through trusted executive and institutional channels." />
+  <meta name="robots" content="index,follow" />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
+
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <header class="site-header">
     <div class="container">
-      <div class="masthead">
+      <div class="header-row">
         <a class="brand" href="index.html" aria-label="Istawra Home">
-          <img class="brand-logo" src="assets/images/logo.svg" alt="ISTAWRA | إستورى" />
+          <span class="brand-name">Istawra</span>
+          <span class="brand-sub">Consulting</span>
         </a>
-        <nav class="nav" aria-label="Primary">
-          <a href="advisory.html">Advisory</a>
-          <a href="insights.html">Insights</a>
-          <a href="how-we-think.html">How We Think</a>
+
+        <nav class="site-nav" aria-label="Primary">
+          <a href="index.html">Home</a>
           <a href="about.html">About</a>
-          <a class="active" href="contact.html">Contact</a>
+          <a href="advisory.html">Advisory</a>
+          <a class="active" href="contact.html" aria-current="page">Contact</a>
         </nav>
       </div>
     </div>
   </header>
 
-  <main class="site-main">
-    <section class="page">
+  <main id="main">
+    <section class="hero hero-tight">
       <div class="container">
         <h1>Contact</h1>
+        <p class="lead">
+          Istawra Consulting operates as a sovereign-grade advisory institution. Formal engagements are initiated
+          <strong>offline</strong> through trusted executive and institutional channels.
+        </p>
+        <p class="lead">
+          This page is <strong>not</strong> a sales or intake portal. It is provided to support communication
+          <strong>after a mandate has been officiated</strong>, and to enable structured inquiries during active
+          advisory relationships.
+        </p>
 
-        <div class="narrow">
-          <p class="muted">For serious inbound inquiries.</p>
-          <p>Email: <a href="mailto:info@istawra.com">info@istawra.com</a></p>
+        <div class="hero-cards">
+          <div class="card">
+            <h3>Active Mandates</h3>
+            <p>Requests, updates, coordination, and escalation within the agreed governance framework.</p>
+          </div>
+          <div class="card">
+            <h3>General Inquiries</h3>
+            <p>Institutional questions and appropriate introductions through trusted intermediaries.</p>
+          </div>
+          <div class="card">
+            <h3>Confidential by Default</h3>
+            <p>Controlled handling and routing consistent with mandate access and distribution rules.</p>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>How This Channel Is Used</h2>
+        <p>
+          This channel is intended for communication during active Istawra engagements, or for appropriate institutional
+          inquiries. It is designed to protect decision time, confidentiality, and operational discipline.
+        </p>
+
+        <div class="grid grid-2">
+          <div class="panel">
+            <h3>For Active Mandates</h3>
+            <p>Clients under an active or retained engagement may use this page to:</p>
+            <ul>
+              <li>Submit requests for updates or clarifications</li>
+              <li>Coordinate deliverables, meetings, or governance artifacts</li>
+              <li>Escalate issues within the agreed assurance framework</li>
+              <li>Request additional support within mandate scope</li>
+            </ul>
+            <p class="small">
+              Please include your <strong>mandate reference</strong> or <strong>engagement name</strong> to ensure proper routing.
+            </p>
+          </div>
+
+          <div class="panel">
+            <h3>For General Inquiries</h3>
+            <p>General inquiries may be submitted where appropriate, including:</p>
+            <ul>
+              <li>Institutional questions about Istawra’s advisory model</li>
+              <li>Requests for clarification on published material</li>
+              <li>Referrals or introductions through trusted intermediaries</li>
+            </ul>
+            <p class="small">
+              Note: Istawra does not respond to unsolicited proposals or generic pitches. Engagement discussions, if any,
+              are conducted offline and at Istawra’s discretion.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2>Submit a Message</h2>
+        <p>
+          Use the form below to submit your message. For sensitive matters, clearly mark your subject line with
+          <strong>“Confidential”</strong> and provide only the minimum necessary information. Where required, communication
+          may be redirected to secure or restricted channels.
+        </p>
+
+        <div class="grid grid-2">
+          <div class="panel">
+            <h3>Contact Form</h3>
+
+            <!-- Replace the form action with your actual form handler.
+                 If you do not have a backend, you may keep action="#" and handle via email service later. -->
+            <form class="contact-form" action="#" method="post">
+              <div class="form-row">
+                <label for="name">Full name</label>
+                <input id="name" name="name" type="text" autocomplete="name" required />
+              </div>
+
+              <div class="form-row">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required />
+              </div>
+
+              <div class="form-row">
+                <label for="org">Organization (optional)</label>
+                <input id="org" name="organization" type="text" autocomplete="organization" />
+              </div>
+
+              <div class="form-row">
+                <label for="type">Inquiry type</label>
+                <select id="type" name="inquiry_type" required>
+                  <option value="" selected disabled>Select one</option>
+                  <option value="active_mandate">Active mandate — support / updates / coordination</option>
+                  <option value="governance_escalation">Active mandate — governance escalation</option>
+                  <option value="general_inquiry">General inquiry</option>
+                  <option value="referral_introduction">Referral / introduction (trusted intermediary)</option>
+                </select>
+              </div>
+
+              <div class="form-row">
+                <label for="reference">Mandate reference / engagement name (if applicable)</label>
+                <input id="reference" name="reference" type="text" />
+              </div>
+
+              <div class="form-row">
+                <label for="subject">Subject</label>
+                <input id="subject" name="subject" type="text" required />
+              </div>
+
+              <div class="form-row">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="7" required></textarea>
+              </div>
+
+              <div class="form-row form-actions">
+                <button class="button" type="submit">Submit</button>
+                <p class="small muted">
+                  By submitting, you acknowledge this channel is for governed communication and may be routed according
+                  to mandate access and confidentiality rules.
+                </p>
+              </div>
+            </form>
+          </div>
+
+          <div class="panel">
+            <h3>Routing Guidance</h3>
+            <ul>
+              <li><strong>Active mandate requests:</strong> include mandate reference, delivery name, or governance committee.</li>
+              <li><strong>Escalations:</strong> state the decision required, deadline, and impacted stakeholders.</li>
+              <li><strong>Updates:</strong> specify the artifact (brief, dashboard, pack) and the reporting period.</li>
+              <li><strong>General inquiries:</strong> keep messages concise and institutional.</li>
+            </ul>
+
+            <div class="note">
+              <p>
+                If your engagement requires restricted channels, do not include sensitive content here. Submit a brief
+                routing note, and Istawra will shift the conversation to the agreed secure channel.
+              </p>
+            </div>
+
+            <div class="fineprint">
+              <p>
+                Response times vary based on mandate priority and governance cadence. Where applicable, matters will be
+                handled through established escalation pathways and decision logs.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="fineprint">
+          <p>
+            Governance notice: Istawra Consulting provides advisory, governance, and execution assurance services.
+            Communications through this page do not constitute legal notice, regulatory filings, audit opinions, or
+            contractual amendments unless explicitly agreed in writing through established channels.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Related Pages</h2>
+        <p class="cta-links">
+          <a class="button button-secondary" href="advisory.html">Advisory</a>
+          <a class="button button-secondary" href="about.html">About Istawra</a>
+        </p>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      <div class="footer-inner">
-        <div class="footer-meta">
-          <div class="muted">© <span id="y"></span> Istawra Consulting</div>
-        </div>
+      <div class="footer-row">
+        <p class="footer-brand">Istawra Consulting</p>
+        <p class="footer-note">Sovereign-grade advisory • Institutional governance • Execution assurance</p>
+      </div>
+      <div class="footer-row footer-links">
+        <a href="about.html">About</a>
+        <a href="advisory.html">Advisory</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-row footer-legal">
+        <p>© <span id="year">2026</span> Istawra Consulting. All rights reserved.</p>
       </div>
     </div>
-  </footer>
 
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+    <script>
+      (function () {
+        var el = document.getElementById("year");
+        if (el) el.textContent = String(new Date().getFullYear());
+      })();
+    </script>
+  </footer>
 </body>
 </html>
