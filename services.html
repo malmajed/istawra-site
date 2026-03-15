@@ -13,197 +13,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" />
   <link rel="stylesheet" href="/site.css" />
-  <style>
-    /* ── SERVICE CONSTRUCTS ───────────────────────────────────── */
-    .service-block {
-      padding-block: var(--pad-section);
-      border-block-end: 1px solid var(--c-border);
-    }
-    .service-block:nth-child(even) {
-      background: var(--c-ink-1);
-    }
-    .service-inner {
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: clamp(40px, 6vw, 100px);
-      align-items: start;
-    }
-    .service-inner.reverse { direction: rtl; }
-    .service-inner.reverse > * { direction: ltr; }
-
-    .service-meta {}
-    .service-index {
-      font-family: var(--f-display);
-      font-size: clamp(60px, 8vw, 120px);
-      font-weight: 300;
-      line-height: 1;
-      color: transparent;
-      -webkit-text-stroke: 1px var(--c-border-hi);
-      letter-spacing: -0.04em;
-      margin-block-end: 16px;
-      user-select: none;
-    }
-    .service-name {
-      font-family: var(--f-display);
-      font-size: clamp(28px, 3vw, 48px);
-      font-weight: 300;
-      line-height: 1.1;
-      color: var(--c-paper);
-      margin-block-end: 16px;
-    }
-    .service-name em { font-style: italic; color: var(--c-gold); }
-    .service-tagline {
-      font-family: var(--f-ui);
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--c-paper-3);
-      margin-block-end: 32px;
-    }
-    .service-desc {
-      font-size: clamp(15px, 1.05vw, 18px);
-      color: var(--c-paper-2);
-      line-height: 1.82;
-      margin-block-end: 1.4em;
-    }
-
-    .service-detail {}
-    .service-detail-head {
-      font-family: var(--f-ui);
-      font-size: 9px;
-      font-weight: 400;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--c-gold);
-      margin-block-end: 20px;
-    }
-    .service-capabilities {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      margin-block-end: 40px;
-    }
-    .capability {
-      padding-block: 16px;
-      border-block-end: 1px solid var(--c-border);
-      display: grid;
-      grid-template-columns: 28px 1fr;
-      gap: 14px;
-      align-items: start;
-    }
-    .capability:first-child { border-block-start: 1px solid var(--c-border); }
-    .capability-mark {
-      width: 28px;
-      height: 1px;
-      background: var(--c-gold);
-      margin-block-start: 12px;
-      flex-shrink: 0;
-    }
-    .capability-text {
-      font-size: clamp(13px, 0.95vw, 16px);
-      color: var(--c-paper-2);
-      line-height: 1.7;
-    }
-    .capability-text strong { color: var(--c-paper); font-weight: 400; }
-
-    .service-outputs {
-      background: var(--c-ink-2);
-      border: 1px solid var(--c-border);
-      padding: clamp(24px, 2.5vw, 36px);
-      border-inline-start: 2px solid var(--c-gold);
-    }
-    .service-outputs-head {
-      font-family: var(--f-ui);
-      font-size: 9px;
-      font-weight: 400;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--c-gold);
-      margin-block-end: 16px;
-    }
-    .service-output-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .service-output-list li {
-      font-family: var(--f-ui);
-      font-size: 11px;
-      font-weight: 300;
-      letter-spacing: 0.06em;
-      color: var(--c-paper-3);
-      padding-inline-start: 14px;
-      position: relative;
-    }
-    .service-output-list li::before {
-      content: '';
-      position: absolute;
-      inset-inline-start: 0;
-      top: 8px;
-      width: 5px;
-      height: 1px;
-      background: var(--c-gold-lo);
-    }
-
-    /* ── ENGAGEMENT MODEL ─────────────────────────────────────── */
-    .engagement-model {
-      padding-block: var(--pad-section);
-      background: var(--c-ink-1);
-      border-block: 1px solid var(--c-border);
-    }
-    .engagement-model-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(40px, 6vw, 100px);
-      align-items: start;
-    }
-    .engagement-note {
-      font-family: var(--f-display);
-      font-size: clamp(20px, 1.8vw, 28px);
-      font-weight: 300;
-      font-style: italic;
-      line-height: 1.5;
-      color: var(--c-paper-2);
-      border-inline-start: 2px solid var(--c-gold);
-      padding-inline-start: 28px;
-      margin-block-start: 28px;
-    }
-    .engagement-note strong { font-style: normal; color: var(--c-paper); font-weight: 400; }
-
-    .engagement-facts {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-    .engagement-fact {
-      padding: 24px 28px;
-      background: var(--c-ink-2);
-      border: 1px solid var(--c-border);
-    }
-    .engagement-fact-label {
-      font-family: var(--f-ui);
-      font-size: 9px;
-      font-weight: 400;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--c-gold);
-      margin-block-end: 10px;
-    }
-    .engagement-fact-value {
-      font-family: var(--f-display);
-      font-size: clamp(16px, 1.4vw, 22px);
-      font-weight: 400;
-      color: var(--c-paper);
-      line-height: 1.4;
-    }
-
-    @media (max-width: 900px) {
-      .service-inner { grid-template-columns: 1fr; }
-      .service-inner.reverse { direction: ltr; }
-      .engagement-model-inner { grid-template-columns: 1fr; }
-    }
-  </style>
 </head>
 <body>
 
@@ -292,7 +101,7 @@
   </article>
 
   <!-- SERVICE 02: GOVERNED DELIVERY -->
-  <article class="service-block" aria-label="Governed Delivery">
+  <article class="service-block section-light" aria-label="Governed Delivery">
     <div class="wrap">
       <div class="service-inner reverse">
         <div class="service-meta" data-reveal>
@@ -425,7 +234,7 @@
   </section>
 
   <!-- CTA -->
-  <section class="cta-strip" style="border-top: 1px solid var(--c-border);" aria-label="Engagement">
+  <section class="cta-strip section-light" style="border-top: 1px solid var(--c-light-border);" aria-label="Engagement">
     <div class="wrap">
       <div class="cta-strip-inner" data-reveal>
         <span class="label">Begin the Conversation</span>
