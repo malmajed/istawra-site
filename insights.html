@@ -1,213 +1,544 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Insights | Istawra Consulting</title>
-  <meta name="description" content="Istawra Insights — selective institutional briefs and framework notes for VVIP decision-makers on mission architecture, governance, and execution assurance." />
-  <meta name="robots" content="index,follow" />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Insights — Istawra Consulting</title>
+  <meta name="description" content="Selected briefs, frameworks, and perspectives on sovereign programs, sector architecture, and execution governance — published with discretion." />
+  <link rel="canonical" href="https://istawra.com/insights.html" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta property="og:title" content="Insights — Istawra Consulting" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" />
+  <link rel="stylesheet" href="/site.css" />
+  <style>
+    /* ── CHANNEL FILTER ───────────────────────────────────────── */
+    .channel-filter {
+      display: flex;
+      gap: 0;
+      border: 1px solid var(--c-border);
+      width: fit-content;
+      margin-block-end: clamp(40px, 5vh, 64px);
+    }
+    .filter-btn {
+      font-family: var(--f-ui);
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--c-paper-3);
+      padding: 10px 20px;
+      border-inline-end: 1px solid var(--c-border);
+      transition: background var(--dur-fast), color var(--dur-fast);
+      cursor: pointer;
+    }
+    .filter-btn:last-child { border-inline-end: none; }
+    .filter-btn:hover { background: var(--c-ink-2); color: var(--c-paper-2); }
+    .filter-btn.active { background: var(--c-gold-ghost); color: var(--c-gold); }
+
+    /* ── FEATURED BRIEF ───────────────────────────────────────── */
+    .featured {
+      padding-block: var(--pad-section);
+      border-block-end: 1px solid var(--c-border);
+    }
+    .featured-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 100px);
+      align-items: center;
+      border: 1px solid var(--c-border);
+      padding: clamp(36px, 4vw, 64px);
+      position: relative;
+      overflow: hidden;
+      transition: background var(--dur-mid);
+    }
+    .featured-inner:hover { background: var(--c-ink-1); }
+    .featured-inner::before {
+      content: '';
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      width: 2px;
+      height: 100%;
+      background: var(--c-gold);
+    }
+    .featured-meta {}
+    .featured-type {
+      font-family: var(--f-ui);
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      margin-block-end: 8px;
+    }
+    .featured-label {
+      font-family: var(--f-ui);
+      font-size: 9px;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--c-paper-3);
+      margin-block-end: 20px;
+    }
+    .featured-title {
+      font-family: var(--f-display);
+      font-size: clamp(24px, 2.5vw, 40px);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--c-paper);
+      margin-block-end: 20px;
+    }
+    .featured-abstract {
+      font-size: clamp(13px, 0.95vw, 16px);
+      color: var(--c-paper-2);
+      line-height: 1.8;
+    }
+    .featured-action {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .featured-stat {
+      border-block-start: 1px solid var(--c-border);
+      padding-block-start: 20px;
+      width: 100%;
+    }
+    .featured-stat-num {
+      font-family: var(--f-display);
+      font-size: clamp(32px, 3vw, 48px);
+      font-weight: 300;
+      color: var(--c-paper);
+      line-height: 1;
+      margin-block-end: 6px;
+    }
+    .featured-stat-label {
+      font-family: var(--f-ui);
+      font-size: 9px;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--c-paper-3);
+    }
+
+    /* ── INSIGHTS GRID ────────────────────────────────────────── */
+    .insights-section {
+      padding-block: var(--pad-section);
+    }
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-inline-start: 1px solid var(--c-border);
+    }
+    .insight-card {
+      border-inline-end: 1px solid var(--c-border);
+      border-block-end: 1px solid var(--c-border);
+      padding: clamp(28px, 3vw, 44px) clamp(20px, 2vw, 36px);
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      transition: background var(--dur-mid);
+      position: relative;
+      overflow: hidden;
+    }
+    .insight-card:hover { background: var(--c-ink-1); }
+    .insight-card::after {
+      content: '';
+      position: absolute;
+      inset-block-end: 0;
+      inset-inline-start: 0;
+      height: 2px;
+      width: 0;
+      background: var(--c-gold);
+      transition: width 0.5s var(--ease-out);
+    }
+    .insight-card:hover::after { width: 100%; }
+
+    .insight-type {
+      font-family: var(--f-ui);
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      margin-block-end: 8px;
+    }
+    .insight-date {
+      font-family: var(--f-ui);
+      font-size: 9px;
+      font-weight: 200;
+      letter-spacing: 0.12em;
+      color: var(--c-paper-3);
+      margin-block-end: 16px;
+    }
+    .insight-title {
+      font-family: var(--f-display);
+      font-size: clamp(18px, 1.5vw, 24px);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--c-paper);
+      margin-block-end: 14px;
+      flex: 1;
+    }
+    .insight-summary {
+      font-size: clamp(12px, 0.88vw, 14px);
+      color: var(--c-paper-3);
+      line-height: 1.72;
+      margin-block-end: 24px;
+    }
+    .insight-link {
+      font-family: var(--f-ui);
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--c-paper-3);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color var(--dur-fast);
+      margin-block-start: auto;
+    }
+    .insight-link svg { transition: transform var(--dur-mid) var(--ease-out); }
+    .insight-card:hover .insight-link { color: var(--c-gold); }
+    .insight-card:hover .insight-link svg { transform: translateX(4px); }
+
+    /* Forthcoming channel cards */
+    .channel-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--c-border);
+      border: 1px solid var(--c-border);
+      margin-block-start: clamp(48px, 6vh, 80px);
+    }
+    .channel-card {
+      background: var(--c-ink);
+      padding: clamp(32px, 3.5vw, 52px) clamp(24px, 2.5vw, 44px);
+      position: relative;
+    }
+    .channel-card-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-block-end: 24px;
+    }
+    .status-pip {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .status-pip.live { background: var(--c-gold); }
+    .status-pip.soon { background: transparent; border: 1px solid var(--c-paper-3); }
+    .status-text {
+      font-family: var(--f-ui);
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--c-paper-3);
+    }
+    .channel-card-type {
+      font-family: var(--f-ui);
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      margin-block-end: 10px;
+    }
+    .channel-card-name {
+      font-family: var(--f-display);
+      font-size: clamp(22px, 2vw, 30px);
+      font-weight: 400;
+      color: var(--c-paper);
+      margin-block-end: 14px;
+    }
+    .channel-card-desc {
+      font-size: clamp(13px, 0.92vw, 16px);
+      color: var(--c-paper-2);
+      line-height: 1.75;
+    }
+    .channel-card-icon {
+      position: absolute;
+      inset-block-end: clamp(24px, 3vw, 40px);
+      inset-inline-end: clamp(24px, 3vw, 40px);
+      color: var(--c-border-hi);
+    }
+
+    @media (max-width: 960px) {
+      .insights-grid  { grid-template-columns: 1fr 1fr; }
+      .channel-cards  { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 680px) {
+      .featured-inner { grid-template-columns: 1fr; }
+      .insights-grid  { grid-template-columns: 1fr; }
+      .channel-filter { flex-wrap: wrap; }
+    }
+  </style>
 </head>
-
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <div class="container">
-      <div class="header-row">
-        <a class="brand" href="index.html" aria-label="Istawra Home">
-          <span class="brand-name">Istawra</span>
-          <span class="brand-sub">Consulting</span>
-        </a>
+<nav id="nav" aria-label="Primary navigation">
+  <a href="/" class="nav-logo">Istawra <em>Consulting</em></a>
+  <ul class="nav-links" role="list">
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/advisory.html">Advisory</a></li>
+    <li><a href="/services.html">Services</a></li>
+    <li><a href="/how-we-think.html">How We Think</a></li>
+    <li><a href="/insights.html" class="active">Insights</a></li>
+    <li><a href="/contact.html" class="nav-engage">Engage</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<nav class="nav-overlay" id="navOverlay" aria-label="Mobile navigation" hidden>
+  <a href="/about.html">About</a><a href="/advisory.html">Advisory</a><a href="/services.html">Services</a>
+  <a href="/how-we-think.html">How We Think</a><a href="/insights.html">Insights</a><a href="/contact.html">Engage</a>
+</nav>
 
-        <nav class="site-nav" aria-label="Primary">
-          <a href="index.html">Home</a>
-          <a href="about.html">About</a>
-          <a href="advisory.html">Advisory</a>
-          <a href="services.html">Services</a>
-          <a href="how-we-think.html">How We Think</a>
-          <a class="active" href="insights.html" aria-current="page">Insights</a>
-          <a href="contact.html">Contact</a>
-        </nav>
+<main>
+
+  <header class="page-header" aria-label="Insights">
+    <div aria-hidden="true" class="page-header-vline"></div>
+    <div aria-hidden="true" class="page-header-glyph">I</div>
+    <div class="wrap">
+      <div class="page-eyebrow">
+        <span class="rule" aria-hidden="true"></span>
+        <span class="label">Knowledge &amp; Perspective</span>
       </div>
+      <h1 class="page-h1">Institutional<br><em>insights</em></h1>
+      <p class="page-sub">Selected briefs and perspectives on sovereign programs, sector architecture, and execution governance — published with discretion, for principals who read with purpose.</p>
     </div>
   </header>
 
-  <main id="main">
-    <section class="hero hero-tight">
-      <div class="container">
-        <h1>Insights</h1>
-
-        <p class="lead">
-          Istawra Insights are selective institutional publications intended to improve decision quality,
-          governance clarity, and execution discipline. This is not a news feed, blog, or commentary channel.
-        </p>
-
-        <p class="lead">
-          Publications are structured for senior decision-makers. We publish only where there is a clear,
-          usable contribution to leadership under complexity.
-        </p>
+  <!-- FEATURED BRIEF -->
+  <section class="featured" aria-label="Featured brief">
+    <div class="wrap">
+      <div style="margin-block-end: 32px;" data-reveal>
+        <span class="label">Featured Brief</span>
       </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <h2>Featured</h2>
-
-        <p>
-          The Featured section is Istawra’s public canon: a small set of evergreen briefs and framework notes
-          that define our institutional posture.
-        </p>
-
-        <div class="grid grid-2">
-          <div class="panel">
-            <h3>From Ambition to Architecture</h3>
-            <p class="small muted">Executive Brief · Mission design · 2026-01</p>
-            <p>
-              Why high ambition fails without explicit mission architecture, authority design, sequencing,
-              and assurance gates.
-            </p>
-            <p class="small"><a href="insights/2026-01-ambition-to-architecture.html">Read</a></p>
-          </div>
-
-          <div class="panel">
-            <h3>Governance Is Not a Committee</h3>
-            <p class="small muted">Framework Note · Governance design · 2026-01</p>
-            <p>
-              A practical definition of governance: decision rights, escalation thresholds, and operating cadence—
-              not organizational charts.
-            </p>
-            <p class="small"><a href="insights/2026-01-governance-not-a-committee.html">Read</a></p>
-          </div>
-
-          <div class="panel">
-            <h3>The Hidden Cost of Portfolio Drift</h3>
-            <p class="small muted">Assurance Note · Portfolio execution · 2026-01</p>
-            <p>
-              How weak assurance, delayed escalation, and misaligned incentives quietly destroy value across
-              multi-program portfolios.
-            </p>
-            <p class="small"><a href="insights/2026-01-hidden-cost-of-portfolio-drift.html">Read</a></p>
-          </div>
-        
-          <div class="panel">
-            <h3>Decision Integrity Under Time Pressure</h3>
-            <p class="small muted">Executive Brief · Foundations of Governed Execution · 2026-01</p>
-            <p>
-              Why urgency degrades judgment—and how leaders preserve decision quality without stopping momentum.
-            </p>
-            <p class="small"><a href="insights/decision-integrity-under-time-pressure.html">Read</a></p>
-          </div>
-          
+      <a href="#" class="featured-inner" data-reveal data-delay="1" aria-label="Read: The Governance Deficit in National Transformation Programs">
+        <div class="featured-meta">
+          <div class="featured-type">White Paper</div>
+          <div class="featured-label">March 2026 · 18-minute read</div>
+          <h2 class="featured-title">The Governance Deficit in National Transformation Programs</h2>
+          <p class="featured-abstract">An analysis of why large-scale national transformation initiatives consistently underdeliver — and the structural governance failures that explain the pattern. With a framework for detecting and correcting the deficit before it becomes systemic.</p>
         </div>
-        <div class="note">
-          <p class="small">
-            Management rule: Featured stays small (3–5 items). It is curated; it does not grow indefinitely.
-          </p>
+        <div class="featured-action">
+          <a href="#" class="btn btn-gold" onclick="event.stopPropagation()">Read the Brief</a>
+          <div class="featured-stat">
+            <div class="featured-stat-num">7</div>
+            <div class="featured-stat-label">Structural failure patterns examined</div>
+          </div>
+          <div class="featured-stat">
+            <div class="featured-stat-num">4</div>
+            <div class="featured-stat-label">Corrective frameworks provided</div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- INSIGHTS GRID -->
+  <section class="insights-section" aria-label="All insights">
+    <div class="wrap">
+
+      <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-block-end:clamp(32px,4vh,52px);" data-reveal>
+        <span class="label">All Briefs</span>
+        <div class="channel-filter" role="group" aria-label="Filter by type">
+          <button class="filter-btn active" onclick="filterInsights('all', this)">All</button>
+          <button class="filter-btn" onclick="filterInsights('white-paper', this)">White Papers</button>
+          <button class="filter-btn" onclick="filterInsights('brief', this)">Briefs</button>
         </div>
       </div>
-    </section>
 
-    <section class="section section-alt">
-      <div class="container">
-        <h2>Briefs</h2>
+      <div class="insights-grid" id="insightsGrid" data-reveal data-delay="1">
 
-        <p>
-          Briefs are short, structured publications released selectively. Each item is a standalone page with a
-          consistent executive format.
-        </p>
+        <article class="insight-card" data-type="white-paper">
+          <div class="insight-type">White Paper</div>
+          <div class="insight-date">February 2026</div>
+          <h3 class="insight-title">Sequencing as Strategy: Why Activation Order Determines Mission Outcome</h3>
+          <p class="insight-summary">The order in which a national mission activates its workstreams is not an operational question — it is a strategic one. This brief examines sequencing logic through four case frameworks.</p>
+          <a href="#" class="insight-link" aria-label="Read: Sequencing as Strategy">
+            Read
+            <svg width="16" height="9" viewBox="0 0 16 9" fill="none" aria-hidden="true">
+              <path d="M1 4.5H15M11 1L15 4.5L11 8" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </article>
 
-        <div class="grid grid-2">
-          <div class="panel">
-            <h3>Execution Is a Design Choice</h3>
-            <p class="small muted">Framework Application · Execution assurance · Placeholder</p>
-            <p>
-              Why execution failures are rarely operational accidents—and how early design decisions determine delivery outcomes.
-            </p>
-            <p class="small muted">Coming soon</p>
+        <article class="insight-card" data-type="brief">
+          <div class="insight-type">Brief</div>
+          <div class="insight-date">January 2026</div>
+          <h3 class="insight-title">The Decision Brief: A Format Designed for Principals, Not Committees</h3>
+          <p class="insight-summary">Most advisory outputs are designed for the people who produced them, not for the people who must use them. A note on the format discipline behind VVIP-grade decision packs.</p>
+          <a href="#" class="insight-link" aria-label="Read: The Decision Brief">
+            Read
+            <svg width="16" height="9" viewBox="0 0 16 9" fill="none" aria-hidden="true">
+              <path d="M1 4.5H15M11 1L15 4.5L11 8" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </article>
+
+        <article class="insight-card" data-type="white-paper">
+          <div class="insight-type">White Paper</div>
+          <div class="insight-date">December 2025</div>
+          <h3 class="insight-title">Sovereign Wealth Fund Governance: The Architecture of Long-Term Control</h3>
+          <p class="insight-summary">How sovereign wealth funds structure decision rights, investment mandates, and accountability mechanisms to remain answerable to their founding mandate across political cycles.</p>
+          <a href="#" class="insight-link" aria-label="Read: Sovereign Wealth Fund Governance">
+            Read
+            <svg width="16" height="9" viewBox="0 0 16 9" fill="none" aria-hidden="true">
+              <path d="M1 4.5H15M11 1L15 4.5L11 8" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </article>
+
+        <article class="insight-card" data-type="brief">
+          <div class="insight-type">Brief</div>
+          <div class="insight-date">November 2025</div>
+          <h3 class="insight-title">The Assumption Inventory: Making What You Believe Explicit Before You Commit</h3>
+          <p class="insight-summary">Every strategic commitment rests on assumptions. The discipline of making those assumptions explicit — before the commitment — is among the most underused tools in sovereign advisory.</p>
+          <a href="#" class="insight-link" aria-label="Read: The Assumption Inventory">
+            Read
+            <svg width="16" height="9" viewBox="0 0 16 9" fill="none" aria-hidden="true">
+              <path d="M1 4.5H15M11 1L15 4.5L11 8" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </article>
+
+        <article class="insight-card" data-type="white-paper">
+          <div class="insight-type">White Paper</div>
+          <div class="insight-date">October 2025</div>
+          <h3 class="insight-title">Inter-Agency Governance: Designing Authority Across Entities That Cannot Be Managed</h3>
+          <p class="insight-summary">When a mission spans multiple ministries and independent entities, conventional management structures fail. This paper examines the governance architectures that sustain alignment without authority.</p>
+          <a href="#" class="insight-link" aria-label="Read: Inter-Agency Governance">
+            Read
+            <svg width="16" height="9" viewBox="0 0 16 9" fill="none" aria-hidden="true">
+              <path d="M1 4.5H15M11 1L15 4.5L11 8" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </article>
+
+        <article class="insight-card" data-type="brief">
+          <div class="insight-type">Brief</div>
+          <div class="insight-date">September 2025</div>
+          <h3 class="insight-title">What Assurance Is Not: Clearing the Confusion Between Oversight and Audit</h3>
+          <p class="insight-summary">Execution assurance is frequently confused with internal audit, project management oversight, and performance reporting. This brief draws the distinctions that matter for how each function is commissioned.</p>
+          <a href="#" class="insight-link" aria-label="Read: What Assurance Is Not">
+            Read
+            <svg width="16" height="9" viewBox="0 0 16 9" fill="none" aria-hidden="true">
+              <path d="M1 4.5H15M11 1L15 4.5L11 8" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </article>
+
+      </div>
+
+      <!-- Forthcoming channels -->
+      <div style="margin-block-start: clamp(56px, 8vh, 100px);" data-reveal>
+        <span class="label" style="margin-block-end: 28px;">Forthcoming Channels</span>
+        <div class="channel-cards">
+          <div class="channel-card">
+            <div class="channel-card-status">
+              <div class="status-pip soon" aria-hidden="true"></div>
+              <span class="status-text">Forthcoming</span>
+            </div>
+            <div class="channel-card-type">Podcast</div>
+            <div class="channel-card-name">In Conversation</div>
+            <p class="channel-card-desc">Conversations on sovereign strategy, execution governance, and the architecture of national ambition — with practitioners who have operated at the highest levels of institutional decision-making.</p>
+            <svg class="channel-card-icon" width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <circle cx="16" cy="11" r="5" stroke="currentColor" stroke-width="1"/>
+              <path d="M7 20c0-4.97 4.03-9 9-9s9 4.03 9 9" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+              <path d="M16 24v4M12 28h8" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+            </svg>
           </div>
-
-         
-        </div>
-
-        <div class="note">
-          <p class="small">
-            Operating discipline: publish only when the piece is (a) decision-relevant, (b) neutral in tone,
-            and (c) safe if shared without context.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <h2>Governance and Use</h2>
-
-        <div class="grid grid-2">
-          <div class="panel">
-            <h3>What We Publish</h3>
-            <ul>
-              <li>Decision briefs, framework notes, and assurance lessons</li>
-              <li>Sector and ecosystem architecture perspectives (institutional)</li>
-              <li>Execution governance logic and operating models</li>
-            </ul>
-          </div>
-
-          <div class="panel">
-            <h3>What We Do Not Publish</h3>
-            <ul>
-              <li>News commentary or reactive opinion</li>
-              <li>Client-identifiable material or internal deliberations</li>
-              <li>Marketing-driven content or generic thought leadership</li>
-            </ul>
+          <div class="channel-card">
+            <div class="channel-card-status">
+              <div class="status-pip soon" aria-hidden="true"></div>
+              <span class="status-text">Forthcoming</span>
+            </div>
+            <div class="channel-card-type">Video</div>
+            <div class="channel-card-name">Structured Perspectives</div>
+            <p class="channel-card-desc">Visual perspectives on frameworks, decision models, and execution methodology — extending Istawra's institutional thinking to principals who prefer to hear and see, not only read.</p>
+            <svg class="channel-card-icon" width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <rect x="2" y="7" width="21" height="18" rx="1" stroke="currentColor" stroke-width="1"/>
+              <path d="M23 13l7-4v14l-7-4V13z" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/>
+            </svg>
           </div>
         </div>
-
-        <div class="fineprint">
-          <p>
-            Notice: Insights are provided for institutional learning and decision support. They do not constitute legal advice,
-            regulatory determinations, or formal audit opinions. Distribution and citation should respect confidentiality and
-            the context in which the material is provided.
-          </p>
-        </div>
-
-        <div class="cta">
-          <p class="cta-links">
-            <a class="button" href="how-we-think.html">How We Think</a>
-            <a class="button button-secondary" href="services.html">Service Constructs</a>
-          </p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-row">
-        <p class="footer-brand">Istawra Consulting</p>
-        <p class="footer-note">Sovereign-grade advisory • Institutional governance • Execution assurance</p>
       </div>
 
-      <div class="footer-row footer-links">
-        <a href="about.html">About</a>
-        <a href="advisory.html">Advisory</a>
-        <a href="services.html">Services</a>
-        <a href="how-we-think.html">How We Think</a>
-        <a href="insights.html">Insights</a>
-        <a href="contact.html">Contact</a>
-      </div>
+    </div>
+  </section>
 
-      <div class="footer-row footer-legal">
-        <p>© <span id="year">2026</span> Istawra Consulting. All rights reserved.</p>
+</main>
+
+<footer id="footer" role="contentinfo">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Istawra <em>Consulting</em></div>
+        <div class="footer-tagline">Sovereign-grade advisory<br>Institutional governance<br>Execution assurance</div>
+      </div>
+      <div>
+        <div class="footer-nav-heading">Practice</div>
+        <ul class="footer-links" role="list">
+          <li><a href="/about.html">About Istawra</a></li>
+          <li><a href="/advisory.html">Advisory Philosophy</a></li>
+          <li><a href="/services.html">Service Constructs</a></li>
+          <li><a href="/contact.html">Initiate Engagement</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-nav-heading">Knowledge</div>
+        <ul class="footer-links" role="list">
+          <li><a href="/how-we-think.html">How We Think</a></li>
+          <li><a href="/insights.html">Insights</a></li>
+        </ul>
       </div>
     </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Istawra Consulting. All rights reserved. <em>&nbsp;·&nbsp;</em> istawra.com</span>
+      <span class="footer-copy">Riyadh, Kingdom of Saudi Arabia</span>
+    </div>
+  </div>
+</footer>
 
-    <script>
-      (function () {
-        var el = document.getElementById("year");
-        if (el) el.textContent = String(new Date().getFullYear());
-      })();
-    </script>
-  </footer>
+<script>
+(function(){
+  'use strict';
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function(){ nav.classList.toggle('anchored', window.scrollY > 56); }, { passive: true });
+  nav.classList.toggle('anchored', window.scrollY > 56);
+  var toggle = document.getElementById('navToggle'), overlay = document.getElementById('navOverlay'), open = false;
+  function setNav(s){ open=s; toggle.classList.toggle('open',open); toggle.setAttribute('aria-expanded',String(open)); overlay.hidden=!open; overlay.classList.toggle('open',open); document.body.style.overflow=open?'hidden':''; }
+  toggle.addEventListener('click', function(){ setNav(!open); });
+  overlay.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setNav(false); }); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'&&open) setNav(false); });
+
+  window.filterInsights = function(type, btn) {
+    document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    document.querySelectorAll('.insight-card').forEach(function(card){
+      if(type === 'all' || card.dataset.type === type){
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  };
+
+  var els = document.querySelectorAll('[data-reveal]');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+    els.forEach(function(el){ io.observe(el); });
+  } else { els.forEach(function(el){ el.classList.add('in-view'); }); }
+}());
+</script>
 </body>
 </html>
