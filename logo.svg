@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 80" width="400" height="80" role="img" aria-label="Istawra Consulting">
+  <title>Istawra Consulting</title>
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&display=swap');</style>
+  </defs>
+  <rect width="400" height="80" fill="#0d0f13"/>
+  <text
+    font-family="'Cormorant Garamond', Georgia, serif"
+    font-size="48"
+    font-weight="300"
+    fill="#ede8df"
+    letter-spacing="10"
+    x="16"
+    y="52">ISTAWRA</text>
+  <text
+    font-family="'Cormorant Garamond', Georgia, serif"
+    font-size="13"
+    font-weight="400"
+    fill="#c09a3c"
+    letter-spacing="10"
+    x="20"
+    y="70">CONSULTING</text>
+</svg>
