@@ -1,277 +1,324 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About | Istawra Consulting</title>
-  <meta name="description" content="About Istawra Consulting — a sovereign-grade advisory institution built to support VVIP decision-makers through institutional design, governance, and execution assurance." />
-  <meta name="robots" content="index,follow" />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Istawra Consulting</title>
+  <meta name="description" content="Istawra is a sovereign-grade advisory practice built for the architecture of national ambition. Understand who we are and how we operate." />
+  <link rel="canonical" href="https://istawra.com/about.html" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta property="og:title" content="About — Istawra Consulting" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://istawra.com/about.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" />
+  <link rel="stylesheet" href="/site.css" />
+  <style>
+    /* ── PAGE-SPECIFIC ─────────────────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 100px);
+      align-items: start;
+      padding-block: var(--pad-section);
+    }
+    .about-body p {
+      font-size: clamp(16px, 1.1vw, 19px);
+      line-height: 1.82;
+      color: var(--c-paper-2);
+      margin-block-end: 1.4em;
+    }
+    .about-body p:last-child { margin-block-end: 0; }
+    .about-body strong { color: var(--c-paper); font-weight: 400; }
+
+    .about-aside {
+      position: sticky;
+      top: 100px;
+    }
+    .about-pull {
+      font-family: var(--f-display);
+      font-size: clamp(22px, 2vw, 32px);
+      font-weight: 300;
+      line-height: 1.45;
+      color: var(--c-paper);
+      font-style: italic;
+      border-inline-start: 2px solid var(--c-gold);
+      padding-inline-start: 28px;
+      margin-block-end: 44px;
+    }
+
+    .principles {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .principle {
+      padding-block: 24px;
+      border-block-end: 1px solid var(--c-border);
+    }
+    .principle:first-child { border-block-start: 1px solid var(--c-border); }
+    .principle-num {
+      font-family: var(--f-ui);
+      font-size: 9px;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      color: var(--c-gold-lo);
+      margin-block-end: 8px;
+    }
+    .principle-name {
+      font-family: var(--f-display);
+      font-size: clamp(17px, 1.4vw, 22px);
+      font-weight: 400;
+      color: var(--c-paper);
+      margin-block-end: 8px;
+    }
+    .principle-body {
+      font-size: clamp(13px, 0.9vw, 15px);
+      color: var(--c-paper-2);
+      line-height: 1.75;
+    }
+
+    /* Distinction section */
+    .distinction {
+      background: var(--c-ink-1);
+      border-block: 1px solid var(--c-border);
+      padding-block: var(--pad-section);
+    }
+    .distinction-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 100px);
+      align-items: center;
+    }
+    .distinction-quote {
+      font-family: var(--f-display);
+      font-size: clamp(26px, 2.8vw, 46px);
+      font-weight: 300;
+      line-height: 1.28;
+      color: var(--c-paper);
+    }
+    .distinction-quote em { font-style: italic; color: var(--c-gold); }
+
+    .distinction-points {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .distinction-point {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .distinction-point-line {
+      width: 28px;
+      height: 1px;
+      background: var(--c-gold);
+      margin-block-start: 14px;
+      flex-shrink: 0;
+    }
+    .distinction-point-text {
+      font-size: clamp(14px, 1vw, 17px);
+      color: var(--c-paper-2);
+      line-height: 1.75;
+    }
+    .distinction-point-text strong { color: var(--c-paper); font-weight: 400; }
+
+    @media (max-width: 860px) {
+      .about-grid         { grid-template-columns: 1fr; }
+      .about-aside        { position: static; }
+      .distinction-inner  { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
-
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <div class="container">
-      <div class="header-row">
-        <a class="brand" href="index.html" aria-label="Istawra Home">
-          <span class="brand-name">Istawra</span>
-          <span class="brand-sub">Consulting</span>
-        </a>
+<nav id="nav" aria-label="Primary navigation">
+  <a href="/" class="nav-logo">Istawra <em>Consulting</em></a>
+  <ul class="nav-links" role="list">
+    <li><a href="/about.html" class="active">About</a></li>
+    <li><a href="/advisory.html">Advisory</a></li>
+    <li><a href="/services.html">Services</a></li>
+    <li><a href="/how-we-think.html">How We Think</a></li>
+    <li><a href="/insights.html">Insights</a></li>
+    <li><a href="/contact.html" class="nav-engage">Engage</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
 
-        <nav class="site-nav" aria-label="Primary">
-          <a href="index.html">Home</a>
-          <a class="active" href="about.html" aria-current="page">About</a>
-          <a href="advisory.html">Advisory</a>
-          <a href="services.html">Services</a>
-          <a href="how-we-think.html">How We Think</a>
-          <a href="insights.html">Insights</a>
-          <a href="contact.html">Contact</a>
-        </nav>
+<nav class="nav-overlay" id="navOverlay" aria-label="Mobile navigation" hidden>
+  <a href="/about.html">About</a>
+  <a href="/advisory.html">Advisory</a>
+  <a href="/services.html">Services</a>
+  <a href="/how-we-think.html">How We Think</a>
+  <a href="/insights.html">Insights</a>
+  <a href="/contact.html">Engage</a>
+</nav>
+
+<main>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header" aria-label="About Istawra">
+    <div aria-hidden="true" class="page-header-vline"></div>
+    <div aria-hidden="true" class="page-header-glyph">A</div>
+    <div class="wrap">
+      <div class="page-eyebrow">
+        <span class="rule" aria-hidden="true"></span>
+        <span class="label">About the Practice</span>
       </div>
+      <h1 class="page-h1">Built for the<br>architecture of<br><em>national ambition</em></h1>
+      <p class="page-sub">Istawra is a sovereign-grade advisory practice. We exist for one reason: to give VVIP decision-makers the clarity, structure, and assurance their missions demand.</p>
     </div>
   </header>
 
-  <main id="main">
-    <!-- INTRO -->
-    <section class="hero hero-tight">
-      <div class="container">
-        <h1>About Istawra</h1>
+  <!-- ABOUT BODY -->
+  <section aria-label="About the firm">
+    <div class="wrap">
+      <div class="about-grid">
 
-        <p class="lead">
-          Istawra Consulting is a sovereign-grade advisory institution built to support VVIP
-          decision-makers navigating complex missions, institutional transformations, and
-          multi-entity execution environments.
-        </p>
+        <div class="about-body" data-reveal>
+          <p>Istawra was founded on a single observation: <strong>the most consequential missions in the world fail not from lack of ambition, but from lack of architecture.</strong> The vision exists. The resources exist. The political will exists. What is missing is the governed structure that converts intent into sustained, accountable execution.</p>
 
-        <p class="lead">
-          We exist to serve leadership where the cost of ambiguity is high, the margin for error
-          is narrow, and the consequences of weak governance are material.
-        </p>
-      </div>
-    </section>
+          <p>We advise at the intersection of national strategy, institutional governance, and delivery — environments where decisions carry sovereign weight, where stakeholders span ministries and regulators and private actors, and where the cost of ambiguity is measured in years lost and billions misallocated.</p>
 
-    <!-- WHAT WE ARE -->
-    <section class="section">
-      <div class="container">
-        <h2>What Istawra Is</h2>
+          <p>Our practice is deliberately small. We do not scale through headcount. We scale through precision — maintaining a limited number of concurrent mandates so that every engagement receives the full weight of our analytical capacity and executive attention.</p>
 
-        <p>
-          Istawra is not a traditional management consultancy. We do not operate on volume,
-          headcount, or generic frameworks. We operate as an institutional extension of senior
-          decision-making—focused on clarity, control, and execution integrity.
-        </p>
+          <p>Istawra does not publish client lists. We do not seek recognition. Our measure of success is the quality of what our clients can achieve after we have worked with them — missions launched, governance structures that hold, decisions that remain defensible years later.</p>
 
-        <div class="grid grid-2">
-          <div class="panel">
-            <h3>An Advisory Institution</h3>
-            <p>
-              Istawra is designed as an institution, not a personality-driven practice. Our
-              operating model emphasizes governance, repeatability, and disciplined delivery
-              across mandates.
-            </p>
-          </div>
-
-          <div class="panel">
-            <h3>Sovereign-Grade by Design</h3>
-            <p>
-              Our work reflects the standards required in national programs, sovereign entities,
-              and VVIP environments—where accountability, confidentiality, and execution rigor
-              are non-negotiable.
-            </p>
-          </div>
+          <p>We are not a strategy firm that hands over a presentation and exits. We are not an implementation firm that executes without thinking. <strong>We occupy the space where thinking and doing must be held together under executive discipline</strong> — and we remain engaged until that discipline is self-sustaining.</p>
         </div>
-      </div>
-    </section>
 
-    <!-- WHAT WE ARE NOT -->
-    <section class="section section-alt">
-      <div class="container">
-        <h2>What Istawra Is Not</h2>
+        <div class="about-aside" data-reveal data-delay="1">
+          <blockquote class="about-pull">
+            "The firms that matter most are the ones that can be trusted with what cannot be said in a boardroom."
+          </blockquote>
 
-        <div class="grid grid-2">
-          <div class="panel">
-            <h3>Not a Manpower Consultancy</h3>
-            <p>
-              We do not sell hours, staffing, or junior leverage. Every engagement is senior-led
-              and output-driven.
-            </p>
-          </div>
-
-          <div class="panel">
-            <h3>Not a Slide Factory</h3>
-            <p>
-              Our outputs are decision instruments, governance artifacts, and execution controls—
-              not presentation theater.
-            </p>
-          </div>
-
-          <div class="panel">
-            <h3>Not a Sales Platform</h3>
-            <p>
-              Istawra does not pursue open-ended sales funnels or unsolicited pitches. Engagements
-              are selective and initiated through trusted channels.
-            </p>
-          </div>
-
-          <div class="panel">
-            <h3>Not a Vendor Proxy</h3>
-            <p>
-              We maintain independence from vendors and delivery providers unless explicitly
-              mandated otherwise.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- WHY ISTAWRA -->
-    <section class="section">
-      <div class="container">
-        <h2>Why Istawra Exists</h2>
-
-        <p>
-          Many strategic initiatives fail not because of poor intent, but because ambition is
-          not matched with institutional capability, governance discipline, or execution control.
-        </p>
-
-        <p>
-          Istawra exists to close this gap—by translating leadership intent into structured
-          missions, governed portfolios, and executable pathways that can survive complexity,
-          politics, and time.
-        </p>
-
-        <div class="note">
-          <p>
-            We are most effective where multiple stakeholders, regulatory constraints, funding
-            mechanisms, and delivery timelines intersect under executive authority.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- PEOPLE & SME MODEL -->
-    <section class="section section-alt">
-      <div class="container">
-        <h2>Our Operating Model</h2>
-
-        <p>
-          Istawra operates with a lean core and a curated network of Saudi Subject Matter Experts
-          and international specialists—engaged selectively based on mission needs.
-        </p>
-
-        <div class="grid grid-2">
-          <div class="panel">
-            <h3>Senior-Led Core</h3>
-            <p>
-              Every mandate is led by senior advisors with direct accountability for decision
-              quality, governance integrity, and outcomes.
-            </p>
-          </div>
-
-          <div class="panel">
-            <h3>Curated Subject Matter Experts</h3>
-            <p>
-              We fully engage Saudi Subject Matter Experts as integral contributors—not
-              subcontractors—while protecting confidentiality and alignment.
-            </p>
+          <div class="principles">
+            <div class="principle">
+              <div class="principle-num">01</div>
+              <div class="principle-name">Discretion as architecture</div>
+              <p class="principle-body">Confidentiality is not a policy — it is the structural precondition for the work. Every engagement is bounded by explicit rules on distribution, attribution, and retention.</p>
+            </div>
+            <div class="principle">
+              <div class="principle-num">02</div>
+              <div class="principle-name">Minimum viable signal</div>
+              <p class="principle-body">We gather only what is necessary to construct the decision architecture. Every document produced has a named recipient and a defined purpose.</p>
+            </div>
+            <div class="principle">
+              <div class="principle-num">03</div>
+              <div class="principle-name">No presentation theater</div>
+              <p class="principle-body">Our outputs are designed for use, not admiration. We do not produce decks that perform insight. We produce instruments that enable decisions.</p>
+            </div>
+            <div class="principle">
+              <div class="principle-num">04</div>
+              <div class="principle-name">Institutional loyalty</div>
+              <p class="principle-body">Our obligation is to the mission and to the institution, not to any individual actor within it. This is what makes our advice trustworthy under pressure.</p>
+            </div>
           </div>
         </div>
 
-        <div class="note">
-          <p>
-            Istawra welcomes new partners and experts where there is a clear capability
-            contribution, governance fit, and commitment to institutional standards.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- GOVERNANCE -->
-    <section class="section">
-      <div class="container">
-        <h2>Governance and Integrity</h2>
-
-        <p>
-          Istawra’s credibility depends on trust. We apply strict governance, ethics, and safety
-          discipline across all engagements.
-        </p>
-
-        <div class="grid grid-2">
-          <div class="panel">
-            <h3>Confidentiality</h3>
-            <ul>
-              <li>Need-to-know access and controlled distribution</li>
-              <li>No public references without authorization</li>
-              <li>Secure channels where required</li>
-            </ul>
-          </div>
-
-          <div class="panel">
-            <h3>Independence</h3>
-            <ul>
-              <li>Proactive conflict checks and disclosure</li>
-              <li>Vendor neutrality unless explicitly mandated</li>
-              <li>Refusal of mandates that compromise integrity</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="fineprint">
-          <p>
-            Istawra provides advisory, governance, and execution assurance services. We do not
-            provide legal advice, regulatory determinations, or formal audit opinions.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="section section-alt">
-      <div class="container">
-        <div class="cta">
-          <h2>Learn More</h2>
-          <p>
-            To understand how Istawra operates in practice, explore our Advisory model or
-            Service Constructs.
-          </p>
-          <p class="cta-links">
-            <a class="button" href="advisory.html">Advisory</a>
-            <a class="button button-secondary" href="services.html">Services</a>
-          </p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-row">
-        <p class="footer-brand">Istawra Consulting</p>
-        <p class="footer-note">Sovereign-grade advisory • Institutional governance • Execution assurance</p>
-      </div>
-
-      <div class="footer-row footer-links">
-        <a href="about.html">About</a>
-        <a href="advisory.html">Advisory</a>
-        <a href="services.html">Services</a>
-        <a href="how-we-think.html">How We Think</a>
-        <a href="insights.html">Insights</a>
-        <a href="contact.html">Contact</a>
-      </div>
-
-      <div class="footer-row footer-legal">
-        <p>© <span id="year">2026</span> Istawra Consulting. All rights reserved.</p>
       </div>
     </div>
+  </section>
 
-    <script>
-      (function () {
-        var el = document.getElementById("year");
-        if (el) el.textContent = String(new Date().getFullYear());
-      })();
-    </script>
-  </footer>
+  <!-- DISTINCTION -->
+  <section class="distinction" aria-label="What distinguishes Istawra">
+    <div class="wrap">
+      <div class="distinction-inner">
+        <div data-reveal>
+          <span class="label">What Distinguishes Us</span>
+          <h2 class="distinction-quote" style="margin-top:14px">
+            We do not advise on what to think.<br>We advise on <em>how to decide</em>.
+          </h2>
+        </div>
+        <div class="distinction-points" data-reveal data-delay="1">
+          <div class="distinction-point">
+            <div class="distinction-point-line" aria-hidden="true"></div>
+            <p class="distinction-point-text"><strong>Sovereign operating environment.</strong> Our practice is calibrated to the pace, protocol, and confidentiality requirements of heads of state, ministers, and fund principals. We do not adapt a commercial model to a sovereign context — we were built for it.</p>
+          </div>
+          <div class="distinction-point">
+            <div class="distinction-point-line" aria-hidden="true"></div>
+            <p class="distinction-point-text"><strong>Advisory without conflict.</strong> We hold no mandates that create conflicts of interest with our clients' positions. We are not investors, implementers, or vendors. Our judgment is structurally unencumbered.</p>
+          </div>
+          <div class="distinction-point">
+            <div class="distinction-point-line" aria-hidden="true"></div>
+            <p class="distinction-point-text"><strong>Outcomes, not outputs.</strong> We measure our contribution by what our clients can do after we have engaged — not by the volume of deliverables produced during the engagement.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-strip" aria-label="Engagement">
+    <div class="wrap">
+      <div class="cta-strip-inner" data-reveal>
+        <span class="label">Begin a Conversation</span>
+        <h2 class="cta-strip-title">Formal engagements are initiated <em>offline</em></h2>
+        <p class="cta-strip-body">Istawra does not accept unsolicited briefs. Engagements begin through trusted institutional channels, with a mandate definition conversation before any work commences.</p>
+        <div class="cta-strip-actions">
+          <a href="/contact.html" class="btn btn-gold">Initiate Contact</a>
+          <a href="/services.html" class="btn btn-ghost">View Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="footer" role="contentinfo">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Istawra <em>Consulting</em></div>
+        <div class="footer-tagline">Sovereign-grade advisory<br>Institutional governance<br>Execution assurance</div>
+      </div>
+      <div>
+        <div class="footer-nav-heading">Practice</div>
+        <ul class="footer-links" role="list">
+          <li><a href="/about.html">About Istawra</a></li>
+          <li><a href="/advisory.html">Advisory Philosophy</a></li>
+          <li><a href="/services.html">Service Constructs</a></li>
+          <li><a href="/contact.html">Initiate Engagement</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-nav-heading">Knowledge</div>
+        <ul class="footer-links" role="list">
+          <li><a href="/how-we-think.html">How We Think</a></li>
+          <li><a href="/insights.html">Insights</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Istawra Consulting. All rights reserved. <em>&nbsp;·&nbsp;</em> istawra.com</span>
+      <span class="footer-copy">Riyadh, Kingdom of Saudi Arabia</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function(){ nav.classList.toggle('anchored', window.scrollY > 56); }, { passive: true });
+  nav.classList.toggle('anchored', window.scrollY > 56);
+  var toggle = document.getElementById('navToggle');
+  var overlay = document.getElementById('navOverlay');
+  var open = false;
+  function setNav(s){ open=s; toggle.classList.toggle('open',open); toggle.setAttribute('aria-expanded',String(open)); overlay.hidden=!open; overlay.classList.toggle('open',open); document.body.style.overflow=open?'hidden':''; }
+  toggle.addEventListener('click', function(){ setNav(!open); });
+  overlay.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setNav(false); }); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'&&open) setNav(false); });
+  var els = document.querySelectorAll('[data-reveal]');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+    els.forEach(function(el){ io.observe(el); });
+  } else { els.forEach(function(el){ el.classList.add('in-view'); }); }
+}());
+</script>
 </body>
 </html>
