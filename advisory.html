@@ -1,319 +1,425 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Advisory | Istawra Consulting</title>
-  <meta name="description" content="Istawra Advisory — sovereign-grade, mandate-based advisory for VVIP decision-makers, focused on decision integrity, governance, and execution assurance." />
-  <meta name="robots" content="index,follow" />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advisory — Istawra Consulting</title>
+  <meta name="description" content="The Istawra advisory philosophy — how we think about sovereign mandates, decision architecture, and the discipline of institutional advice." />
+  <link rel="canonical" href="https://istawra.com/advisory.html" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta property="og:title" content="Advisory — Istawra Consulting" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" />
+  <link rel="stylesheet" href="/site.css" />
+  <style>
+    /* ── PHILOSOPHY GRID ──────────────────────────────────────── */
+    .philosophy {
+      padding-block: var(--pad-section);
+    }
+    .philosophy-lead {
+      max-width: 720px;
+      margin-block-end: clamp(56px, 8vh, 100px);
+    }
+    .philosophy-lead p {
+      margin-block-start: 24px;
+      font-size: clamp(16px, 1.15vw, 20px);
+      color: var(--c-paper-2);
+      line-height: 1.82;
+    }
+
+    .tenets {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-inline-start: 1px solid var(--c-border);
+    }
+    .tenet {
+      border-inline-end: 1px solid var(--c-border);
+      border-block-end: 1px solid var(--c-border);
+      padding: clamp(32px, 3.5vw, 52px) clamp(24px, 2.5vw, 44px);
+      position: relative;
+      transition: background var(--dur-mid);
+    }
+    .tenet:hover { background: rgba(192,154,60,.02); }
+    .tenet::after {
+      content: '';
+      position: absolute;
+      inset-block-end: 0;
+      inset-inline-start: 0;
+      height: 2px;
+      width: 0;
+      background: var(--c-gold);
+      transition: width 0.5s var(--ease-out);
+    }
+    .tenet:hover::after { width: 100%; }
+    .tenet-num {
+      font-family: var(--f-ui);
+      font-size: 9px;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      color: var(--c-gold-lo);
+      margin-block-end: 20px;
+    }
+    .tenet-name {
+      font-family: var(--f-display);
+      font-size: clamp(20px, 1.8vw, 28px);
+      font-weight: 400;
+      color: var(--c-paper);
+      line-height: 1.15;
+      margin-block-end: 14px;
+    }
+    .tenet-body {
+      font-size: clamp(13px, 0.92vw, 16px);
+      color: var(--c-paper-2);
+      line-height: 1.8;
+    }
+
+    /* ── ADVISORY POSTURE ─────────────────────────────────────── */
+    .posture {
+      background: var(--c-ink-1);
+      border-block: 1px solid var(--c-border);
+      padding-block: var(--pad-section);
+      position: relative;
+      overflow: hidden;
+    }
+    .posture::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 50% 80% at 100% 50%, rgba(192,154,60,.04) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .posture-grid {
+      display: grid;
+      grid-template-columns: 5fr 4fr;
+      gap: clamp(40px, 6vw, 100px);
+      align-items: center;
+    }
+    .posture-statement {
+      font-family: var(--f-display);
+      font-size: clamp(26px, 2.8vw, 46px);
+      font-weight: 300;
+      line-height: 1.28;
+      color: var(--c-paper);
+    }
+    .posture-statement em { font-style: italic; color: var(--c-gold); }
+
+    .posture-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .posture-item {
+      padding-block: 20px;
+      border-block-end: 1px solid var(--c-border);
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .posture-item:first-child { border-block-start: 1px solid var(--c-border); }
+    .posture-item-mark {
+      width: 36px;
+      height: 1px;
+      background: var(--c-gold);
+      margin-block-start: 13px;
+    }
+    .posture-item-text {
+      font-size: clamp(13px, 0.95vw, 16px);
+      color: var(--c-paper-2);
+      line-height: 1.75;
+    }
+    .posture-item-text strong { color: var(--c-paper); font-weight: 400; }
+
+    /* ── WHAT WE ARE NOT ──────────────────────────────────────── */
+    .contrast {
+      padding-block: var(--pad-section);
+    }
+    .contrast-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(32px, 4vw, 80px);
+      margin-block-start: clamp(48px, 6vh, 80px);
+    }
+    .contrast-col {}
+    .contrast-col-head {
+      font-family: var(--f-ui);
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-block-end: 24px;
+      padding-block-end: 12px;
+      border-block-end: 1px solid var(--c-border);
+    }
+    .contrast-col-head.positive { color: var(--c-gold); }
+    .contrast-col-head.negative { color: var(--c-paper-3); }
+
+    .contrast-items {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .contrast-item {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+    .contrast-pip {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      margin-block-start: 8px;
+      flex-shrink: 0;
+    }
+    .contrast-pip.gold { background: var(--c-gold); }
+    .contrast-pip.dim  { background: var(--c-border-hi); }
+    .contrast-item-text {
+      font-size: clamp(14px, 1vw, 17px);
+      color: var(--c-paper-2);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 860px) {
+      .tenets        { grid-template-columns: 1fr; }
+      .posture-grid  { grid-template-columns: 1fr; }
+      .contrast-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
-
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <div class="container">
-      <div class="header-row">
-        <a class="brand" href="index.html" aria-label="Istawra Home">
-          <span class="brand-name">Istawra</span>
-          <span class="brand-sub">Consulting</span>
-        </a>
+<nav id="nav" aria-label="Primary navigation">
+  <a href="/" class="nav-logo">Istawra <em>Consulting</em></a>
+  <ul class="nav-links" role="list">
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/advisory.html" class="active">Advisory</a></li>
+    <li><a href="/services.html">Services</a></li>
+    <li><a href="/how-we-think.html">How We Think</a></li>
+    <li><a href="/insights.html">Insights</a></li>
+    <li><a href="/contact.html" class="nav-engage">Engage</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<nav class="nav-overlay" id="navOverlay" aria-label="Mobile navigation" hidden>
+  <a href="/about.html">About</a><a href="/advisory.html">Advisory</a><a href="/services.html">Services</a>
+  <a href="/how-we-think.html">How We Think</a><a href="/insights.html">Insights</a><a href="/contact.html">Engage</a>
+</nav>
 
-        <nav class="site-nav" aria-label="Primary">
-          <a href="index.html">Home</a>
-          <a href="about.html">About</a>
-          <a class="active" href="advisory.html" aria-current="page">Advisory</a>
-          <a href="services.html">Services</a>
-          <a href="how-we-think.html">How We Think</a>
-          <a href="insights.html">Insights</a>
-          <a href="contact.html">Contact</a>
-        </nav>
+<main>
+
+  <header class="page-header" aria-label="Advisory philosophy">
+    <div aria-hidden="true" class="page-header-vline"></div>
+    <div aria-hidden="true" class="page-header-glyph">P</div>
+    <div class="wrap">
+      <div class="page-eyebrow">
+        <span class="rule" aria-hidden="true"></span>
+        <span class="label">Advisory Philosophy</span>
       </div>
+      <h1 class="page-h1">How we think<br>about <em>advice</em></h1>
+      <p class="page-sub">Advisory at sovereign scale requires a different posture. Not the posture of a consultant seeking approval, but of an advisor prepared to deliver what the principal needs to hear — structured, evidenced, and actionable.</p>
     </div>
   </header>
 
-  <main id="main">
-    <!-- INTRO -->
-    <section class="hero hero-tight">
-      <div class="container">
-        <h1>Advisory Model</h1>
-
-        <p class="lead">
-          Istawra provides sovereign-grade advisory to VVIP decision-makers operating in
-          complex, multi-entity environments where clarity, governance, and execution
-          discipline are decisive.
-        </p>
-
-        <p class="lead">
-          Our advisory model is mandate-based, senior-led, and governed by design—built
-          to protect decision integrity and ensure that intent translates into outcomes.
-        </p>
+  <!-- PHILOSOPHY TENETS -->
+  <section class="philosophy" aria-label="Advisory tenets">
+    <div class="wrap">
+      <div class="philosophy-lead" data-reveal>
+        <span class="label">Core Tenets</span>
+        <h2 class="section-title">The principles that<br>govern our <em>practice</em></h2>
+        <p>Every engagement is shaped by a set of advisory principles we do not compromise — regardless of mandate size, timeline pressure, or stakeholder complexity.</p>
       </div>
-    </section>
 
-    <!-- ADVISORY PHILOSOPHY -->
-    <section class="section">
-      <div class="container">
-        <h2>Advisory Philosophy</h2>
-
-        <p>
-          Istawra’s advisory philosophy is grounded in a simple premise: leadership does not
-          need more information—it needs better decisions, clearer accountability, and
-          controlled execution.
-        </p>
-
-        <div class="grid grid-2">
-          <div class="panel">
-            <h3>Decision-Centric</h3>
-            <p>
-              Every engagement is oriented around explicit decisions: what must be decided,
-              by whom, by when, and based on which assumptions.
-            </p>
-          </div>
-
-          <div class="panel">
-            <h3>Governance-First</h3>
-            <p>
-              We design decision rights, escalation pathways, and operating cadence early,
-              rather than retrofitting governance after problems emerge.
-            </p>
-          </div>
-
-          <div class="panel">
-            <h3>Execution-Aware</h3>
-            <p>
-              Advisory is inseparable from execution. Recommendations are constructed with
-              full awareness of institutional capacity, incentives, and constraints.
-            </p>
-          </div>
-
-          <div class="panel">
-            <h3>Independent by Design</h3>
-            <p>
-              Istawra maintains independence from delivery vendors and commercial interests
-              unless explicitly mandated otherwise.
-            </p>
-          </div>
+      <div class="tenets">
+        <div class="tenet" data-reveal>
+          <div class="tenet-num">01</div>
+          <h3 class="tenet-name">Clarity over comfort</h3>
+          <p class="tenet-body">We produce what the situation demands, not what the audience wants to hear. Where options are uncomfortable, we present them with explicit trade-off logic so the decision-maker can choose with full awareness.</p>
         </div>
-      </div>
-    </section>
-
-    <!-- WHAT MAKES ISTAWRA DIFFERENT -->
-    <section class="section section-alt">
-      <div class="container">
-        <h2>What Makes Istawra Different</h2>
-
-        <p>
-          Conventional advisory models often optimize for volume, utilization, or presentation.
-          Istawra optimizes for decision quality and execution integrity.
-        </p>
-
-        <div class="grid grid-2">
-          <div class="panel">
-            <h3>Mandate-Based Engagements</h3>
-            <p>
-              Each engagement is defined as a mandate with explicit scope, authority,
-              deliverables, cadence, and escalation rules.
-            </p>
-          </div>
-
-          <div class="panel">
-            <h3>Senior-Led Delivery</h3>
-            <p>
-              Engagements are led by senior advisors with direct accountability—no delegation
-              of critical thinking or decision framing.
-            </p>
-          </div>
-
-          <div class="panel">
-            <h3>Lean Signal Collection</h3>
-            <p>
-              We collect only what is necessary to decide and execute. Noise, redundancy,
-              and performative analysis are excluded by design.
-            </p>
-          </div>
-
-          <div class="panel">
-            <h3>Governed Outputs</h3>
-            <p>
-              Outputs are decision instruments and governance artifacts, not slide decks
-              designed for optics.
-            </p>
-          </div>
+        <div class="tenet" data-reveal data-delay="1">
+          <div class="tenet-num">02</div>
+          <h3 class="tenet-name">Assumptions made explicit</h3>
+          <p class="tenet-body">Every piece of analysis we produce names its assumptions. A recommendation that cannot survive the failure of its assumptions is not a recommendation — it is a guess in a formal document.</p>
         </div>
-      </div>
-    </section>
-
-    <!-- ADVISORY LIFECYCLE -->
-    <section class="section">
-      <div class="container">
-        <h2>Advisory Lifecycle</h2>
-
-        <p>
-          While each mandate is unique, Istawra advisory engagements follow a disciplined
-          lifecycle designed to move from intent to execution with minimal friction.
-        </p>
-
-        <ol class="steps">
-          <li>
-            <h3>Mandate Definition</h3>
-            <p>
-              Clarify objectives, urgency, constraints, authority boundaries, confidentiality,
-              and decision ownership.
-            </p>
-          </li>
-
-          <li>
-            <h3>Signal Gathering</h3>
-            <p>
-              Conduct targeted executive interviews, review key documents, and identify
-              stakeholder constraints and dependencies.
-            </p>
-          </li>
-
-          <li>
-            <h3>Decision Architecture</h3>
-            <p>
-              Frame options, trade-offs, assumptions, risks, and what must be true for each
-              path to succeed.
-            </p>
-          </li>
-
-          <li>
-            <h3>Governance Design</h3>
-            <p>
-              Establish decision rights, operating cadence, escalation mechanisms, and
-              reporting structures.
-            </p>
-          </li>
-
-          <li>
-            <h3>Activation & Assurance</h3>
-            <p>
-              Support activation of the chosen path and maintain assurance through periodic
-              executive packs and corrective action tracking.
-            </p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ADVISORY OUTPUTS -->
-    <section class="section section-alt">
-      <div class="container">
-        <h2>Typical Advisory Outputs</h2>
-
-        <p>
-          Outputs are tailored to the mandate, but commonly include the following
-          executive-ready artifacts:
-        </p>
-
-        <div class="grid grid-2">
-          <div class="panel">
-            <h3>Decision Instruments</h3>
-            <ul>
-              <li>Executive decision briefs (options, trade-offs, recommendation)</li>
-              <li>Decision logs with assumptions and approvals</li>
-              <li>Mission and success charters</li>
-            </ul>
-          </div>
-
-          <div class="panel">
-            <h3>Governance Artifacts</h3>
-            <ul>
-              <li>Governance and authority charters</li>
-              <li>Operating cadence and committee structures</li>
-              <li>Escalation pathways and thresholds</li>
-            </ul>
-          </div>
-
-          <div class="panel">
-            <h3>Execution Visibility</h3>
-            <ul>
-              <li>Initiative and dependency maps</li>
-              <li>Risk registers and mitigation plans</li>
-              <li>Executive assurance packs</li>
-            </ul>
-          </div>
-
-          <div class="panel">
-            <h3>Stakeholder Alignment</h3>
-            <ul>
-              <li>Stakeholder roles and obligations</li>
-              <li>Interface and coordination models</li>
-              <li>Accountability tracking</li>
-            </ul>
-          </div>
+        <div class="tenet" data-reveal>
+          <div class="tenet-num">03</div>
+          <h3 class="tenet-name">Options, not advocacy</h3>
+          <p class="tenet-body">We construct the decision landscape — options, dependencies, what must be true for each path to succeed — and present it neutrally. Where we hold a view, we label it as such and explain the reasoning.</p>
         </div>
-      </div>
-    </section>
-
-    <!-- WHEN TO USE ISTAWRA -->
-    <section class="section">
-      <div class="container">
-        <h2>When Istawra Is Most Effective</h2>
-
-        <p>
-          Istawra advisory is most effective in situations characterized by high stakes,
-          cross-institutional complexity, and limited tolerance for error.
-        </p>
-
-        <ul>
-          <li>National missions and sovereign programs</li>
-          <li>Cross-ministry or cross-entity initiatives</li>
-          <li>Sector and ecosystem architecture</li>
-          <li>Portfolio-level transformations</li>
-          <li>Programs under time, political, or delivery pressure</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="section section-alt">
-      <div class="container">
-        <div class="cta">
-          <h2>From Advisory to Execution</h2>
-          <p>
-            Advisory is only valuable if it enables execution. Istawra’s service constructs
-            extend advisory into governed activation and assurance.
-          </p>
-          <p class="cta-links">
-            <a class="button" href="services.html">Service Constructs</a>
-            <a class="button button-secondary" href="contact.html">Contact</a>
-          </p>
+        <div class="tenet" data-reveal data-delay="1">
+          <div class="tenet-num">04</div>
+          <h3 class="tenet-name">Traceability</h3>
+          <p class="tenet-body">Every conclusion is traceable to its evidence base. Principals who must defend decisions to cabinets, boards, or legislatures need logic chains that hold under scrutiny, not assertions that require trust.</p>
         </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-row">
-        <p class="footer-brand">Istawra Consulting</p>
-        <p class="footer-note">Sovereign-grade advisory • Institutional governance • Execution assurance</p>
-      </div>
-
-      <div class="footer-row footer-links">
-        <a href="about.html">About</a>
-        <a href="advisory.html">Advisory</a>
-        <a href="services.html">Services</a>
-        <a href="how-we-think.html">How We Think</a>
-        <a href="insights.html">Insights</a>
-        <a href="contact.html">Contact</a>
-      </div>
-
-      <div class="footer-row footer-legal">
-        <p>© <span id="year">2026</span> Istawra Consulting. All rights reserved.</p>
+        <div class="tenet" data-reveal>
+          <div class="tenet-num">05</div>
+          <h3 class="tenet-name">Speed without sacrifice</h3>
+          <p class="tenet-body">Sovereign environments move fast and wait for no one. We calibrate our operating pace to executive timelines without sacrificing the rigour that makes our output trustworthy.</p>
+        </div>
+        <div class="tenet" data-reveal data-delay="1">
+          <div class="tenet-num">06</div>
+          <h3 class="tenet-name">Engagement beyond delivery</h3>
+          <p class="tenet-body">Advice delivered and not implemented has no value. We remain engaged through the activation phase — not to manage implementation, but to maintain decision integrity as the mission encounters reality.</p>
+        </div>
       </div>
     </div>
+  </section>
 
-    <script>
-      (function () {
-        var el = document.getElementById("year");
-        if (el) el.textContent = String(new Date().getFullYear());
-      })();
-    </script>
-  </footer>
+  <!-- ADVISORY POSTURE -->
+  <section class="posture" aria-label="Advisory posture">
+    <div class="wrap">
+      <div class="posture-grid">
+        <div data-reveal>
+          <span class="label">Our Posture</span>
+          <h2 class="posture-statement" style="margin-top:14px">
+            The advisor's obligation is to the <em>institution</em> — not to the incumbent.
+          </h2>
+        </div>
+        <div class="posture-items" data-reveal data-delay="1">
+          <div class="posture-item">
+            <div class="posture-item-mark" aria-hidden="true"></div>
+            <p class="posture-item-text"><strong>We advise the office, not the person.</strong> Our obligation is to the mission and the institution it serves, which means our counsel survives changes in the people who hold the mandate.</p>
+          </div>
+          <div class="posture-item">
+            <div class="posture-item-mark" aria-hidden="true"></div>
+            <p class="posture-item-text"><strong>We hold no undisclosed positions.</strong> No investments, no secondary mandates, no conflicts of interest that are not declared and addressed before engagement commences.</p>
+          </div>
+          <div class="posture-item">
+            <div class="posture-item-mark" aria-hidden="true"></div>
+            <p class="posture-item-text"><strong>We challenge when the situation requires it.</strong> Advisors who only confirm are not advisors — they are expensive mirrors. Our value is in the moments when we disagree and can show why.</p>
+          </div>
+          <div class="posture-item">
+            <div class="posture-item-mark" aria-hidden="true"></div>
+            <p class="posture-item-text"><strong>We exit when the work is done.</strong> We do not manufacture dependency. When a governance structure is self-sustaining and the mission is on course, we conclude and close.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE ARE / ARE NOT -->
+  <section class="contrast" aria-label="What Istawra is and is not">
+    <div class="wrap">
+      <div data-reveal>
+        <span class="label">Positioning</span>
+        <h2 class="section-title">What Istawra <em>is</em> — and is not</h2>
+      </div>
+      <div class="contrast-grid" data-reveal data-delay="1">
+        <div class="contrast-col">
+          <div class="contrast-col-head positive">Istawra is</div>
+          <div class="contrast-items">
+            <div class="contrast-item">
+              <div class="contrast-pip gold" aria-hidden="true"></div>
+              <p class="contrast-item-text">A sovereign-grade advisory practice calibrated to the pace and protocol of heads of state and fund principals</p>
+            </div>
+            <div class="contrast-item">
+              <div class="contrast-pip gold" aria-hidden="true"></div>
+              <p class="contrast-item-text">A practitioner of decision architecture — structuring options, dependencies, and trade-offs for executive resolution</p>
+            </div>
+            <div class="contrast-item">
+              <div class="contrast-pip gold" aria-hidden="true"></div>
+              <p class="contrast-item-text">A governed delivery partner — designing accountability structures that prevent mission drift under stakeholder complexity</p>
+            </div>
+            <div class="contrast-item">
+              <div class="contrast-pip gold" aria-hidden="true"></div>
+              <p class="contrast-item-text">An independent assurance voice — not embedded in the delivery chain, and therefore able to report without institutional bias</p>
+            </div>
+          </div>
+        </div>
+        <div class="contrast-col">
+          <div class="contrast-col-head negative">Istawra is not</div>
+          <div class="contrast-items">
+            <div class="contrast-item">
+              <div class="contrast-pip dim" aria-hidden="true"></div>
+              <p class="contrast-item-text">A management consultancy that fields large teams and produces volume deliverables as evidence of engagement</p>
+            </div>
+            <div class="contrast-item">
+              <div class="contrast-pip dim" aria-hidden="true"></div>
+              <p class="contrast-item-text">An implementation firm that executes without maintaining the strategic discipline of the original mandate</p>
+            </div>
+            <div class="contrast-item">
+              <div class="contrast-pip dim" aria-hidden="true"></div>
+              <p class="contrast-item-text">A government relations practice or lobbying entity — we do not represent client interests before third parties</p>
+            </div>
+            <div class="contrast-item">
+              <div class="contrast-pip dim" aria-hidden="true"></div>
+              <p class="contrast-item-text">A permanent fixture — we are designed to conclude, with governance structures that sustain the mission after our exit</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-strip" style="border-top: 1px solid var(--c-border);" aria-label="Engagement">
+    <div class="wrap">
+      <div class="cta-strip-inner" data-reveal>
+        <span class="label">Engage the Practice</span>
+        <h2 class="cta-strip-title">See how the philosophy<br>translates into <em>service</em></h2>
+        <p class="cta-strip-body">The advisory philosophy is expressed through three integrated service constructs — each designed for a specific type of sovereign challenge.</p>
+        <div class="cta-strip-actions">
+          <a href="/services.html" class="btn btn-gold">View Services</a>
+          <a href="/contact.html" class="btn btn-ghost">Initiate Contact</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="footer" role="contentinfo">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Istawra <em>Consulting</em></div>
+        <div class="footer-tagline">Sovereign-grade advisory<br>Institutional governance<br>Execution assurance</div>
+      </div>
+      <div>
+        <div class="footer-nav-heading">Practice</div>
+        <ul class="footer-links" role="list">
+          <li><a href="/about.html">About Istawra</a></li>
+          <li><a href="/advisory.html">Advisory Philosophy</a></li>
+          <li><a href="/services.html">Service Constructs</a></li>
+          <li><a href="/contact.html">Initiate Engagement</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-nav-heading">Knowledge</div>
+        <ul class="footer-links" role="list">
+          <li><a href="/how-we-think.html">How We Think</a></li>
+          <li><a href="/insights.html">Insights</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Istawra Consulting. All rights reserved. <em>&nbsp;·&nbsp;</em> istawra.com</span>
+      <span class="footer-copy">Riyadh, Kingdom of Saudi Arabia</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function(){ nav.classList.toggle('anchored', window.scrollY > 56); }, { passive: true });
+  nav.classList.toggle('anchored', window.scrollY > 56);
+  var toggle = document.getElementById('navToggle'), overlay = document.getElementById('navOverlay'), open = false;
+  function setNav(s){ open=s; toggle.classList.toggle('open',open); toggle.setAttribute('aria-expanded',String(open)); overlay.hidden=!open; overlay.classList.toggle('open',open); document.body.style.overflow=open?'hidden':''; }
+  toggle.addEventListener('click', function(){ setNav(!open); });
+  overlay.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setNav(false); }); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'&&open) setNav(false); });
+  var els = document.querySelectorAll('[data-reveal]');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+    els.forEach(function(el){ io.observe(el); });
+  } else { els.forEach(function(el){ el.classList.add('in-view'); }); }
+}());
+</script>
 </body>
 </html>
