@@ -13,181 +13,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" />
   <link rel="stylesheet" href="/site.css" />
-  <style>
-    /* ── PHILOSOPHY GRID ──────────────────────────────────────── */
-    .philosophy {
-      padding-block: var(--pad-section);
-    }
-    .philosophy-lead {
-      max-width: 720px;
-      margin-block-end: clamp(56px, 8vh, 100px);
-    }
-    .philosophy-lead p {
-      margin-block-start: 24px;
-      font-size: clamp(16px, 1.15vw, 20px);
-      color: var(--c-paper-2);
-      line-height: 1.82;
-    }
-
-    .tenets {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      border-inline-start: 1px solid var(--c-border);
-    }
-    .tenet {
-      border-inline-end: 1px solid var(--c-border);
-      border-block-end: 1px solid var(--c-border);
-      padding: clamp(32px, 3.5vw, 52px) clamp(24px, 2.5vw, 44px);
-      position: relative;
-      transition: background var(--dur-mid);
-    }
-    .tenet:hover { background: rgba(192,154,60,.02); }
-    .tenet::after {
-      content: '';
-      position: absolute;
-      inset-block-end: 0;
-      inset-inline-start: 0;
-      height: 2px;
-      width: 0;
-      background: var(--c-gold);
-      transition: width 0.5s var(--ease-out);
-    }
-    .tenet:hover::after { width: 100%; }
-    .tenet-num {
-      font-family: var(--f-ui);
-      font-size: 9px;
-      font-weight: 300;
-      letter-spacing: 0.2em;
-      color: var(--c-gold-lo);
-      margin-block-end: 20px;
-    }
-    .tenet-name {
-      font-family: var(--f-display);
-      font-size: clamp(20px, 1.8vw, 28px);
-      font-weight: 400;
-      color: var(--c-paper);
-      line-height: 1.15;
-      margin-block-end: 14px;
-    }
-    .tenet-body {
-      font-size: clamp(13px, 0.92vw, 16px);
-      color: var(--c-paper-2);
-      line-height: 1.8;
-    }
-
-    /* ── ADVISORY POSTURE ─────────────────────────────────────── */
-    .posture {
-      background: var(--c-ink-1);
-      border-block: 1px solid var(--c-border);
-      padding-block: var(--pad-section);
-      position: relative;
-      overflow: hidden;
-    }
-    .posture::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 50% 80% at 100% 50%, rgba(192,154,60,.04) 0%, transparent 65%);
-      pointer-events: none;
-    }
-    .posture-grid {
-      display: grid;
-      grid-template-columns: 5fr 4fr;
-      gap: clamp(40px, 6vw, 100px);
-      align-items: center;
-    }
-    .posture-statement {
-      font-family: var(--f-display);
-      font-size: clamp(26px, 2.8vw, 46px);
-      font-weight: 300;
-      line-height: 1.28;
-      color: var(--c-paper);
-    }
-    .posture-statement em { font-style: italic; color: var(--c-gold); }
-
-    .posture-items {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-    .posture-item {
-      padding-block: 20px;
-      border-block-end: 1px solid var(--c-border);
-      display: grid;
-      grid-template-columns: 36px 1fr;
-      gap: 16px;
-      align-items: start;
-    }
-    .posture-item:first-child { border-block-start: 1px solid var(--c-border); }
-    .posture-item-mark {
-      width: 36px;
-      height: 1px;
-      background: var(--c-gold);
-      margin-block-start: 13px;
-    }
-    .posture-item-text {
-      font-size: clamp(13px, 0.95vw, 16px);
-      color: var(--c-paper-2);
-      line-height: 1.75;
-    }
-    .posture-item-text strong { color: var(--c-paper); font-weight: 400; }
-
-    /* ── WHAT WE ARE NOT ──────────────────────────────────────── */
-    .contrast {
-      padding-block: var(--pad-section);
-    }
-    .contrast-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(32px, 4vw, 80px);
-      margin-block-start: clamp(48px, 6vh, 80px);
-    }
-    .contrast-col {}
-    .contrast-col-head {
-      font-family: var(--f-ui);
-      font-size: 9px;
-      font-weight: 400;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      margin-block-end: 24px;
-      padding-block-end: 12px;
-      border-block-end: 1px solid var(--c-border);
-    }
-    .contrast-col-head.positive { color: var(--c-gold); }
-    .contrast-col-head.negative { color: var(--c-paper-3); }
-
-    .contrast-items {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .contrast-item {
-      display: grid;
-      grid-template-columns: 20px 1fr;
-      gap: 12px;
-      align-items: start;
-    }
-    .contrast-pip {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      margin-block-start: 8px;
-      flex-shrink: 0;
-    }
-    .contrast-pip.gold { background: var(--c-gold); }
-    .contrast-pip.dim  { background: var(--c-border-hi); }
-    .contrast-item-text {
-      font-size: clamp(14px, 1vw, 17px);
-      color: var(--c-paper-2);
-      line-height: 1.7;
-    }
-
-    @media (max-width: 860px) {
-      .tenets        { grid-template-columns: 1fr; }
-      .posture-grid  { grid-template-columns: 1fr; }
-      .contrast-grid { grid-template-columns: 1fr; }
-    }
-  </style>
 </head>
 <body>
 
@@ -226,7 +51,7 @@
   </header>
 
   <!-- PHILOSOPHY TENETS -->
-  <section class="philosophy" aria-label="Advisory tenets">
+  <section class="philosophy section-light" aria-label="Advisory tenets">
     <div class="wrap">
       <div class="philosophy-lead" data-reveal>
         <span class="label">Core Tenets</span>
@@ -302,7 +127,7 @@
   </section>
 
   <!-- WHAT WE ARE / ARE NOT -->
-  <section class="contrast" aria-label="What Istawra is and is not">
+  <section class="contrast section-light" aria-label="What Istawra is and is not">
     <div class="wrap">
       <div data-reveal>
         <span class="label">Positioning</span>
