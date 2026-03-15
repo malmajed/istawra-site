@@ -1,232 +1,454 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact | Istawra Consulting</title>
-  <meta name="description" content="Governed contact channel for active Istawra engagements and institutional inquiries. Formal mandates are initiated offline through trusted channels." />
-  <meta name="robots" content="index,follow" />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Istawra Consulting</title>
+  <meta name="description" content="Formal engagements with Istawra are initiated through institutional channels. Contact the practice to explore mandate fit and timing." />
+  <link rel="canonical" href="https://istawra.com/contact.html" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta property="og:title" content="Contact — Istawra Consulting" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" />
+  <link rel="stylesheet" href="/site.css" />
+  <style>
+    /* ── CONTACT LAYOUT ───────────────────────────────────────── */
+    .contact-body {
+      padding-block: var(--pad-section);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 100px);
+      align-items: start;
+    }
+
+    /* Left: statement + process */
+    .contact-statement {
+      font-family: var(--f-display);
+      font-size: clamp(22px, 2.2vw, 36px);
+      font-weight: 300;
+      line-height: 1.45;
+      color: var(--c-paper);
+      margin-block-start: 14px;
+      margin-block-end: 44px;
+    }
+    .contact-statement em { font-style: italic; color: var(--c-gold); }
+
+    .contact-process {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .contact-step {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 16px;
+      padding-block: 24px;
+      border-block-end: 1px solid var(--c-border);
+      align-items: start;
+    }
+    .contact-step:first-child { border-block-start: 1px solid var(--c-border); }
+    .contact-step-num {
+      font-family: var(--f-display);
+      font-size: 13px;
+      font-style: italic;
+      color: var(--c-gold-lo);
+      margin-block-start: 2px;
+    }
+    .contact-step-name {
+      font-family: var(--f-display);
+      font-size: clamp(17px, 1.4vw, 22px);
+      font-weight: 400;
+      color: var(--c-paper);
+      margin-block-end: 6px;
+    }
+    .contact-step-body {
+      font-size: clamp(12px, 0.9vw, 15px);
+      color: var(--c-paper-3);
+      line-height: 1.72;
+    }
+
+    /* Right: contact card */
+    .contact-right {
+      position: sticky;
+      top: 100px;
+    }
+    .contact-card {
+      background: var(--c-ink-1);
+      border: 1px solid var(--c-border);
+      border-block-start: 2px solid var(--c-gold);
+      padding: clamp(32px, 3.5vw, 56px);
+    }
+    .contact-card-head {
+      font-family: var(--f-ui);
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      margin-block-end: 28px;
+    }
+    .contact-channel {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-block-end: 36px;
+    }
+    .contact-channel-item {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 12px;
+      align-items: baseline;
+      padding-block: 16px;
+      border-block-end: 1px solid var(--c-border);
+    }
+    .contact-channel-item:first-child { border-block-start: 1px solid var(--c-border); }
+    .contact-channel-label {
+      font-family: var(--f-ui);
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--c-paper-3);
+    }
+    .contact-channel-value {
+      font-family: var(--f-display);
+      font-size: clamp(14px, 1.1vw, 18px);
+      font-weight: 400;
+      color: var(--c-paper);
+      transition: color var(--dur-fast);
+    }
+    .contact-channel-value a { transition: color var(--dur-fast); }
+    .contact-channel-value a:hover { color: var(--c-gold); }
+
+    .contact-note {
+      font-size: clamp(12px, 0.88vw, 14px);
+      color: var(--c-paper-3);
+      line-height: 1.75;
+      border-block-start: 1px solid var(--c-border);
+      padding-block-start: 24px;
+    }
+    .contact-note strong { color: var(--c-paper-2); font-weight: 400; }
+
+    /* Mandate criteria */
+    .criteria {
+      padding-block: var(--pad-section);
+      background: var(--c-ink-1);
+      border-block: 1px solid var(--c-border);
+    }
+    .criteria-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 100px);
+      align-items: start;
+    }
+    .criteria-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-block-start: 28px;
+    }
+    .criteria-item {
+      padding-block: 18px;
+      border-block-end: 1px solid var(--c-border);
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+    .criteria-item:first-child { border-block-start: 1px solid var(--c-border); }
+    .criteria-mark {
+      width: 28px;
+      height: 1px;
+      background: var(--c-gold);
+      margin-block-start: 12px;
+      flex-shrink: 0;
+    }
+    .criteria-text {
+      font-size: clamp(13px, 0.95vw, 16px);
+      color: var(--c-paper-2);
+      line-height: 1.72;
+    }
+    .criteria-text strong { color: var(--c-paper); font-weight: 400; }
+
+    .criteria-pull {
+      font-family: var(--f-display);
+      font-size: clamp(20px, 1.8vw, 28px);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--c-paper-2);
+      border-inline-start: 2px solid var(--c-gold);
+      padding-inline-start: 28px;
+      margin-block-start: 14px;
+    }
+    .criteria-pull strong { font-style: normal; color: var(--c-paper); font-weight: 400; }
+
+    /* Location strip */
+    .location-strip {
+      padding-block: clamp(48px, 6vh, 72px);
+      border-block-end: 1px solid var(--c-border);
+    }
+    .location-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .location-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .location-city {
+      font-family: var(--f-display);
+      font-size: clamp(22px, 2vw, 32px);
+      font-weight: 300;
+      color: var(--c-paper);
+    }
+    .location-sub {
+      font-family: var(--f-ui);
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--c-paper-3);
+    }
+    .location-note {
+      font-size: clamp(13px, 0.95vw, 16px);
+      color: var(--c-paper-3);
+      max-width: 400px;
+      line-height: 1.72;
+    }
+
+    @media (max-width: 860px) {
+      .contact-grid  { grid-template-columns: 1fr; }
+      .contact-right { position: static; }
+      .criteria-grid { grid-template-columns: 1fr; }
+      .location-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
 </head>
-
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <div class="container">
-      <div class="header-row">
-        <a class="brand" href="index.html" aria-label="Istawra Home">
-          <span class="brand-name">Istawra</span>
-          <span class="brand-sub">Consulting</span>
-        </a>
+<nav id="nav" aria-label="Primary navigation">
+  <a href="/" class="nav-logo">Istawra <em>Consulting</em></a>
+  <ul class="nav-links" role="list">
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/advisory.html">Advisory</a></li>
+    <li><a href="/services.html">Services</a></li>
+    <li><a href="/how-we-think.html">How We Think</a></li>
+    <li><a href="/insights.html">Insights</a></li>
+    <li><a href="/contact.html" class="nav-engage active">Engage</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<nav class="nav-overlay" id="navOverlay" aria-label="Mobile navigation" hidden>
+  <a href="/about.html">About</a><a href="/advisory.html">Advisory</a><a href="/services.html">Services</a>
+  <a href="/how-we-think.html">How We Think</a><a href="/insights.html">Insights</a><a href="/contact.html">Engage</a>
+</nav>
 
-        <nav class="site-nav" aria-label="Primary">
-          <a href="index.html">Home</a>
-          <a href="about.html">About</a>
-          <a href="advisory.html">Advisory</a>
-          <a href="services.html">Services</a>
-          <a href="how-we-think.html">How We Think</a>
-          <a href="insights.html">Insights</a>
-          <a class="active" href="contact.html" aria-current="page">Contact</a>
-        </nav>
+<main>
+
+  <header class="page-header" aria-label="Contact">
+    <div aria-hidden="true" class="page-header-vline"></div>
+    <div aria-hidden="true" class="page-header-glyph">E</div>
+    <div class="wrap">
+      <div class="page-eyebrow">
+        <span class="rule" aria-hidden="true"></span>
+        <span class="label">Initiate Engagement</span>
       </div>
+      <h1 class="page-h1">Begin the<br><em>conversation</em></h1>
+      <p class="page-sub">Formal engagements are initiated through institutional channels. The first conversation is exploratory — no work commences before mandate, scope, and boundaries are agreed.</p>
     </div>
   </header>
 
-  <main id="main">
-    <!-- INTRO -->
-    <section class="hero hero-tight">
-      <div class="container">
-        <h1>Contact</h1>
-
-        <p class="lead">
-          Istawra Consulting operates as a sovereign-grade advisory institution.
-          Formal engagements are initiated <strong>offline</strong> through trusted
-          executive and institutional channels.
-        </p>
-
-        <p class="lead">
-          This contact page is intended for communication during active mandates
-          and for appropriate institutional inquiries.
-        </p>
-      </div>
-    </section>
-
-    <!-- PURPOSE -->
-    <section class="section">
-      <div class="container">
-        <h2>Purpose of This Channel</h2>
-
-        <div class="grid grid-2">
-          <div class="panel">
-            <h3>Active Mandates</h3>
-            <ul>
-              <li>Requests for updates or clarifications</li>
-              <li>Coordination of deliverables and meetings</li>
-              <li>Governance escalations within agreed scope</li>
-              <li>Requests for additional support under mandate</li>
-            </ul>
-            <p class="small">
-              Please reference your mandate or engagement name to ensure proper routing.
-            </p>
-          </div>
-
-          <div class="panel">
-            <h3>Institutional Inquiries</h3>
-            <ul>
-              <li>Clarifications regarding Istawra’s advisory model</li>
-              <li>Questions related to published material</li>
-              <li>Referrals or introductions via trusted intermediaries</li>
-            </ul>
-            <p class="small">
-              Istawra does not respond to unsolicited proposals or generic sales pitches.
-            </p>
-          </div>
+  <!-- LOCATION STRIP -->
+  <section class="location-strip" aria-label="Location">
+    <div class="wrap">
+      <div class="location-inner" data-reveal>
+        <div class="location-detail">
+          <div class="location-city">Riyadh, Kingdom of Saudi Arabia</div>
+          <div class="location-sub">Principal Office · Gulf &amp; International Mandates</div>
         </div>
+        <p class="location-note">Istawra operates across the Gulf, wider MENA region, and internationally. Mandates are conducted through secure, protocol-appropriate channels regardless of geography.</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- FORM -->
-    <section class="section section-alt">
-      <div class="container">
-        <h2>Submit a Message</h2>
+  <!-- CONTACT BODY -->
+  <section class="contact-body" aria-label="Contact details and process">
+    <div class="wrap">
+      <div class="contact-grid">
 
-        <p>
-          Use the form below to submit your message. For sensitive matters, indicate
-          “Confidential” clearly in the subject. Where appropriate, communication
-          may be redirected to secure channels.
-        </p>
+        <div data-reveal>
+          <span class="label">How to Reach Us</span>
+          <p class="contact-statement">
+            We do not have a contact form. Sovereign-grade engagements are not initiated through web interfaces — they are initiated <em>through people who know people</em>.
+          </p>
 
-        <div class="grid grid-2">
-          <div class="panel">
-            <h3>Contact Form</h3>
-
-            <form class="contact-form"
-                  action="https://formspree.io/f/xaqykrno"
-                  method="post">
-
-              <input type="hidden" name="_subject" value="Istawra Contact — Website Submission" />
-              <input type="hidden" name="_format" value="plain" />
-
-              <div class="form-row">
-                <label for="name">Full name</label>
-                <input id="name" name="name" type="text" required />
+          <div class="contact-process">
+            <div class="contact-step">
+              <div class="contact-step-num"><em>I</em></div>
+              <div>
+                <div class="contact-step-name">Reach out directly</div>
+                <p class="contact-step-body">Write to us at the address below with a brief description of your mandate — its nature, the principal involved, and the timing. We respond to every credible inquiry.</p>
               </div>
-
-              <div class="form-row">
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" required />
+            </div>
+            <div class="contact-step">
+              <div class="contact-step-num"><em>II</em></div>
+              <div>
+                <div class="contact-step-name">Mandate definition call</div>
+                <p class="contact-step-body">If there is potential fit, we schedule a confidential conversation — typically 30 to 60 minutes — to understand the mandate, the decision-maker's context, and the constraints on timing and scope.</p>
               </div>
-
-              <div class="form-row">
-                <label for="organization">Organization (optional)</label>
-                <input id="organization" name="organization" type="text" />
+            </div>
+            <div class="contact-step">
+              <div class="contact-step-num"><em>III</em></div>
+              <div>
+                <div class="contact-step-name">Engagement structure</div>
+                <p class="contact-step-body">Where fit is confirmed, we propose an engagement structure: scope, deliverables, timelines, and the confidentiality protocols that govern the work. No engagement commences without agreement on all four.</p>
               </div>
-
-              <div class="form-row">
-                <label for="inquiry_type">Inquiry type</label>
-                <select id="inquiry_type" name="inquiry_type" required>
-                  <option value="" disabled selected>Select one</option>
-                  <option value="active_mandate_support">Active mandate — support / updates</option>
-                  <option value="active_mandate_escalation">Active mandate — governance escalation</option>
-                  <option value="general_inquiry">General institutional inquiry</option>
-                  <option value="referral">Referral / trusted introduction</option>
-                </select>
+            </div>
+            <div class="contact-step">
+              <div class="contact-step-num"><em>IV</em></div>
+              <div>
+                <div class="contact-step-name">Commencement</div>
+                <p class="contact-step-body">Work begins when the mandate is defined, the structure is agreed, and the distribution rules are in place. Not before.</p>
               </div>
-
-              <div class="form-row">
-                <label for="reference">Mandate reference / engagement name (if applicable)</label>
-                <input id="reference" name="reference" type="text" />
-              </div>
-
-              <div class="form-row">
-                <label for="subject">Subject</label>
-                <input id="subject" name="subject" type="text" required />
-              </div>
-
-              <div class="form-row">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="7" required></textarea>
-              </div>
-
-              <div class="form-row form-actions">
-                <button class="button" type="submit">Submit</button>
-                <p class="small muted">
-                  Submissions are routed to a controlled inbox and handled in accordance
-                  with mandate governance and confidentiality protocols.
-                </p>
-              </div>
-            </form>
-          </div>
-
-          <div class="panel">
-            <h3>Routing Guidance</h3>
-            <ul>
-              <li><strong>Support requests:</strong> specify the deliverable, timing, and decision required.</li>
-              <li><strong>Escalations:</strong> state urgency, impact, and requested action.</li>
-              <li><strong>Updates:</strong> reference the reporting period or milestone.</li>
-              <li><strong>General inquiries:</strong> keep messages concise and institutional.</li>
-            </ul>
-
-            <div class="note">
-              <p>
-                Do not include highly sensitive material in this form.
-                A secure channel will be used where required.
-              </p>
             </div>
           </div>
         </div>
 
-        <div class="fineprint">
-          <p>
-            Governance notice: Communication through this page does not constitute legal notice,
-            contractual amendment, or regulatory submission unless explicitly agreed in writing
-            through established channels.
-          </p>
+        <div class="contact-right" data-reveal data-delay="1">
+          <div class="contact-card">
+            <div class="contact-card-head">Contact Details</div>
+            <div class="contact-channel">
+              <div class="contact-channel-item">
+                <div class="contact-channel-label">Email</div>
+                <div class="contact-channel-value"><a href="mailto:engage@istawra.com">engage@istawra.com</a></div>
+              </div>
+              <div class="contact-channel-item">
+                <div class="contact-channel-label">Location</div>
+                <div class="contact-channel-value">Riyadh, KSA</div>
+              </div>
+              <div class="contact-channel-item">
+                <div class="contact-channel-label">Response</div>
+                <div class="contact-channel-value">Within 48 hours for credible inquiries</div>
+              </div>
+              <div class="contact-channel-item">
+                <div class="contact-channel-label">Language</div>
+                <div class="contact-channel-value">English · Arabic</div>
+              </div>
+            </div>
+            <p class="contact-note">
+              <strong>Istawra does not accept unsolicited briefs.</strong> If you are unsure whether your mandate is appropriate for engagement, write briefly and we will tell you honestly. We would rather respond to ten exploratory inquiries than miss one that matters.
+            </p>
+          </div>
         </div>
-      </div>
-    </section>
 
-    <!-- CTA -->
-    <section class="section">
-      <div class="container">
-        <div class="cta">
-          <p class="cta-links">
-            <a class="button" href="services.html">Service Constructs</a>
-            <a class="button button-secondary" href="how-we-think.html">How We Think</a>
-          </p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-row">
-        <p class="footer-brand">Istawra Consulting</p>
-        <p class="footer-note">Sovereign-grade advisory • Institutional governance • Execution assurance</p>
-      </div>
-
-      <div class="footer-row footer-links">
-        <a href="about.html">About</a>
-        <a href="advisory.html">Advisory</a>
-        <a href="services.html">Services</a>
-        <a href="how-we-think.html">How We Think</a>
-        <a href="insights.html">Insights</a>
-        <a href="contact.html">Contact</a>
-      </div>
-
-      <div class="footer-row footer-legal">
-        <p>© <span id="year">2026</span> Istawra Consulting. All rights reserved.</p>
       </div>
     </div>
+  </section>
 
-    <script>
-      (function () {
-        var el = document.getElementById("year");
-        if (el) el.textContent = String(new Date().getFullYear());
-      })();
-    </script>
-  </footer>
+  <!-- MANDATE CRITERIA -->
+  <section class="criteria" aria-label="Mandate criteria">
+    <div class="wrap">
+      <div class="criteria-grid">
+        <div data-reveal>
+          <span class="label">Mandate Fit</span>
+          <h2 class="section-title">The mandates<br>Istawra is <em>built for</em></h2>
+          <div class="criteria-list">
+            <div class="criteria-item">
+              <div class="criteria-mark" aria-hidden="true"></div>
+              <p class="criteria-text"><strong>Sovereign decision weight</strong> — The mandate involves decisions that carry national or institutional consequence — not divisional or project-level decisions.</p>
+            </div>
+            <div class="criteria-item">
+              <div class="criteria-mark" aria-hidden="true"></div>
+              <p class="criteria-text"><strong>Principal-level sponsorship</strong> — The engagement is commissioned by or reports to a head of state, minister, board chair, or equivalent sovereign principal.</p>
+            </div>
+            <div class="criteria-item">
+              <div class="criteria-mark" aria-hidden="true"></div>
+              <p class="criteria-text"><strong>Multi-stakeholder complexity</strong> — The mission spans entities, jurisdictions, or sectors that cannot be governed through conventional management hierarchy.</p>
+            </div>
+            <div class="criteria-item">
+              <div class="criteria-mark" aria-hidden="true"></div>
+              <p class="criteria-text"><strong>Genuine ambiguity</strong> — The right answer is not known and cannot be Googled. The value we add is in the architecture of how to think about and resolve the question.</p>
+            </div>
+            <div class="criteria-item">
+              <div class="criteria-mark" aria-hidden="true"></div>
+              <p class="criteria-text"><strong>Confidentiality requirement</strong> — The mandate requires a level of discretion that rules out large consulting teams, open brief processes, or broad internal distribution of work product.</p>
+            </div>
+          </div>
+        </div>
+        <div data-reveal data-delay="1" style="padding-block-start: 88px;">
+          <blockquote class="criteria-pull">
+            If the mandate fits these criteria, we want to hear from you. <strong>If it does not, we will tell you — and if appropriate, suggest who might be better placed to help.</strong>
+          </blockquote>
+          <div style="margin-block-start: 44px; display: flex; flex-direction: column; gap: 16px;">
+            <a href="mailto:engage@istawra.com" class="btn btn-gold">Write to Us</a>
+            <a href="/services.html" class="btn btn-ghost">Review Service Constructs</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="footer" role="contentinfo">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Istawra <em>Consulting</em></div>
+        <div class="footer-tagline">Sovereign-grade advisory<br>Institutional governance<br>Execution assurance</div>
+      </div>
+      <div>
+        <div class="footer-nav-heading">Practice</div>
+        <ul class="footer-links" role="list">
+          <li><a href="/about.html">About Istawra</a></li>
+          <li><a href="/advisory.html">Advisory Philosophy</a></li>
+          <li><a href="/services.html">Service Constructs</a></li>
+          <li><a href="/contact.html">Initiate Engagement</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-nav-heading">Knowledge</div>
+        <ul class="footer-links" role="list">
+          <li><a href="/how-we-think.html">How We Think</a></li>
+          <li><a href="/insights.html">Insights</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Istawra Consulting. All rights reserved. <em>&nbsp;·&nbsp;</em> istawra.com</span>
+      <span class="footer-copy">Riyadh, Kingdom of Saudi Arabia</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function(){ nav.classList.toggle('anchored', window.scrollY > 56); }, { passive: true });
+  nav.classList.toggle('anchored', window.scrollY > 56);
+  var toggle = document.getElementById('navToggle'), overlay = document.getElementById('navOverlay'), open = false;
+  function setNav(s){ open=s; toggle.classList.toggle('open',open); toggle.setAttribute('aria-expanded',String(open)); overlay.hidden=!open; overlay.classList.toggle('open',open); document.body.style.overflow=open?'hidden':''; }
+  toggle.addEventListener('click', function(){ setNav(!open); });
+  overlay.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setNav(false); }); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'&&open) setNav(false); });
+  var els = document.querySelectorAll('[data-reveal]');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+    els.forEach(function(el){ io.observe(el); });
+  } else { els.forEach(function(el){ el.classList.add('in-view'); }); }
+}());
+</script>
 </body>
 </html>
