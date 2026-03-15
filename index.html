@@ -1,263 +1,1697 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Istawra Consulting | Sovereign-Grade Advisory</title>
-  <meta name="description" content="Istawra Consulting is a sovereign-grade advisory institution supporting VVIP decision-makers through mission architecture, governed delivery, and execution assurance." />
-  <meta name="robots" content="index,follow" />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>Istawra Consulting — Sovereign-Grade Advisory</title>
+  <meta name="description" content="Istawra advises heads of state, ministers, and sovereign wealth fund principals on missions where governance, policy, and execution must align under executive control." />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Istawra Consulting — Sovereign-Grade Advisory" />
+  <meta property="og:description" content="Sovereign-grade advisory for VVIP decision-makers. Istawra converts national and institutional ambition into governed execution." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://istawra.com" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://istawra.com/" />
+
+  <!-- Fonts — two families, loaded efficiently -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" />
+
+  <style>
+    /* ================================================================
+       DESIGN TOKENS
+    ================================================================ */
+    :root {
+      /* Palette */
+      --c-void:       #08090b;          /* deepest background            */
+      --c-ink:        #0d0f13;          /* primary background            */
+      --c-ink-1:      #141720;          /* raised surface                */
+      --c-ink-2:      #1c2029;          /* higher raised                 */
+      --c-border:     #222630;          /* dividers                      */
+      --c-border-hi:  #2e3340;          /* hover borders                 */
+
+      --c-paper:      #ede8df;          /* primary text                  */
+      --c-paper-2:    #a8a39a;          /* secondary text                */
+      --c-paper-3:    #6a6660;          /* tertiary / disabled           */
+
+      --c-gold:       #c09a3c;          /* primary accent                */
+      --c-gold-hi:    #d4ae52;          /* hover gold                    */
+      --c-gold-lo:    #8a6e26;          /* subdued gold                  */
+      --c-gold-ghost: rgba(192,154,60,.10);  /* gold tint wash           */
+      --c-gold-glow:  rgba(192,154,60,.06);  /* radial glow              */
+
+      /* Typography */
+      --f-display: 'Cormorant Garamond', 'Cormorant', Georgia, serif;
+      --f-text:    'Cormorant', Georgia, serif;
+      --f-ui:      'Jost', system-ui, sans-serif;
+
+      /* Spacing scale */
+      --s-1: 4px;  --s-2: 8px;  --s-3: 12px;  --s-4: 16px;
+      --s-5: 20px; --s-6: 24px; --s-7: 32px;  --s-8: 40px;
+      --s-9: 56px; --s-10: 80px; --s-11: 120px; --s-12: 180px;
+
+      /* Fluid section padding */
+      --pad-section: clamp(72px, 10vw, 140px);
+      --pad-x:       clamp(20px, 5vw, 80px);
+      --max-w:       1240px;
+
+      /* Motion */
+      --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in:   cubic-bezier(0.7, 0, 0.84, 0);
+      --ease-io:   cubic-bezier(0.37, 0, 0.63, 1);
+      --dur-fast:  220ms;
+      --dur-mid:   420ms;
+      --dur-slow:  800ms;
+    }
+
+    /* ================================================================
+       RESET & BASE
+    ================================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      background: var(--c-ink);
+      color: var(--c-paper);
+      font-family: var(--f-text);
+      font-size: clamp(17px, 1.15vw, 20px);
+      font-weight: 400;
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    a               { color: inherit; text-decoration: none; }
+    ul, ol          { list-style: none; }
+    img, svg        { display: block; }
+    button          { font: inherit; cursor: pointer; background: none; border: none; color: inherit; }
+    ::selection     { background: var(--c-gold-ghost); color: var(--c-paper); }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar             { width: 3px; }
+    ::-webkit-scrollbar-track       { background: var(--c-void); }
+    ::-webkit-scrollbar-thumb       { background: var(--c-gold-lo); border-radius: 0; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--c-gold); }
+
+    /* ================================================================
+       GRAIN TEXTURE OVERLAY
+    ================================================================ */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.032;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 200px 200px;
+    }
+
+    /* ================================================================
+       LAYOUT UTILITIES
+    ================================================================ */
+    .wrap {
+      max-width: var(--max-w);
+      margin-inline: auto;
+      padding-inline: var(--pad-x);
+    }
+
+    .label {
+      font-family: var(--f-ui);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      display: block;
+    }
+
+    .rule {
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--c-gold);
+      flex-shrink: 0;
+    }
+
+    hr.divider {
+      border: none;
+      border-top: 1px solid var(--c-border);
+    }
+
+    /* ================================================================
+       REVEAL ANIMATIONS
+    ================================================================ */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(22px);
+      transition:
+        opacity  var(--dur-slow) var(--ease-out),
+        transform var(--dur-slow) var(--ease-out);
+    }
+    [data-reveal].in-view {
+      opacity: 1;
+      transform: none;
+    }
+    [data-reveal][data-delay="1"] { transition-delay: 80ms; }
+    [data-reveal][data-delay="2"] { transition-delay: 160ms; }
+    [data-reveal][data-delay="3"] { transition-delay: 240ms; }
+    [data-reveal][data-delay="4"] { transition-delay: 320ms; }
+    [data-reveal][data-delay="5"] { transition-delay: 400ms; }
+
+    /* ================================================================
+       NAVIGATION
+    ================================================================ */
+    #nav {
+      position: fixed;
+      inset-block-start: 0;
+      inset-inline: 0;
+      z-index: 500;
+      padding: 26px var(--pad-x);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: padding var(--dur-mid) var(--ease-out),
+                  background var(--dur-mid) ease,
+                  border-color var(--dur-mid) ease;
+      border-bottom: 1px solid transparent;
+    }
+
+    #nav.anchored {
+      padding-block: 16px;
+      background: rgba(13, 15, 19, 0.92);
+      backdrop-filter: blur(16px) saturate(1.1);
+      -webkit-backdrop-filter: blur(16px) saturate(1.1);
+      border-bottom-color: var(--c-border);
+    }
+
+    .nav-logo {
+      font-family: var(--f-display);
+      font-size: clamp(17px, 1.3vw, 21px);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--c-paper);
+      transition: color var(--dur-fast);
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .nav-logo em {
+      font-style: italic;
+      color: var(--c-gold);
+      font-weight: 300;
+    }
+    .nav-logo:hover { color: var(--c-paper); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(16px, 2.5vw, 40px);
+    }
+
+    .nav-links a {
+      font-family: var(--f-ui);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--c-paper-2);
+      transition: color var(--dur-fast);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      inset-block-end: -4px;
+      inset-inline-start: 0;
+      width: 0;
+      height: 1px;
+      background: var(--c-gold);
+      transition: width var(--dur-mid) var(--ease-out);
+    }
+    .nav-links a:hover        { color: var(--c-paper); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-engage {
+      font-family: var(--f-ui);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--c-gold) !important;
+      border: 1px solid var(--c-gold-lo);
+      padding: 9px 22px;
+      transition: background var(--dur-fast), border-color var(--dur-fast), color var(--dur-fast) !important;
+    }
+    .nav-engage::after { display: none !important; }
+    .nav-engage:hover  {
+      background: var(--c-gold-ghost) !important;
+      border-color: var(--c-gold) !important;
+      color: var(--c-gold-hi) !important;
+    }
+
+    /* Mobile hamburger */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      padding: 4px;
+      z-index: 600;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: var(--c-paper);
+      transition: transform var(--dur-mid), opacity var(--dur-mid), background var(--dur-fast);
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile menu overlay */
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 499;
+      background: var(--c-void);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+    }
+    .nav-overlay.open { display: flex; }
+    .nav-overlay a {
+      font-family: var(--f-display);
+      font-size: clamp(26px, 5vw, 40px);
+      font-weight: 300;
+      color: var(--c-paper-2);
+      letter-spacing: 0.04em;
+      transition: color var(--dur-fast);
+    }
+    .nav-overlay a:hover { color: var(--c-gold); }
+
+    /* ================================================================
+       HERO
+    ================================================================ */
+    #hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      overflow: hidden;
+    }
+
+    /* Atmospheric background layers */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 68% 24%, rgba(192,154,60,.055) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 70% at 15% 85%, rgba(192,154,60,.03) 0%, transparent 60%);
+    }
+
+    /* Geometric grid lines in background */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.04;
+      background-image:
+        linear-gradient(to right, var(--c-paper) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--c-paper) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse 80% 80% at 80% 20%, black 0%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 80% 20%, black 0%, transparent 70%);
+    }
+
+    /* Left vertical rule */
+    .hero-vline {
+      position: absolute;
+      inset-block: 0;
+      inset-inline-start: var(--pad-x);
+      width: 1px;
+      background: linear-gradient(to bottom,
+        transparent   0%,
+        var(--c-border) 15%,
+        var(--c-border) 85%,
+        transparent  100%);
+      pointer-events: none;
+    }
+
+    /* Large ghosted letterform */
+    .hero-glyph {
+      position: absolute;
+      inset-block-start: 50%;
+      inset-inline-end: -2%;
+      transform: translateY(-52%);
+      font-family: var(--f-display);
+      font-size: clamp(300px, 38vw, 640px);
+      font-weight: 300;
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(192,154,60,.055);
+      user-select: none;
+      pointer-events: none;
+      letter-spacing: -0.06em;
+    }
+
+    .hero-content {
+      align-self: end;
+      padding-block-end: clamp(60px, 8vh, 110px);
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-block-end: 36px;
+      animation: fadeUp 0.9s var(--ease-out) 0.2s both;
+    }
+
+    .hero-h1 {
+      font-family: var(--f-display);
+      font-size: clamp(46px, 7vw, 108px);
+      font-weight: 300;
+      line-height: 1.02;
+      letter-spacing: -0.015em;
+      color: var(--c-paper);
+      max-width: 820px;
+      animation: fadeUp 1s var(--ease-out) 0.4s both;
+    }
+    .hero-h1 em {
+      font-style: italic;
+      color: var(--c-gold);
+      font-weight: 300;
+    }
+
+    .hero-sub {
+      margin-block-start: 32px;
+      max-width: 500px;
+      font-size: clamp(15px, 1.1vw, 18px);
+      line-height: 1.82;
+      color: var(--c-paper-2);
+      animation: fadeUp 1s var(--ease-out) 0.6s both;
+    }
+
+    .hero-actions {
+      margin-block-start: 52px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      animation: fadeUp 1s var(--ease-out) 0.8s both;
+    }
+
+    /* Scroll indicator */
+    .hero-scroll {
+      position: absolute;
+      inset-block-end: clamp(28px, 4vh, 52px);
+      inset-inline-end: var(--pad-x);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      z-index: 2;
+      animation: fadeIn 1s ease 1.4s both;
+    }
+    .hero-scroll-label {
+      font-family: var(--f-ui);
+      font-size: 9px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--c-paper-3);
+      writing-mode: vertical-rl;
+    }
+    .hero-scroll-track {
+      width: 1px;
+      height: 52px;
+      background: linear-gradient(to bottom, var(--c-gold-lo), transparent);
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-scroll-track::after {
+      content: '';
+      position: absolute;
+      inset-inline-start: 0;
+      width: 100%;
+      height: 50%;
+      background: var(--c-gold);
+      animation: scrollDrop 2.4s ease-in-out infinite 1.6s;
+    }
+
+    @keyframes scrollDrop {
+      0%   { top: -50%; }
+      100% { top: 150%; }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: none; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* ================================================================
+       BUTTONS
+    ================================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--f-ui);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: all var(--dur-fast);
+      white-space: nowrap;
+    }
+
+    .btn-gold {
+      background: var(--c-gold);
+      color: #0a0a0a;
+      padding: 14px 30px;
+    }
+    .btn-gold:hover { background: var(--c-gold-hi); }
+
+    .btn-ghost {
+      color: var(--c-paper-2);
+      border: 1px solid var(--c-border);
+      padding: 13px 28px;
+    }
+    .btn-ghost:hover {
+      border-color: var(--c-border-hi);
+      color: var(--c-paper);
+    }
+
+    .btn-text {
+      color: var(--c-paper-2);
+      padding: 0;
+      border: none;
+      gap: 12px;
+    }
+    .btn-text svg { transition: transform var(--dur-mid) var(--ease-out); }
+    .btn-text:hover { color: var(--c-paper); }
+    .btn-text:hover svg { transform: translateX(5px); }
+
+    /* ================================================================
+       MANDATE SECTION — full-width typographic moment
+    ================================================================ */
+    #mandate {
+      background: var(--c-ink-1);
+      border-block: 1px solid var(--c-border);
+      padding-block: var(--pad-section);
+      position: relative;
+      overflow: hidden;
+    }
+    #mandate::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 55% 90% at 8% 50%, rgba(192,154,60,.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .mandate-inner {
+      max-width: 900px;
+    }
+
+    .mandate-quote {
+      font-family: var(--f-display);
+      font-size: clamp(24px, 3vw, 48px);
+      font-weight: 300;
+      line-height: 1.3;
+      color: var(--c-paper);
+      letter-spacing: 0.005em;
+      font-style: normal;
+      position: relative;
+    }
+    .mandate-quote::before {
+      content: '\201C';
+      position: absolute;
+      inset-block-start: -0.2em;
+      inset-inline-start: -0.5em;
+      font-size: 3em;
+      color: var(--c-gold-lo);
+      font-weight: 300;
+      line-height: 1;
+      opacity: 0.5;
+    }
+    .mandate-quote em {
+      font-style: italic;
+      color: var(--c-gold);
+    }
+
+    .mandate-source {
+      margin-block-start: 36px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .mandate-source-text {
+      font-family: var(--f-ui);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--c-paper-3);
+    }
+
+    /* ================================================================
+       PILLARS SECTION
+    ================================================================ */
+    #pillars {
+      padding-block: var(--pad-section);
+    }
+
+    .pillars-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(30px, 4vw, 80px);
+      align-items: end;
+      margin-block-end: clamp(48px, 7vh, 88px);
+    }
+
+    .section-title {
+      font-family: var(--f-display);
+      font-size: clamp(30px, 3.5vw, 58px);
+      font-weight: 300;
+      line-height: 1.07;
+      letter-spacing: -0.01em;
+      margin-block-start: 14px;
+    }
+    .section-title em {
+      font-style: italic;
+      color: var(--c-gold);
+    }
+
+    .pillars-intro {
+      font-size: clamp(14px, 1vw, 17px);
+      color: var(--c-paper-2);
+      line-height: 1.8;
+      max-width: 380px;
+    }
+
+    /* Pillars grid — left border acts as shared frame */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-inline-start: 1px solid var(--c-border);
+    }
+
+    .pillar {
+      border-inline-end: 1px solid var(--c-border);
+      border-block-end: 1px solid var(--c-border);
+      padding: clamp(32px, 3.5vw, 52px) clamp(24px, 2.5vw, 44px);
+      position: relative;
+      transition: background var(--dur-mid);
+      overflow: hidden;
+    }
+    .pillar:hover { background: rgba(192,154,60,.025); }
+
+    /* Gold accent bar on hover */
+    .pillar::after {
+      content: '';
+      position: absolute;
+      inset-block-end: 0;
+      inset-inline-start: 0;
+      height: 2px;
+      width: 0;
+      background: var(--c-gold);
+      transition: width 0.5s var(--ease-out);
+    }
+    .pillar:hover::after { width: 100%; }
+
+    .pillar-num {
+      font-family: var(--f-ui);
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      color: var(--c-gold-lo);
+      margin-block-end: 24px;
+    }
+
+    .pillar-name {
+      font-family: var(--f-display);
+      font-size: clamp(20px, 1.8vw, 28px);
+      font-weight: 400;
+      color: var(--c-paper);
+      line-height: 1.15;
+      margin-block-end: 16px;
+    }
+
+    .pillar-body {
+      font-size: clamp(13px, 0.92vw, 16px);
+      color: var(--c-paper-2);
+      line-height: 1.78;
+    }
+
+    /* ================================================================
+       MANDATE — ENGAGEMENT DISCIPLINE BAR
+    ================================================================ */
+    .discipline-bar {
+      margin-block-start: clamp(32px, 4vw, 56px);
+      padding: clamp(20px, 2.5vw, 32px) clamp(24px, 3vw, 40px);
+      border: 1px solid var(--c-border);
+      background: var(--c-ink-1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+      border-inline-start: 2px solid var(--c-gold);
+    }
+    .discipline-text {
+      font-family: var(--f-display);
+      font-size: clamp(16px, 1.4vw, 22px);
+      font-weight: 300;
+      color: var(--c-paper-2);
+      font-style: italic;
+    }
+    .discipline-text strong {
+      color: var(--c-paper);
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    /* ================================================================
+       OPERATE SECTION
+    ================================================================ */
+    #operate {
+      padding-block: var(--pad-section);
+      background: var(--c-ink-1);
+      border-block: 1px solid var(--c-border);
+    }
+
+    .operate-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 100px);
+      align-items: start;
+    }
+
+    /* Accordion domains */
+    .domains {
+      margin-block-start: 48px;
+    }
+
+    .domain {
+      border-block-end: 1px solid var(--c-border);
+    }
+    .domain:first-child { border-block-start: 1px solid var(--c-border); }
+
+    .domain-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 0;
+      font-family: var(--f-display);
+      font-size: clamp(17px, 1.4vw, 22px);
+      font-weight: 400;
+      color: var(--c-paper-2);
+      transition: color var(--dur-fast);
+      text-align: start;
+    }
+    .domain-trigger:hover { color: var(--c-paper); }
+    .domain[aria-expanded="true"] .domain-trigger { color: var(--c-paper); }
+
+    .domain-icon {
+      width: 20px;
+      height: 20px;
+      border: 1px solid var(--c-border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: border-color var(--dur-fast), background var(--dur-fast);
+      position: relative;
+    }
+    .domain-icon::before,
+    .domain-icon::after {
+      content: '';
+      position: absolute;
+      background: var(--c-paper-2);
+      transition: transform var(--dur-mid) var(--ease-out), opacity var(--dur-mid);
+    }
+    .domain-icon::before { width: 8px; height: 1px; }
+    .domain-icon::after  { width: 1px; height: 8px; }
+    .domain[aria-expanded="true"] .domain-icon {
+      border-color: var(--c-gold);
+      background: var(--c-gold-ghost);
+    }
+    .domain[aria-expanded="true"] .domain-icon::before { background: var(--c-gold); }
+    .domain[aria-expanded="true"] .domain-icon::after  { opacity: 0; transform: rotate(90deg); background: var(--c-gold); }
+
+    .domain-body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows var(--dur-mid) var(--ease-out);
+    }
+    .domain[aria-expanded="true"] .domain-body {
+      grid-template-rows: 1fr;
+    }
+    .domain-inner {
+      overflow: hidden;
+    }
+
+    .domain-list {
+      padding-block-end: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .domain-list li {
+      font-size: clamp(13px, 0.92vw, 15px);
+      color: var(--c-paper-2);
+      padding-inline-start: 18px;
+      position: relative;
+      line-height: 1.65;
+    }
+    .domain-list li::before {
+      content: '';
+      position: absolute;
+      inset-inline-start: 0;
+      top: 11px;
+      width: 6px;
+      height: 1px;
+      background: var(--c-gold);
+    }
+
+    .operate-right { padding-block-start: 88px; }
+
+    .operate-pull {
+      font-family: var(--f-display);
+      font-size: clamp(18px, 1.6vw, 26px);
+      font-weight: 300;
+      line-height: 1.55;
+      color: var(--c-paper-2);
+      font-style: italic;
+      border-inline-start: 2px solid var(--c-gold);
+      padding-inline-start: 28px;
+      margin-block-end: 44px;
+    }
+    .operate-pull strong {
+      color: var(--c-paper);
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    .context-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .context-tag {
+      font-family: var(--f-ui);
+      font-size: 9px;
+      font-weight: 300;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--c-paper-3);
+      border: 1px solid var(--c-border);
+      padding: 7px 13px;
+      transition: border-color var(--dur-fast), color var(--dur-fast);
+    }
+    .context-tag:hover {
+      border-color: var(--c-gold-lo);
+      color: var(--c-paper-2);
+    }
+
+    /* ================================================================
+       PROCESS SECTION
+    ================================================================ */
+    #process {
+      padding-block: var(--pad-section);
+    }
+
+    .process-head {
+      max-width: 580px;
+      margin-block-end: clamp(48px, 7vh, 88px);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      position: relative;
+    }
+
+    /* Connector line between dots */
+    .steps::before {
+      content: '';
+      position: absolute;
+      inset-block-start: 19px;
+      inset-inline-start: calc(10% - 10px);
+      width: calc(80% + 20px);
+      height: 1px;
+      background: var(--c-border);
+      z-index: 0;
+    }
+
+    .step {
+      position: relative;
+      z-index: 1;
+      padding-inline: clamp(8px, 1.5vw, 20px);
+      text-align: center;
+    }
+
+    .step-node {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--c-border);
+      background: var(--c-ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-inline: auto;
+      margin-block-end: 24px;
+      font-family: var(--f-display);
+      font-size: 13px;
+      font-style: italic;
+      color: var(--c-gold-lo);
+      transition: border-color var(--dur-fast), color var(--dur-fast), background var(--dur-fast);
+    }
+    .step:hover .step-node {
+      border-color: var(--c-gold);
+      color: var(--c-gold);
+      background: var(--c-gold-ghost);
+    }
+
+    .step-name {
+      font-family: var(--f-display);
+      font-size: clamp(14px, 1.1vw, 18px);
+      font-weight: 400;
+      color: var(--c-paper);
+      margin-block-end: 10px;
+      line-height: 1.25;
+    }
+
+    .step-body {
+      font-size: clamp(11px, 0.82vw, 13px);
+      color: var(--c-paper-3);
+      line-height: 1.7;
+    }
+
+    /* ================================================================
+       KNOWLEDGE SECTION
+    ================================================================ */
+    #knowledge {
+      padding-block: var(--pad-section);
+      background: var(--c-ink-1);
+      border-block: 1px solid var(--c-border);
+    }
+
+    .knowledge-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(30px, 4vw, 80px);
+      align-items: end;
+      margin-block-end: clamp(48px, 7vh, 88px);
+    }
+
+    .knowledge-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--c-border);
+      border: 1px solid var(--c-border);
+    }
+
+    .channel {
+      background: var(--c-ink-1);
+      padding: clamp(32px, 3.5vw, 52px) clamp(24px, 2.5vw, 40px);
+      position: relative;
+      transition: background var(--dur-mid);
+      overflow: hidden;
+    }
+    .channel:hover { background: var(--c-ink-2); }
+
+    .channel-icon {
+      margin-block-end: 22px;
+      color: var(--c-gold-lo);
+      transition: color var(--dur-fast);
+    }
+    .channel:hover .channel-icon { color: var(--c-gold); }
+
+    .channel-type {
+      font-family: var(--f-ui);
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      margin-block-end: 10px;
+    }
+
+    .channel-name {
+      font-family: var(--f-display);
+      font-size: clamp(19px, 1.7vw, 25px);
+      font-weight: 400;
+      color: var(--c-paper);
+      margin-block-end: 14px;
+      line-height: 1.2;
+    }
+
+    .channel-body {
+      font-size: clamp(13px, 0.9vw, 15px);
+      color: var(--c-paper-2);
+      line-height: 1.75;
+    }
+
+    .channel-status {
+      margin-block-start: 28px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .status-pip {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .status-pip.live { background: var(--c-gold); }
+    .status-pip.soon {
+      background: transparent;
+      border: 1px solid var(--c-paper-3);
+    }
+    .status-text {
+      font-family: var(--f-ui);
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--c-paper-3);
+    }
+
+    /* ================================================================
+       ENGAGEMENT / CTA
+    ================================================================ */
+    #cta {
+      padding-block: clamp(88px, 14vh, 180px);
+      position: relative;
+      overflow: hidden;
+    }
+    #cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 110%, rgba(192,154,60,.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .cta-inner {
+      max-width: 700px;
+      margin-inline: auto;
+      text-align: center;
+      position: relative;
+    }
+
+    .cta-title {
+      font-family: var(--f-display);
+      font-size: clamp(32px, 4.2vw, 68px);
+      font-weight: 300;
+      line-height: 1.07;
+      letter-spacing: -0.01em;
+      color: var(--c-paper);
+      margin-block: 14px 24px;
+    }
+    .cta-title em {
+      font-style: italic;
+      color: var(--c-gold);
+    }
+
+    .cta-body {
+      font-size: clamp(14px, 1vw, 17px);
+      color: var(--c-paper-2);
+      line-height: 1.85;
+      max-width: 520px;
+      margin-inline: auto;
+    }
+
+    .cta-actions {
+      margin-block-start: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .cta-note {
+      margin-block-start: 32px;
+      font-family: var(--f-ui);
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--c-gold-lo);
+    }
+
+    /* ================================================================
+       FOOTER
+    ================================================================ */
+    #footer {
+      border-block-start: 1px solid var(--c-border);
+      padding-block: clamp(44px, 6vh, 72px);
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: clamp(32px, 5vw, 80px);
+      padding-block-end: clamp(40px, 5vh, 60px);
+      border-block-end: 1px solid var(--c-border);
+      margin-block-end: clamp(24px, 3vh, 36px);
+    }
+
+    .footer-logo {
+      font-family: var(--f-display);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--c-paper);
+      margin-block-end: 12px;
+      letter-spacing: 0.03em;
+    }
+    .footer-logo em {
+      font-style: italic;
+      color: var(--c-gold);
+    }
+
+    .footer-tagline {
+      font-family: var(--f-ui);
+      font-size: 9px;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--c-paper-3);
+      line-height: 2;
+    }
+
+    .footer-nav-heading {
+      font-family: var(--f-ui);
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      margin-block-end: 18px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-links a {
+      font-family: var(--f-ui);
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--c-paper-3);
+      transition: color var(--dur-fast);
+    }
+    .footer-links a:hover { color: var(--c-paper-2); }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-copy {
+      font-family: var(--f-ui);
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: var(--c-paper-3);
+    }
+    .footer-copy em { color: var(--c-gold-lo); font-style: normal; }
+
+    /* ================================================================
+       RESPONSIVE
+    ================================================================ */
+    @media (max-width: 960px) {
+      .pillars-head    { grid-template-columns: 1fr; }
+      .pillars-grid    { grid-template-columns: 1fr; }
+      .operate-grid    { grid-template-columns: 1fr; }
+      .operate-right   { padding-block-start: 0; }
+      .knowledge-head  { grid-template-columns: 1fr; }
+      .knowledge-grid  { grid-template-columns: 1fr; }
+      .footer-top      { grid-template-columns: 1fr 1fr; }
+      .footer-top > :first-child { grid-column: 1 / -1; }
+
+      .steps {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+      }
+      .steps::before { display: none; }
+      .step { text-align: start; }
+      .step-node { margin-inline: 0; }
+    }
+
+    @media (max-width: 680px) {
+      .nav-links  { display: none; }
+      .nav-toggle { display: flex; }
+
+      .hero-glyph { display: none; }
+      .hero-grid  { display: none; }
+
+      .steps      { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+
+      .cta-actions { flex-direction: column; align-items: stretch; }
+      .cta-actions .btn { justify-content: center; }
+
+      .pillars-head .pillars-intro { max-width: 100%; }
+    }
+  </style>
 </head>
-
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <div class="container">
-      <div class="header-row">
-        <a class="brand" href="index.html" aria-label="Istawra Home">
-          <span class="brand-name">Istawra</span>
-          <span class="brand-sub">Consulting</span>
-        </a>
+  <!-- ================================================================
+       NAV
+  ================================================================ -->
+  <nav id="nav" aria-label="Primary navigation">
+    <a href="/" class="nav-logo" aria-label="Istawra Consulting home">
+      Istawra <em>Consulting</em>
+    </a>
 
-        <nav class="site-nav" aria-label="Primary">
-          <a class="active" href="index.html" aria-current="page">Home</a>
-          <a href="about.html">About</a>
-          <a href="advisory.html">Advisory</a>
-          <a href="services.html">Services</a>
-          <a href="how-we-think.html">How We Think</a>
-          <a href="insights.html">Insights</a>
-          <a href="contact.html">Contact</a>
-        </nav>
+    <ul class="nav-links" role="list">
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/advisory.html">Advisory</a></li>
+      <li><a href="/services.html">Services</a></li>
+      <li><a href="/how-we-think.html">How We Think</a></li>
+      <li><a href="/insights.html">Insights</a></li>
+      <li><a href="/contact.html" class="nav-engage">Engage</a></li>
+    </ul>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile overlay -->
+  <nav class="nav-overlay" id="navOverlay" aria-label="Mobile navigation" hidden>
+    <a href="/about.html">About</a>
+    <a href="/advisory.html">Advisory</a>
+    <a href="/services.html">Services</a>
+    <a href="/how-we-think.html">How We Think</a>
+    <a href="/insights.html">Insights</a>
+    <a href="/contact.html">Engage</a>
+  </nav>
+
+  <main>
+
+    <!-- ================================================================
+         HERO
+    ================================================================ -->
+    <section id="hero" aria-label="Introduction">
+      <div class="hero-bg">
+        <div class="hero-grid" aria-hidden="true"></div>
       </div>
-    </div>
-  </header>
+      <div aria-hidden="true" class="hero-glyph">I</div>
+      <div aria-hidden="true" class="hero-vline"></div>
 
-  <main id="main">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container">
-        <h1>Sovereign-Grade Advisory for VVIP Decision-Makers</h1>
-
-        <p class="lead">
-          Modern missions fail less from lack of ambition than from lack of architecture.
-          Istawra exists to convert national and institutional ambition into governed execution—
-          where ambiguity is costly, timelines are unforgiving, and stakeholder complexity is material.
-        </p>
-
-        <div class="hero-cards">
-          <div class="card">
-            <h3>Decision Integrity</h3>
-            <p>
-              Clear options, explicit assumptions, and traceable logic—designed to protect leadership
-              authority and decision time.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Governed Delivery</h3>
-            <p>
-              Operating cadence, escalation pathways, and accountability mechanisms that prevent drift
-              across ministries, funds, regulators, and delivery units.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Execution Assurance</h3>
-            <p>
-              Independent assurance of readiness, risks, dependencies, and corrective actions—focused
-              on outcomes, not presentation theater.
-            </p>
-          </div>
+      <div class="hero-content wrap">
+        <div class="hero-eyebrow">
+          <span class="rule" aria-hidden="true"></span>
+          <span class="label">Sovereign-Grade Advisory</span>
         </div>
 
-        <p class="cta-links">
-          <a class="button" href="services.html">View Services</a>
-          <a class="button button-secondary" href="how-we-think.html">How We Think</a>
+        <h1 class="hero-h1">
+          Ambition<br>requires<br><em>architecture</em>
+        </h1>
+
+        <p class="hero-sub">
+          Istawra advises heads of state, ministers, and sovereign wealth fund principals on missions where governance, policy, and execution must align under executive control — and where the cost of ambiguity is institutional.
         </p>
+
+        <div class="hero-actions">
+          <a href="/services.html" class="btn btn-gold">View Services</a>
+          <a href="/how-we-think.html" class="btn btn-text">
+            How We Think
+            <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
+              <path d="M1 5H17M13 1L17 5L13 9" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-scroll" aria-hidden="true">
+        <div class="hero-scroll-track"></div>
+        <span class="hero-scroll-label">Scroll</span>
       </div>
     </section>
 
-    <!-- WHERE WE OPERATE -->
-    <section class="section">
-      <div class="container">
-        <h2>Where Istawra Operates</h2>
-
-        <p>
-          Istawra supports decision-makers overseeing missions and transformations that span multiple
-          entities, portfolios, and delivery pathways—particularly where governance, policy, funding,
-          and implementation must be aligned under executive control.
-        </p>
-
-        <div class="grid grid-2">
-          <div class="panel">
-            <h3>National Missions & Sovereign Programs</h3>
-            <ul>
-              <li>Mission definition and success architecture</li>
-              <li>Inter-agency governance and decision rights</li>
-              <li>Sequencing, milestone architecture, and activation plans</li>
-              <li>Capability building and localization pathways</li>
-              <li>Executive reporting and performance management</li>
-            </ul>
-          </div>
-
-          <div class="panel">
-            <h3>Sector Architectures & Portfolio Transformations</h3>
-            <ul>
-              <li>Sector blueprinting and investment logic</li>
-              <li>Regulatory, incentive, and delivery alignment</li>
-              <li>Portfolio governance across programs and entities</li>
-              <li>Public-private interface models and operating agreements</li>
-              <li>Delivery systems for complex initiatives</li>
-            </ul>
+    <!-- ================================================================
+         MANDATE STATEMENT
+    ================================================================ -->
+    <section id="mandate" aria-label="Mandate">
+      <div class="wrap">
+        <div class="mandate-inner" data-reveal>
+          <blockquote class="mandate-quote">
+            Modern missions fail less from lack of ambition than from lack of architecture. Istawra exists to convert <em>national and institutional ambition into governed execution</em> — where ambiguity is costly, timelines are unforgiving, and stakeholder complexity is material.
+          </blockquote>
+          <div class="mandate-source">
+            <span class="rule" aria-hidden="true"></span>
+            <span class="mandate-source-text">Istawra Consulting — Institutional Mandate</span>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="note">
-          <p>
-            Istawra is designed for environments where leadership requires clarity, control, and
-            credibility—without increasing bureaucracy.
+    <!-- ================================================================
+         THREE PILLARS
+    ================================================================ -->
+    <section id="pillars" aria-label="Practice pillars">
+      <div class="wrap">
+
+        <div class="pillars-head">
+          <div data-reveal>
+            <span class="label">Practice Pillars</span>
+            <h2 class="section-title">Where Istawra<br>adds <em>decisive</em> value</h2>
+          </div>
+          <p class="pillars-intro" data-reveal data-delay="1">
+            Three integrated capabilities — each designed for environments where leadership requires clarity, control, and credibility without increasing bureaucracy.
           </p>
         </div>
+
+        <div class="pillars-grid">
+          <div class="pillar" data-reveal>
+            <div class="pillar-num">01</div>
+            <h3 class="pillar-name">Decision Integrity</h3>
+            <p class="pillar-body">Clear options, explicit assumptions, and traceable logic — designed to protect leadership authority and decision time. VVIP-ready outputs that eliminate noise and surface only what matters at the moment of decision.</p>
+          </div>
+          <div class="pillar" data-reveal data-delay="1">
+            <div class="pillar-num">02</div>
+            <h3 class="pillar-name">Governed Delivery</h3>
+            <p class="pillar-body">Operating cadence, escalation pathways, and accountability mechanisms that prevent drift across ministries, funds, regulators, and delivery units — without adding bureaucratic weight to the system.</p>
+          </div>
+          <div class="pillar" data-reveal data-delay="2">
+            <div class="pillar-num">03</div>
+            <h3 class="pillar-name">Execution Assurance</h3>
+            <p class="pillar-body">Independent assurance of readiness, risks, dependencies, and corrective actions — focused on outcomes, not presentation theater. Confidence grounded in evidence, not optimism.</p>
+          </div>
+        </div>
+
+        <div class="discipline-bar" data-reveal>
+          <p class="discipline-text">
+            Istawra maintains a <strong>limited number of concurrent mandates</strong> to protect quality, confidentiality, and executive responsiveness.
+          </p>
+          <a href="/contact.html" class="btn btn-ghost">Initiate Contact</a>
+        </div>
+
       </div>
     </section>
 
-    <!-- HOW WE WORK -->
-    <section class="section section-alt">
-      <div class="container">
-        <h2>How We Work</h2>
+    <!-- ================================================================
+         WHERE WE OPERATE
+    ================================================================ -->
+    <section id="operate" aria-label="Where Istawra operates">
+      <div class="wrap">
+        <div class="operate-grid">
 
-        <p>
-          Our approach is discrete, disciplined, and built for senior operating environments.
-          We gather only the minimum signal required, produce VVIP-ready outputs, and maintain
-          assurance under a governed cadence.
-        </p>
+          <div class="operate-left">
+            <div data-reveal>
+              <span class="label">Operational Scope</span>
+              <h2 class="section-title">Where Istawra<br><em>operates</em></h2>
+            </div>
 
-        <ol class="steps">
-          <li>
-            <h3>Mandate Definition</h3>
-            <p>
-              Confirm the decision-maker, objectives, timing, constraints, and boundaries of authority.
-              Establish confidentiality and distribution rules.
-            </p>
-          </li>
+            <div class="domains" data-reveal data-delay="1">
 
-          <li>
-            <h3>Signal Gathering</h3>
-            <p>
-              Rapidly collect only what is necessary—executive interviews, key documents, stakeholder
-              constraints, and factual baselines.
-            </p>
-          </li>
+              <div class="domain" aria-expanded="true">
+                <button class="domain-trigger" aria-controls="domain-1-body">
+                  National Missions &amp; Sovereign Programs
+                  <span class="domain-icon" aria-hidden="true"></span>
+                </button>
+                <div class="domain-body" id="domain-1-body" role="region">
+                  <div class="domain-inner">
+                    <ul class="domain-list">
+                      <li>Mission definition and success architecture</li>
+                      <li>Inter-agency governance and decision rights</li>
+                      <li>Sequencing, milestone architecture, and activation plans</li>
+                      <li>Capability building and localization pathways</li>
+                      <li>Executive reporting and performance management</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
 
-          <li>
-            <h3>Architecture & Options</h3>
-            <p>
-              Construct decision architecture: options, trade-offs, dependencies, and what must be
-              true for each path to succeed.
-            </p>
-          </li>
+              <div class="domain" aria-expanded="false">
+                <button class="domain-trigger" aria-controls="domain-2-body">
+                  Sector Architectures &amp; Portfolio Transformations
+                  <span class="domain-icon" aria-hidden="true"></span>
+                </button>
+                <div class="domain-body" id="domain-2-body" role="region">
+                  <div class="domain-inner">
+                    <ul class="domain-list">
+                      <li>Sector blueprinting and investment logic</li>
+                      <li>Regulatory, incentive, and delivery alignment</li>
+                      <li>Portfolio governance across programs and entities</li>
+                      <li>Public-private interface models and operating agreements</li>
+                      <li>Delivery systems for complex, multi-entity initiatives</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
 
-          <li>
-            <h3>Governance & Control</h3>
-            <p>
-              Design decision rights, operating cadence, escalation pathways, and executive reporting
-              to preserve accountability.
-            </p>
-          </li>
-
-          <li>
-            <h3>Activation & Assurance</h3>
-            <p>
-              Convert the chosen path into an executable portfolio and maintain assurance through
-              periodic packs, risk monitoring, and corrective action tracking.
-            </p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- THOUGHT LEADERSHIP SIGNAL -->
-    <section class="section">
-      <div class="container">
-        <h2>Thought Leadership</h2>
-
-        <p>
-          Istawra’s thought leadership is institutional, not performative. We publish selectively,
-          focusing on frameworks, decision models, and execution logic that support real-world
-          leadership under complexity.
-        </p>
-
-        <div class="grid grid-2">
-          <div class="panel">
-            <h3>How We Think</h3>
-            <p>
-              Our institutional philosophy, analytical frameworks, and operating principles that
-              shape how we advise and execute.
-            </p>
-            <p class="small"><a href="how-we-think.html">Explore our thinking</a></p>
+            </div>
           </div>
 
-          <div class="panel">
-            <h3>Insights</h3>
-            <p>
-              Selected briefs and perspectives on sovereign programs, sector architecture, and
-              execution governance—published with discretion.
-            </p>
-            <p class="small"><a href="insights.html">Read insights</a></p>
+          <div class="operate-right" data-reveal data-delay="2">
+            <blockquote class="operate-pull">
+              Designed for environments where leadership requires <strong>clarity, control, and credibility</strong> — without increasing bureaucracy.
+            </blockquote>
+
+            <div class="context-tags" role="list" aria-label="Client context">
+              <span class="context-tag" role="listitem">Sovereign Wealth Funds</span>
+              <span class="context-tag" role="listitem">Head of State Offices</span>
+              <span class="context-tag" role="listitem">Ministerial Mandates</span>
+              <span class="context-tag" role="listitem">National Development Banks</span>
+              <span class="context-tag" role="listitem">Regulatory Authorities</span>
+              <span class="context-tag" role="listitem">Vision Program Offices</span>
+              <span class="context-tag" role="listitem">Strategic Investment Entities</span>
+              <span class="context-tag" role="listitem">Multi-Ministry Missions</span>
+            </div>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- ENGAGEMENT -->
-    <section class="section section-alt">
-      <div class="container">
-        <h2>Engagement Discipline</h2>
+    <!-- ================================================================
+         HOW WE WORK — PROCESS
+    ================================================================ -->
+    <section id="process" aria-label="How Istawra works">
+      <div class="wrap">
 
-        <p>
-          Istawra maintains a limited number of concurrent mandates to protect quality, confidentiality,
-          and executive responsiveness. Formal engagements are initiated offline through trusted
-          institutional channels.
-        </p>
+        <div class="process-head" data-reveal>
+          <span class="label">Engagement Architecture</span>
+          <h2 class="section-title">How we<br>work</h2>
+        </div>
 
-        <div class="cta">
-          <p class="cta-links">
-            <a class="button" href="services.html">Service Constructs</a>
-            <a class="button button-secondary" href="contact.html">Contact</a>
+        <div class="steps" role="list">
+          <div class="step" role="listitem" data-reveal>
+            <div class="step-node" aria-hidden="true"><em>I</em></div>
+            <div class="step-name">Mandate<br>Definition</div>
+            <p class="step-body">Confirm the decision-maker, objectives, timing, constraints, and boundaries of authority. Establish confidentiality and distribution rules.</p>
+          </div>
+          <div class="step" role="listitem" data-reveal data-delay="1">
+            <div class="step-node" aria-hidden="true"><em>II</em></div>
+            <div class="step-name">Signal<br>Gathering</div>
+            <p class="step-body">Collect only what is necessary — executive interviews, key documents, stakeholder constraints, and factual baselines.</p>
+          </div>
+          <div class="step" role="listitem" data-reveal data-delay="2">
+            <div class="step-node" aria-hidden="true"><em>III</em></div>
+            <div class="step-name">Architecture<br>&amp; Options</div>
+            <p class="step-body">Construct decision architecture: options, trade-offs, dependencies, and what must be true for each path to succeed.</p>
+          </div>
+          <div class="step" role="listitem" data-reveal data-delay="3">
+            <div class="step-node" aria-hidden="true"><em>IV</em></div>
+            <div class="step-name">Governance<br>&amp; Control</div>
+            <p class="step-body">Design decision rights, operating cadence, escalation pathways, and executive reporting to preserve accountability.</p>
+          </div>
+          <div class="step" role="listitem" data-reveal data-delay="4">
+            <div class="step-node" aria-hidden="true"><em>V</em></div>
+            <div class="step-name">Activation<br>&amp; Assurance</div>
+            <p class="step-body">Convert the chosen path into an executable portfolio. Maintain assurance through periodic packs, risk monitoring, and corrective action tracking.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================================
+         KNOWLEDGE — THOUGHT LEADERSHIP
+    ================================================================ -->
+    <section id="knowledge" aria-label="Thought leadership and knowledge">
+      <div class="wrap">
+
+        <div class="knowledge-head">
+          <div data-reveal>
+            <span class="label">Knowledge &amp; Perspective</span>
+            <h2 class="section-title">Thought<br>leadership</h2>
+          </div>
+          <p class="pillars-intro" data-reveal data-delay="1">
+            Istawra's institutional voice is selective, not performative. We publish frameworks, decision models, and execution logic that support real-world leadership under complexity.
           </p>
         </div>
+
+        <div class="knowledge-grid" data-reveal>
+
+          <!-- White Papers -->
+          <div class="channel">
+            <div class="channel-icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <rect x="5" y="3" width="18" height="26" rx="1" stroke="currentColor" stroke-width="1"/>
+                <path d="M9 10H19M9 15H19M9 20H15" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+                <rect x="18" y="17" width="9" height="12" rx="1" stroke="currentColor" stroke-width="1"/>
+              </svg>
+            </div>
+            <div class="channel-type">White Papers</div>
+            <div class="channel-name">Institutional Briefs</div>
+            <p class="channel-body">Frameworks, governance models, and decision architectures published with precision — for principals who require depth without volume.</p>
+            <div class="channel-status">
+              <div class="status-pip live" aria-hidden="true"></div>
+              <span class="status-text">Available Now</span>
+            </div>
+          </div>
+
+          <!-- Podcast -->
+          <div class="channel">
+            <div class="channel-icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <circle cx="16" cy="11" r="5" stroke="currentColor" stroke-width="1"/>
+                <path d="M7 20c0-4.97 4.03-9 9-9s9 4.03 9 9" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+                <path d="M16 24v5M12 29h8" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="channel-type">Podcast</div>
+            <div class="channel-name">In Conversation</div>
+            <p class="channel-body">Conversations on sovereign strategy, execution governance, and the architecture of national ambition — with practitioners, not commentators.</p>
+            <div class="channel-status">
+              <div class="status-pip soon" aria-hidden="true"></div>
+              <span class="status-text">Forthcoming</span>
+            </div>
+          </div>
+
+          <!-- Video -->
+          <div class="channel">
+            <div class="channel-icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <rect x="2" y="7" width="21" height="18" rx="1" stroke="currentColor" stroke-width="1"/>
+                <path d="M23 13l7-4v14l-7-4V13z" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="channel-type">Video</div>
+            <div class="channel-name">Structured Perspectives</div>
+            <p class="channel-body">Visual perspectives on frameworks, models, and methodology — extending Istawra's institutional thinking beyond the written page.</p>
+            <div class="channel-status">
+              <div class="status-pip soon" aria-hidden="true"></div>
+              <span class="status-text">Forthcoming</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="margin-block-start: 36px; text-align: right;" data-reveal>
+          <a href="/insights.html" class="btn btn-text">
+            Read Insights
+            <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
+              <path d="M1 5H17M13 1L17 5L13 9" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
       </div>
     </section>
+
+    <!-- ================================================================
+         ENGAGEMENT CTA
+    ================================================================ -->
+    <section id="cta" aria-label="Engagement">
+      <div class="wrap">
+        <div class="cta-inner" data-reveal>
+          <span class="label">Engagement Discipline</span>
+          <h2 class="cta-title">A limited number<br>of concurrent <em>mandates</em></h2>
+          <p class="cta-body">
+            Formal engagements are initiated offline through trusted institutional channels. Istawra does not accept unsolicited briefs.
+          </p>
+          <div class="cta-actions">
+            <a href="/contact.html" class="btn btn-gold">Initiate Contact</a>
+            <a href="/services.html" class="btn btn-ghost">Service Constructs</a>
+          </div>
+          <p class="cta-note">Engagements are initiated through institutional channels only</p>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-row">
-        <p class="footer-brand">Istawra Consulting</p>
-        <p class="footer-note">Sovereign-grade advisory • Institutional governance • Execution assurance</p>
+  <!-- ================================================================
+       FOOTER
+  ================================================================ -->
+  <footer id="footer" role="contentinfo">
+    <div class="wrap">
+
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo">Istawra <em>Consulting</em></div>
+          <div class="footer-tagline">
+            Sovereign-grade advisory<br>
+            Institutional governance<br>
+            Execution assurance
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-nav-heading">Practice</div>
+          <ul class="footer-links" role="list">
+            <li><a href="/about.html">About Istawra</a></li>
+            <li><a href="/advisory.html">Advisory Philosophy</a></li>
+            <li><a href="/services.html">Service Constructs</a></li>
+            <li><a href="/contact.html">Initiate Engagement</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-nav-heading">Knowledge</div>
+          <ul class="footer-links" role="list">
+            <li><a href="/how-we-think.html">How We Think</a></li>
+            <li><a href="/insights.html">Insights</a></li>
+          </ul>
+        </div>
       </div>
 
-      <div class="footer-row footer-links">
-        <a href="about.html">About</a>
-        <a href="advisory.html">Advisory</a>
-        <a href="services.html">Services</a>
-        <a href="how-we-think.html">How We Think</a>
-        <a href="insights.html">Insights</a>
-        <a href="contact.html">Contact</a>
+      <div class="footer-bottom">
+        <span class="footer-copy">
+          &copy; 2026 Istawra Consulting. All rights reserved.
+          <em>&nbsp;·&nbsp;</em>
+          istawra.com
+        </span>
+        <span class="footer-copy">Riyadh, Kingdom of Saudi Arabia</span>
       </div>
 
-      <div class="footer-row footer-legal">
-        <p>© <span id="year">2026</span> Istawra Consulting. All rights reserved.</p>
-      </div>
     </div>
-
-    <script>
-      (function () {
-        var el = document.getElementById("year");
-        if (el) el.textContent = String(new Date().getFullYear());
-      })();
-    </script>
   </footer>
+
+  <!-- ================================================================
+       JAVASCRIPT — minimal, no dependencies
+  ================================================================ -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ──────────────────────────────────────────────────────────────
+         NAV — scroll anchor behavior
+      ────────────────────────────────────────────────────────────── */
+      var nav = document.getElementById('nav');
+      function onScroll() {
+        nav.classList.toggle('anchored', window.scrollY > 56);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      /* ──────────────────────────────────────────────────────────────
+         MOBILE NAV
+      ────────────────────────────────────────────────────────────── */
+      var toggle  = document.getElementById('navToggle');
+      var overlay = document.getElementById('navOverlay');
+      var open    = false;
+
+      function setNav(state) {
+        open = state;
+        toggle.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+        overlay.hidden = !open;
+        overlay.classList.toggle('open', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+      }
+
+      toggle.addEventListener('click', function () { setNav(!open); });
+      overlay.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { setNav(false); });
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && open) setNav(false);
+      });
+
+      /* ──────────────────────────────────────────────────────────────
+         SCROLL REVEAL — IntersectionObserver
+      ────────────────────────────────────────────────────────────── */
+      var revealEls = document.querySelectorAll('[data-reveal]');
+
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+
+        revealEls.forEach(function (el) { io.observe(el); });
+      } else {
+        /* Fallback for very old browsers */
+        revealEls.forEach(function (el) { el.classList.add('in-view'); });
+      }
+
+      /* ──────────────────────────────────────────────────────────────
+         DOMAIN ACCORDION
+      ────────────────────────────────────────────────────────────── */
+      var domains = document.querySelectorAll('.domain');
+
+      domains.forEach(function (domain) {
+        var trigger = domain.querySelector('.domain-trigger');
+        trigger.addEventListener('click', function () {
+          var isOpen = domain.getAttribute('aria-expanded') === 'true';
+
+          /* Collapse all */
+          domains.forEach(function (d) {
+            d.setAttribute('aria-expanded', 'false');
+          });
+
+          /* Open clicked if it was closed */
+          if (!isOpen) {
+            domain.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+
+    }());
+  </script>
+
 </body>
 </html>
