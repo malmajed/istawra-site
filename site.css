@@ -538,18 +538,68 @@ body::before {
   .steps::before { display: none; }
   .step { text-align: start; }
   .step-node { margin-inline: 0; }
+
+  /* Page header — tighten at tablet */
+  .page-header { padding-block-start: clamp(96px, 12vh, 130px); }
+  .page-h1 { font-size: clamp(32px, 5vw, 56px); }
+
+  /* Footer */
+  .footer-top { grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 48px); }
+  .footer-top > div:first-child { grid-column: 1 / -1; }
 }
+
 @media (max-width: 680px) {
+  /* Navigation */
   .nav-links  { display: none; }
   .nav-toggle { display: flex; }
+
+  /* Nav padding on mobile */
+  #nav { padding-inline: clamp(16px, 5vw, 32px); }
+
+  /* Wrap padding */
+  .wrap { padding-inline: clamp(16px, 5vw, 24px); }
+
+  /* Page header */
+  .page-header { padding-block-start: 100px; padding-block-end: clamp(40px, 6vh, 72px); }
+  .page-h1 { font-size: clamp(28px, 8vw, 44px); }
+  .page-sub { font-size: clamp(14px, 4vw, 16px); }
+  .page-header-glyph { font-size: clamp(100px, 28vw, 180px); inset-inline-end: -4%; }
+
+  /* Footer */
   .footer-top { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
+
+  /* CTA strip */
   .cta-strip-actions { flex-direction: column; align-items: stretch; }
   .cta-strip-actions .btn { justify-content: center; }
+
+  /* About */
   .principles-grid { grid-template-columns: 1fr; }
+  .about-pull { font-size: clamp(18px, 5vw, 24px); }
+
+  /* Advisory */
+  .tenets { border-inline-start: none; }
+  .tenet { border: none; border-block-end: 1px solid var(--sur-border); }
+
+  /* Insights / HOW */
   .insights-grid { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr; }
   .framework-content { grid-template-columns: 1fr; }
+
+  /* Contact */
   .location-inner { flex-direction: column; align-items: flex-start; }
   .channel-filter { flex-wrap: wrap; }
+  .contact-card { padding: clamp(20px, 5vw, 32px); }
+  .contact-channel-item { grid-template-columns: 70px 1fr; }
+
+  /* Services */
+  .service-index { font-size: clamp(52px, 15vw, 80px); }
+  .engagement-facts { gap: 16px; }
+  .discipline-bar { flex-direction: column; gap: 16px; }
+
+  /* General — buttons full width in stacked layouts */
+  .btn { white-space: normal; text-align: center; }
+
+  /* Reduce section vertical padding on mobile */
+  :root { --pad-section: clamp(48px, 8vw, 80px); }
 }
