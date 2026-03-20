@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Industrial Oversight Training Academy — Istawra Consulting</title>
+  <meta name="description" content="The Istawra Industrial Oversight Training Academy — a controlled capability system for senior government and strategic industrial teams." />
+  <link rel="canonical" href="https://istawra.com/academy.html" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta property="og:title" content="Industrial Oversight Training Academy — Istawra Consulting" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" />
+  <link rel="stylesheet" href="/site.css" />
+  <style>
+    /* ── ACADEMY-SPECIFIC STYLES ─────────────────────────────── */
+
+    /* Problem columns — 3-col bordered grid */
+    .problem-cols {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--sur-border);
+    }
+    .p-col {
+      padding: clamp(32px, 3.5vw, 52px) clamp(24px, 2.5vw, 44px);
+      border-inline-end: 1px solid var(--sur-border);
+    }
+    .p-col:last-child { border-inline-end: none; }
+    .p-num {
+      font-family: var(--f-display);
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      color: var(--sur-gold-lo);
+      margin-block-end: 20px;
+      display: block;
+    }
+    .p-heading {
+      font-family: var(--f-display);
+      font-size: clamp(18px, 1.5vw, 24px);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--sur-text);
+      margin-block-end: 16px;
+    }
+    .p-body {
+      font-size: clamp(13px, 0.92vw, 16px);
+      line-height: 1.82;
+      color: var(--sur-text-2);
+    }
+
+    /* Outcomes — prose + capability list */
+    .outcomes-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 100px);
+      align-items: start;
+      padding-block: var(--pad-section);
+    }
+    .outcomes-prose p {
+      font-size: clamp(15px, 1.05vw, 18px);
+      line-height: 1.82;
+      color: var(--sur-text-2);
+      margin-block-end: 1.4em;
+    }
+    .outcomes-prose p:last-child { margin-block-end: 0; }
+    .cap-list { list-style: none; border-block-start: 1px solid var(--sur-border); }
+    .cap-list li {
+      font-family: var(--f-display);
+      font-size: clamp(16px, 1.2vw, 20px);
+      font-weight: 300;
+      line-height: 1.4;
+      color: var(--sur-text);
+      padding-block: 16px;
+      border-block-end: 1px solid var(--sur-border);
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 14px;
+      align-items: baseline;
+    }
+    .cap-list li::before {
+      content: '—';
+      color: var(--sur-gold);
+      font-size: 11px;
+    }
+
+    /* Tools — 3-col matching tenet pattern */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-inline-start: 1px solid var(--sur-border);
+      margin-block-start: clamp(48px, 6vh, 80px);
+    }
+    .t-card {
+      border-inline-end: 1px solid var(--sur-border);
+      border-block-end: 1px solid var(--sur-border);
+      padding: clamp(32px, 3.5vw, 52px) clamp(24px, 2.5vw, 44px);
+      position: relative;
+      transition: background var(--dur-mid);
+    }
+    .t-card:hover { background: var(--sur-gold-gst); }
+    .t-card::after {
+      content: '';
+      position: absolute;
+      inset-block-end: 0;
+      inset-inline-start: 0;
+      height: 2px; width: 0;
+      background: var(--sur-gold);
+      transition: width 0.5s var(--ease-out);
+    }
+    .t-card:hover::after { width: 100%; }
+    .t-acronym {
+      font-family: var(--f-display);
+      font-size: clamp(32px, 3.5vw, 52px);
+      font-weight: 300;
+      color: var(--sur-gold);
+      line-height: 1;
+      letter-spacing: 0.04em;
+      margin-block-end: 4px;
+    }
+    .t-fullname {
+      font-family: var(--f-ui);
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sur-text-3);
+      margin-block-end: 24px;
+      display: block;
+    }
+    .t-desc {
+      font-size: clamp(13px, 0.92vw, 16px);
+      line-height: 1.82;
+      color: var(--sur-text-2);
+      margin-block-end: 20px;
+    }
+    .t-example {
+      font-family: var(--f-display);
+      font-size: clamp(14px, 1vw, 17px);
+      font-style: italic;
+      line-height: 1.7;
+      color: var(--sur-text-3);
+      border-inline-start: 2px solid var(--sur-border);
+      padding-inline-start: 16px;
+    }
+
+    /* Method verdict bar */
+    .method-verdict {
+      margin-block-start: 0;
+      padding: clamp(24px, 2.5vw, 36px) clamp(24px, 3vw, 48px);
+      border: 1px solid var(--sur-border);
+      border-block-start: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--sur-bg-1);
+    }
+    .method-verdict p {
+      font-family: var(--f-display);
+      font-size: clamp(16px, 1.3vw, 21px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--sur-text-2);
+      line-height: 1.55;
+      text-align: center;
+    }
+    .method-verdict strong {
+      color: var(--sur-gold);
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    /* Flagship layout */
+    .flagship-layout {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: clamp(40px, 6vw, 100px);
+      align-items: start;
+    }
+    .flagship-prose p {
+      font-size: clamp(15px, 1.05vw, 18px);
+      line-height: 1.82;
+      color: var(--sur-text-2);
+      margin-block-end: 1.4em;
+    }
+    .flagship-prose p:last-child { margin-block-end: 0; }
+    .verdict-card {
+      background: var(--sur-bg-2);
+      border: 1px solid var(--sur-border);
+      border-block-start: 2px solid var(--sur-gold);
+      padding: clamp(28px, 3vw, 44px);
+      position: sticky;
+      top: 100px;
+    }
+    .verdict-tag {
+      font-family: var(--f-ui);
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sur-gold);
+      margin-block-end: 20px;
+      display: block;
+    }
+    .verdict-text {
+      font-family: var(--f-display);
+      font-size: clamp(16px, 1.3vw, 22px);
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--sur-text);
+    }
+    .verdict-text em { color: var(--sur-gold); font-style: normal; }
+
+    /* Archetypes — 4-col */
+    .arch-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-inline-start: 1px solid var(--sur-border);
+      margin-block-start: clamp(48px, 6vh, 80px);
+    }
+    .arch-card {
+      border-inline-end: 1px solid var(--sur-border);
+      border-block-end: 1px solid var(--sur-border);
+      padding: clamp(28px, 3vw, 44px) clamp(20px, 2vw, 32px);
+      transition: background var(--dur-mid);
+    }
+    .arch-card:hover { background: var(--sur-gold-gst); }
+    .arch-label {
+      font-family: var(--f-ui);
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sur-gold);
+      margin-block-end: 10px;
+      display: block;
+    }
+    .arch-sector {
+      font-family: var(--f-display);
+      font-size: clamp(17px, 1.4vw, 22px);
+      font-weight: 400;
+      color: var(--sur-text);
+      line-height: 1.2;
+      margin-block-end: 16px;
+      padding-block-end: 16px;
+      border-block-end: 1px solid var(--sur-border);
+    }
+    .arch-delta {
+      font-size: clamp(12px, 0.88vw, 14px);
+      line-height: 1.78;
+      color: var(--sur-text-2);
+    }
+
+    /* Delivery — 3-col matching tenet pattern */
+    .delivery-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-inline-start: 1px solid var(--sur-border);
+      margin-block-start: clamp(48px, 6vh, 80px);
+    }
+    .d-card {
+      border-inline-end: 1px solid var(--sur-border);
+      border-block-end: 1px solid var(--sur-border);
+      padding: clamp(32px, 3.5vw, 52px) clamp(24px, 2.5vw, 44px);
+    }
+    .d-mode {
+      font-family: var(--f-ui);
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sur-gold);
+      margin-block-end: 10px;
+      display: block;
+    }
+    .d-title {
+      font-family: var(--f-display);
+      font-size: clamp(20px, 1.8vw, 28px);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--sur-text);
+      margin-block-end: 8px;
+    }
+    .d-duration {
+      font-family: var(--f-ui);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--sur-text-3);
+      padding-block-end: 20px;
+      margin-block-end: 20px;
+      border-block-end: 1px solid var(--sur-border);
+    }
+    .d-audience {
+      font-family: var(--f-ui);
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sur-text-3);
+      margin-block-end: 14px;
+    }
+    .d-body {
+      font-size: clamp(13px, 0.92vw, 16px);
+      line-height: 1.82;
+      color: var(--sur-text-2);
+    }
+    .assess-note {
+      padding: clamp(20px, 2vw, 28px) clamp(24px, 3vw, 40px);
+      border: 1px solid var(--sur-border);
+      border-block-start: none;
+      background: var(--sur-bg-1);
+      text-align: center;
+    }
+    .assess-note p {
+      font-family: var(--f-display);
+      font-size: clamp(14px, 1.05vw, 18px);
+      font-style: italic;
+      color: var(--sur-text-3);
+      line-height: 1.6;
+    }
+
+    /* Audience layout */
+    .audience-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 100px);
+      align-items: start;
+      padding-block: var(--pad-section);
+    }
+    .audience-pull {
+      font-family: var(--f-display);
+      font-size: clamp(22px, 2.2vw, 36px);
+      font-weight: 300;
+      line-height: 1.4;
+      color: var(--sur-text);
+      font-style: italic;
+      border-inline-start: 2px solid var(--sur-gold);
+      padding-inline-start: 28px;
+    }
+    .audience-pull em { color: var(--sur-gold); font-style: normal; }
+    .audience-body p {
+      font-size: clamp(15px, 1.05vw, 18px);
+      line-height: 1.82;
+      color: var(--sur-text-2);
+      margin-block-end: 1.4em;
+    }
+    .audience-body p:last-child { margin-block-end: 0; }
+
+    /* Section spacing wrappers */
+    .s-pad { padding-block: var(--pad-section); }
+    .s-pad-top { padding-block-start: var(--pad-section); }
+
+    /* Section header — label + section-title in one block */
+    .s-header { margin-block-end: clamp(40px, 5vh, 64px); }
+    .s-header .section-title { margin-block-start: 14px; }
+
+    /* ── RESPONSIVE — academy extras ───────────────────────── */
+    @media (max-width: 960px) {
+      .outcomes-layout,
+      .flagship-layout,
+      .audience-layout { grid-template-columns: 1fr; }
+
+      .verdict-card { position: static; }
+
+      .tools-grid,
+      .delivery-row { grid-template-columns: 1fr 1fr; }
+
+      .arch-row { grid-template-columns: 1fr 1fr; }
+
+      .problem-cols { grid-template-columns: 1fr; }
+      .p-col { border-inline-end: none; border-block-end: 1px solid var(--sur-border); }
+      .p-col:last-child { border-block-end: none; }
+    }
+    @media (max-width: 680px) {
+      .tools-grid,
+      .delivery-row,
+      .arch-row { grid-template-columns: 1fr; }
+
+      .outcomes-layout { padding-block: calc(var(--pad-section) * 0.7); }
+      .audience-layout { padding-block: calc(var(--pad-section) * 0.7); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ─────────────────────────────────────────────── -->
+<nav id="nav" aria-label="Primary navigation">
+  <a href="/" class="nav-logo">Istawra <em>Consulting</em></a>
+  <ul class="nav-links" role="list">
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/advisory.html">Advisory</a></li>
+    <li><a href="/services.html">Services</a></li>
+    <li><a href="/how-we-think.html">How We Think</a></li>
+    <li><a href="/insights.html">Insights</a></li>
+    <li><a href="/academy.html" class="active">Academy</a></li>
+    <li><a href="/contact.html" class="nav-engage">Engage</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<nav class="nav-overlay" id="navOverlay" aria-label="Mobile navigation" hidden>
+  <a href="/about.html">About</a>
+  <a href="/advisory.html">Advisory</a>
+  <a href="/services.html">Services</a>
+  <a href="/how-we-think.html">How We Think</a>
+  <a href="/insights.html">Insights</a>
+  <a href="/academy.html">Academy</a>
+  <a href="/contact.html">Engage</a>
+</nav>
+
+<main>
+
+  <!-- ══════════════════════════════════════════════
+       1 — PAGE HEADER
+  ══════════════════════════════════════════════ -->
+  <header class="page-header" aria-label="Industrial Oversight Training Academy">
+    <div aria-hidden="true" class="page-header-vline"></div>
+    <div aria-hidden="true" class="page-header-glyph">T</div>
+    <div class="wrap">
+      <div class="page-eyebrow">
+        <span class="rule" aria-hidden="true"></span>
+        <span class="label">Industrial Oversight Training Academy</span>
+      </div>
+      <h1 class="page-h1">Oversight is a discipline.<br>Train it as <em>one.</em></h1>
+      <p class="page-sub">A controlled training system for the teams responsible for what sovereign industrial programs actually deliver.</p>
+    </div>
+  </header>
+
+
+  <!-- ══════════════════════════════════════════════
+       2 — THE PROBLEM
+  ══════════════════════════════════════════════ -->
+  <section aria-label="The problem" style="background: var(--sur-bg); border-block-end: 1px solid var(--sur-border);">
+    <div class="wrap s-pad">
+      <div class="s-header" data-reveal>
+        <span class="label">Diagnosis</span>
+        <h2 class="section-title">Three failures that training<br>rarely <em>addresses</em></h2>
+      </div>
+      <div class="problem-cols" data-reveal>
+        <div class="p-col">
+          <span class="p-num">I</span>
+          <h3 class="p-heading">Activity Is Not Evidence of Capability</h3>
+          <p class="p-body">Reporting cycles, steering committees, and milestone trackers measure the presence of process. They do not measure whether the team behind that process can interpret what the data means, identify what it conceals, or recognise a structural failure before it becomes a political one. Visible activity and reliable oversight are not the same object.</p>
+        </div>
+        <div class="p-col">
+          <span class="p-num">II</span>
+          <h3 class="p-heading">Institutions Do Not Deliver. Architecture Does.</h3>
+          <p class="p-body">No ministry, authority, or oversight body delivers an industrial outcome by virtue of its mandate alone. What determines delivery is the architecture of relationships, accountabilities, and decision rights that the institution either builds or inherits. Senior teams rarely have a method for reading that architecture — or for identifying where it has failed before the program confirms it.</p>
+        </div>
+        <div class="p-col">
+          <span class="p-num">III</span>
+          <h3 class="p-heading">Metrics Without Judgment Produce Noise</h3>
+          <p class="p-body">Industrial flagship programs generate substantial data. KPIs, readiness scores, delivery dashboards, and compliance reports accumulate across every reporting cycle. None of this substitutes for the capacity to make a judgment call — to determine whether the numbers reflect actual execution progress or a reporting structure optimised to look like one. That distinction requires trained judgment, not more data.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       3 — WHAT THE ACADEMY PRODUCES
+  ══════════════════════════════════════════════ -->
+  <section class="section-light" aria-label="What the academy produces">
+    <div class="wrap">
+      <div class="outcomes-layout">
+        <div class="outcomes-prose" data-reveal>
+          <span class="label">Outputs</span>
+          <h2 class="section-title">What the academy <em>produces</em></h2>
+          <div style="margin-block-start: 28px;">
+            <p>A team that completes the academy does not simply know more about industrial programs. It has acquired a structured method for reading a program against its delivery architecture — and for producing a defensible assessment that supports a decision.</p>
+            <p>The output is not familiarity with frameworks. It is operational readiness to act. Each participant exits the system with a personal transfer case — a worked application of the method to their own institutional context, reviewed and scored against the same rubric used in every delivery.</p>
+          </div>
+        </div>
+        <div data-reveal data-delay="1">
+          <ul class="cap-list">
+            <li>Apply the five-layer production hierarchy to an unfamiliar industrial program</li>
+            <li>Diagnose rendering failures before they manifest as delivery failures</li>
+            <li>Read the transfer topology of a complex industrial object across supplier, assembler, and sovereign levels</li>
+            <li>Separate structural execution evidence from reporting-cycle compliance signals</li>
+            <li>Produce a scored program assessment using NSCS, SEAM, and PSAP in sequence</li>
+            <li>Arrive at a defensible decision output: proceed, hold, redesign, or escalate</li>
+            <li>Transfer the method to a sovereign industrial object outside the training case</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       4 — THE METHOD
+  ══════════════════════════════════════════════ -->
+  <section style="background: var(--c-ink-1); border-block: 1px solid var(--c-border);" aria-label="The method">
+    <div class="wrap s-pad">
+      <div data-reveal>
+        <span class="label">Method</span>
+        <h2 class="section-title">A three-tool diagnostic <em>sequence</em></h2>
+        <p style="margin-block-start: 20px; max-width: 680px; font-size: clamp(14px, 1vw, 17px); color: var(--sur-text-2); line-height: 1.82;">The academy is built on a fixed analytical method. The method does not change between delivery cohorts or between industrial objects. What changes is the case to which it is applied.</p>
+      </div>
+      <div class="tools-grid" data-reveal data-delay="1">
+        <div class="t-card">
+          <div class="t-acronym">NSCS</div>
+          <span class="t-fullname">National Supply Chain Scorecard</span>
+          <p class="t-desc">NSCS maps the structural depth of an industrial program against five sovereign production layers: doctrine, rendering, execution design, simulation, and training transmission. It produces a scored profile that identifies which layers are architecturally sound and which are dependent on institutional assertion rather than demonstrated capability.</p>
+          <p class="t-example">In the Saudi automotive flagship case, NSCS reveals that Tier 2 supplier localisation metrics register high programme-wide while actual production-line capability sits at Tier 1 concentration — a rendering gap the scorecard makes visible before the assembly schedule exposes it.</p>
+        </div>
+        <div class="t-card">
+          <div class="t-acronym">SEAM</div>
+          <span class="t-fullname">Sovereign Execution Assessment Matrix</span>
+          <p class="t-desc">SEAM interrogates the execution architecture of a program across four dimensions: decision rights, accountability topology, resource flow, and real-time responsiveness. It distinguishes between programs with functional execution architecture and those operating on inherited structure not tested against live production conditions.</p>
+          <p class="t-example">Applied to the Saudi automotive case, SEAM surfaces a break in accountability topology at the interface between the government program office and the primary OEM — a structural gap milestone reporting treats as coordination but SEAM identifies as a sovereignty risk.</p>
+        </div>
+        <div class="t-card">
+          <div class="t-acronym">PSAP</div>
+          <span class="t-fullname">Program Structural Assessment Protocol</span>
+          <p class="t-desc">PSAP integrates the outputs of NSCS and SEAM into a single-program assessment that supports a specific decision output. It does not produce a report. It produces a judgment: whether the program's current architecture supports continued execution at sovereign scale, or whether intervention is required before the next production gate.</p>
+          <p class="t-example">In the Saudi automotive simulation, PSAP produces a hold verdict on the domestic content certification pathway — not because the numbers are wrong, but because the transfer topology required to validate them at sovereign scale has not been built.</p>
+        </div>
+      </div>
+      <div class="method-verdict" data-reveal>
+        <p>The method terminates in a single output: <strong>proceed, hold, redesign,</strong> or <strong>escalate</strong> — with the structural evidence that makes the judgment defensible.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       5 — THE FLAGSHIP CASE
+  ══════════════════════════════════════════════ -->
+  <section style="background: var(--sur-bg); border-block-end: 1px solid var(--sur-border);" aria-label="The flagship case">
+    <div class="wrap s-pad">
+      <div class="s-header" data-reveal>
+        <span class="label">The Teaching Case</span>
+        <h2 class="section-title">Saudi automotive as a<br>structural <em>argument</em></h2>
+      </div>
+      <div class="flagship-layout" data-reveal>
+        <div class="flagship-prose">
+          <p>The Saudi automotive flagship program is the primary teaching case not because of its sector but because of its architecture. It is a sovereign industrial program with a fully developed five-layer production hierarchy, a documented rendering gap between policy intent and execution design, and a supply chain topology complex enough to require each analytical tool to do real work. The case makes the method visible.</p>
+          <p>It carries a property rare in industrial teaching cases: the academy has produced a worked simulation that runs the full diagnostic sequence against live program data and arrives at a structured verdict. Participants do not study the case from the outside. They work through it as an oversight team would — with incomplete information, under the logic of a real decision gate.</p>
+          <p>The simulation is not a case study in the conventional sense. It is a controlled environment in which judgment is required, tested, and scored. That requirement is what makes it a training instrument rather than a reference document.</p>
+        </div>
+        <div class="verdict-card">
+          <span class="verdict-tag">Simulation Verdict</span>
+          <p class="verdict-text">The Saudi automotive flagship case returns a <em>hold</em> verdict at the domestic content certification gate — on structural grounds, not on performance data. The transfer topology required to validate sovereign production at scale has not been architecturally established.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       6 — TRANSFER BEYOND AUTOMOTIVE
+  ══════════════════════════════════════════════ -->
+  <section class="section-light" aria-label="Transfer beyond automotive">
+    <div class="wrap s-pad">
+      <div data-reveal>
+        <span class="label">Transfer</span>
+        <h2 class="section-title">The method is fixed.<br>The object <em>changes.</em></h2>
+        <p style="margin-block-start: 20px; max-width: 680px; font-size: clamp(14px, 1vw, 17px); color: var(--sur-text-2); line-height: 1.82;">Analytical capability that exists only in the teaching case is not capability — it is familiarity. The academy is designed on a fixed-method, variable-object principle: the three-tool sequence applies without modification to any sovereign industrial program.</p>
+      </div>
+      <div class="arch-row" data-reveal data-delay="1">
+        <div class="arch-card">
+          <span class="arch-label">Archetype A</span>
+          <div class="arch-sector">HVAC Systems</div>
+          <p class="arch-delta">When NSCS is applied to a sovereign HVAC manufacturing program, the rendering gap shifts from OEM assembly concentration to climate-adaptation engineering — a layer automotive analysis rarely surfaces because thermal performance localisation operates under a different sovereign production logic.</p>
+        </div>
+        <div class="arch-card">
+          <span class="arch-label">Archetype B</span>
+          <div class="arch-sector">Medical Imaging (MRI)</div>
+          <p class="arch-delta">In the MRI transfer case, SEAM's accountability topology analysis must account for a regulatory dimension absent in automotive — the sovereign program office is not the primary execution authority, and decision-rights mapping must extend to health ministry certification chains to produce a complete assessment.</p>
+        </div>
+        <div class="arch-card">
+          <span class="arch-label">Archetype C</span>
+          <div class="arch-sector">Desalination Infrastructure</div>
+          <p class="arch-delta">Desalination programs present a transfer case in which the five-layer hierarchy compresses at the simulation layer — physical infrastructure programs have limited pre-production testing environments, so PSAP must weight doctrine and execution design evidence more heavily to reach a defensible decision output.</p>
+        </div>
+        <div class="arch-card">
+          <span class="arch-label">Archetype D</span>
+          <div class="arch-sector">Aviation &amp; Rotary Systems</div>
+          <p class="arch-delta">The aviation and helicopter transfer case surfaces the highest transfer topology complexity of the four archetypes — sovereign MRO programs introduce a second-order localisation requirement that NSCS must score separately from primary assembly capability to avoid a structurally misleading programme profile.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       7 — DELIVERY
+  ══════════════════════════════════════════════ -->
+  <section style="background: var(--sur-bg); border-block-end: 1px solid var(--sur-border);" aria-label="Delivery configurations">
+    <div class="wrap s-pad">
+      <div class="s-header" data-reveal>
+        <span class="label">Delivery</span>
+        <h2 class="section-title">Three delivery <em>configurations</em></h2>
+      </div>
+      <div class="delivery-row" data-reveal>
+        <div class="d-card">
+          <span class="d-mode">Mode I</span>
+          <div class="d-title">Executive Compressed</div>
+          <div class="d-duration">Two days — closed cohort</div>
+          <div class="d-audience">Senior government and strategic industrial leadership</div>
+          <p class="d-body">Designed for principals who carry direct oversight responsibility and limited time. It delivers the full three-tool sequence and the flagship simulation in an accelerated format, with emphasis on the decision output and the judgment logic behind it. Participants exit with a scored assessment and a transfer framework for immediate institutional application.</p>
+        </div>
+        <div class="d-card">
+          <span class="d-mode">Mode II</span>
+          <div class="d-title">Practitioner Full</div>
+          <div class="d-duration">Four days — structured cohort of eight to fourteen</div>
+          <div class="d-audience">Sovereign program office and oversight team leads</div>
+          <p class="d-body">Covers all fourteen modules of the academy in sequence. Participants work through the flagship case in depth, engage the four transfer archetypes, and produce individual transfer case sheets reviewed by the facilitation team. Structured for teams that will carry the method into active oversight mandates.</p>
+        </div>
+        <div class="d-card">
+          <span class="d-mode">Mode III</span>
+          <div class="d-title">Workshop-Linked</div>
+          <div class="d-duration">Modular — embedded within a live advisory engagement</div>
+          <div class="d-audience">Advanced facilitation teams and internal capability functions</div>
+          <p class="d-body">Integrates selected academy modules directly into a live Istawra advisory mandate. The teaching case and the live program under review operate in parallel — participants apply the method to real data in real time, with facilitation structured to maintain the analytical discipline of the academy inside an active engagement environment.</p>
+        </div>
+      </div>
+      <div class="assess-note" data-reveal>
+        <p>All three delivery modes are assessed against the same rubric. There is no reduced standard for the compressed format.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       8 — WHO THIS IS FOR
+  ══════════════════════════════════════════════ -->
+  <section style="background: var(--c-ink-1); border-block: 1px solid var(--c-border);" aria-label="Who the academy is for">
+    <div class="wrap">
+      <div class="audience-layout">
+        <div data-reveal>
+          <span class="label">Audience</span>
+          <p class="audience-pull" style="margin-block-start: 14px;">The academy is built for the people <em>accountable</em> for sovereign industrial programs — not for those who advise on them from the outside.</p>
+        </div>
+        <div class="audience-body" data-reveal data-delay="1" style="padding-block-start: 44px;">
+          <p>Senior government oversight teams — those who sit at the interface between ministerial direction and program execution — are the primary constituency. They arrive with mandate but without a structured method for reading what a program's architecture is actually delivering beneath its reported metrics. The academy provides that method.</p>
+          <p>Strategic industrial leadership in sovereign flagship programs uses the academy to stress-test their own execution architecture before a decision gate makes the gaps consequential. Sovereign program offices use it to build analytical consistency across the team responsible for the most sensitive assessments. Advanced facilitation teams use it to extend the method into their own institutional contexts.</p>
+          <p>The academy is not designed for general industrial training audiences. It is calibrated for seniority, structured for judgment, and designed to produce capability that operates under real institutional pressure.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       9 — ENGAGEMENT
+  ══════════════════════════════════════════════ -->
+  <section class="cta-strip" aria-label="Engagement">
+    <div class="wrap">
+      <div class="cta-strip-inner" data-reveal>
+        <span class="label">Initiate Engagement</span>
+        <h2 class="cta-strip-title">Deployment is through<br><em>institutional channels.</em></h2>
+        <p class="cta-strip-body">The academy is not available through open enrolment. Mandates are initiated by the institution, reviewed against current capacity, and confirmed through direct engagement with Istawra. Concurrent deployments are limited.</p>
+        <div class="cta-strip-actions">
+          <a href="/contact.html" class="btn btn-gold">Initiate Contact</a>
+          <a href="/services.html" class="btn btn-ghost">View Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────── -->
+<footer id="footer" role="contentinfo">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Istawra <em>Consulting</em></div>
+        <div class="footer-tagline">Sovereign-grade advisory<br>Institutional governance<br>Execution assurance</div>
+      </div>
+      <div>
+        <div class="footer-nav-heading">Practice</div>
+        <ul class="footer-links" role="list">
+          <li><a href="/about.html">About Istawra</a></li>
+          <li><a href="/advisory.html">Advisory Philosophy</a></li>
+          <li><a href="/services.html">Service Constructs</a></li>
+          <li><a href="/academy.html">Oversight Academy</a></li>
+          <li><a href="/contact.html">Initiate Engagement</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-nav-heading">Knowledge</div>
+        <ul class="footer-links" role="list">
+          <li><a href="/how-we-think.html">How We Think</a></li>
+          <li><a href="/insights.html">Insights</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Istawra Consulting. All rights reserved. <em>&nbsp;·&nbsp;</em> istawra.com</span>
+      <span class="footer-copy">Riyadh, Kingdom of Saudi Arabia</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function(){ nav.classList.toggle('anchored', window.scrollY > 56); }, { passive: true });
+  nav.classList.toggle('anchored', window.scrollY > 56);
+  var toggle = document.getElementById('navToggle'), overlay = document.getElementById('navOverlay'), open = false;
+  function setNav(s){ open=s; toggle.classList.toggle('open',open); toggle.setAttribute('aria-expanded',String(open)); overlay.hidden=!open; overlay.classList.toggle('open',open); document.body.style.overflow=open?'hidden':''; }
+  toggle.addEventListener('click', function(){ setNav(!open); });
+  overlay.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setNav(false); }); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'&&open) setNav(false); });
+  var els = document.querySelectorAll('[data-reveal]');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target); } }); }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
+    els.forEach(function(el){ io.observe(el); });
+  } else { els.forEach(function(el){ el.classList.add('in-view'); }); }
+}());
+</script>
+</body>
+</html>
