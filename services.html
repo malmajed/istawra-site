@@ -1,628 +1,384 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Service Constructs | Istawra Consulting</title>
-  <meta name="description" content="Istawra services are delivered as governed mandate constructs — designed to protect decision integrity and enable execution at speed in complex, high-stakes environments." />
+  <title>Services — Istawra Consulting</title>
+  <meta name="description" content="Three integrated service constructs for sovereign-grade mandates: Decision Architecture, Governed Delivery, and Execution Assurance." />
   <link rel="canonical" href="https://istawra.com/services.html" />
-
-  <!-- Match existing Istawra site fonts/styles exactly -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta property="og:title" content="Services — Istawra Consulting" />
+  <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-
-  <style>
-    /* ── Reset & base — matches istawra.com ── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --gold:       #C8A951;
-      --gold-light: #E5CC7A;
-      --navy:       #0D0D1A;
-      --navy-2:     #13131F;
-      --navy-3:     #1A1A2E;
-      --slate:      #2C3E50;
-      --text:       #E8E4D8;
-      --text-dim:   #9896A0;
-      --text-dimmer:#55546A;
-      --border:     rgba(255,255,255,0.07);
-      --border-gold:rgba(200,169,81,0.25);
-      --font-display: "Cormorant Garamond", serif;
-      --font-body:    "DM Sans", sans-serif;
-      --max-w: 860px;
-    }
-
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--navy);
-      color: var(--text);
-      font-family: var(--font-body);
-      font-size: 15px;
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--navy); }
-    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
-
-    a { color: inherit; }
-
-    /* ── Skip link ── */
-    .skip { position: absolute; left: -9999px; }
-    .skip:focus { left: 1rem; top: 1rem; z-index: 999; background: var(--gold); color: var(--navy); padding: 8px 16px; }
-
-    /* ── Nav ── */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(13,13,26,0.94);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(20px);
-    }
-    .nav-inner {
-      max-width: 1200px; margin: 0 auto;
-      padding: 0 2rem; height: 62px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .nav-logo {
-      font-family: var(--font-display); font-size: 20px; font-weight: 600;
-      color: var(--text); text-decoration: none; letter-spacing: 0.02em;
-    }
-    .nav-logo em { color: var(--gold); font-style: italic; }
-    .nav-links {
-      display: flex; align-items: center; gap: 2rem; list-style: none;
-    }
-    .nav-links a {
-      color: var(--text-dim); text-decoration: none; font-size: 13px;
-      font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s;
-    }
-    .nav-links a:hover, .nav-links a.active { color: var(--text); }
-    .nav-links a.active { border-bottom: 1px solid var(--gold); padding-bottom: 1px; }
-    .nav-cta {
-      padding: 7px 18px; border: 1px solid var(--border-gold);
-      color: var(--gold); text-decoration: none; font-size: 13px;
-      font-weight: 500; transition: all 0.2s; letter-spacing: 0.03em;
-    }
-    .nav-cta:hover { background: var(--gold); color: var(--navy); border-color: var(--gold); }
-
-    /* ── Page header ── */
-    .page-header {
-      padding: 6rem 2rem 4rem;
-      border-bottom: 1px solid var(--border);
-      max-width: var(--max-w); margin: 0 auto;
-    }
-    .page-header h1 {
-      font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 3.6rem);
-      font-weight: 600; line-height: 1.1; color: #fff; margin-bottom: 1.2rem;
-    }
-    .page-header p {
-      color: var(--text-dim); font-size: 15px; line-height: 1.8;
-      max-width: 580px; font-weight: 300;
-    }
-    .page-header .sub-note {
-      margin-top: 1rem; font-size: 13px; color: var(--text-dimmer);
-      font-style: italic;
-    }
-
-    /* ── Main content ── */
-    main { padding: 0 2rem 6rem; }
-    .content { max-width: var(--max-w); margin: 0 auto; }
-
-    /* ── Sections ── */
-    .section { padding: 4rem 0; border-bottom: 1px solid var(--border); }
-    .section:last-of-type { border-bottom: none; }
-
-    .section-label {
-      font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem;
-    }
-    .section > h2 {
-      font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem);
-      font-weight: 600; color: #fff; line-height: 1.2; margin-bottom: 1rem;
-    }
-    .section > h2 em { color: var(--gold); font-style: italic; }
-    .section > .section-intro {
-      color: var(--text-dim); font-size: 14px; line-height: 1.8;
-      max-width: 600px; margin-bottom: 2.5rem; font-weight: 300;
-    }
-
-    /* ── Design principles grid ── */
-    .principles-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1px; background: var(--border); border: 1px solid var(--border);
-      margin-top: 2rem;
-    }
-    .principle {
-      background: var(--navy-3); padding: 1.5rem;
-    }
-    .principle h3 {
-      font-family: var(--font-display); font-size: 1.1rem; font-weight: 600;
-      color: #fff; margin-bottom: 0.5rem;
-    }
-    .principle p {
-      font-size: 13px; color: var(--text-dim); line-height: 1.65;
-    }
-
-    /* ── Service constructs ── */
-    .constructs { display: flex; flex-direction: column; gap: 0; }
-    .construct {
-      padding: 2rem 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .construct:last-child { border-bottom: none; }
-    .construct h3 {
-      font-family: var(--font-display); font-size: 1.35rem; font-weight: 600;
-      color: #fff; margin-bottom: 0.75rem; line-height: 1.3;
-    }
-    .construct p {
-      color: var(--text-dim); font-size: 14px; line-height: 1.75;
-      margin-bottom: 1rem; font-weight: 300; max-width: 640px;
-    }
-    .construct ul {
-      list-style: none; display: flex; flex-direction: column; gap: 4px;
-    }
-    .construct ul li {
-      font-size: 13px; color: var(--text-dimmer);
-      padding-left: 1rem; position: relative;
-    }
-    .construct ul li::before {
-      content: "·"; position: absolute; left: 0; color: var(--gold);
-    }
-
-    /* ── Deliverables two-col ── */
-    .deliverables-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
-      margin-top: 1.5rem;
-    }
-    .deliverable-group h3 {
-      font-family: var(--font-display); font-size: 1.1rem; font-weight: 600;
-      color: #fff; margin-bottom: 0.75rem;
-    }
-    .deliverable-group ul {
-      list-style: none; display: flex; flex-direction: column; gap: 4px;
-    }
-    .deliverable-group ul li {
-      font-size: 13px; color: var(--text-dimmer);
-      padding-left: 1rem; position: relative;
-    }
-    .deliverable-group ul li::before {
-      content: "·"; position: absolute; left: 0; color: var(--gold);
-    }
-
-    /* ── Intelligence Products section (SaudiOpp) ── */
-    .intel-section {
-      padding: 4rem 0;
-      border-top: 1px solid var(--border);
-    }
-    .intel-label {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem;
-    }
-    .intel-label span {
-      width: 5px; height: 5px; background: var(--gold);
-      border-radius: 50%; animation: blink 2.5s infinite;
-    }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
-
-    .intel-section > .content > h2 {
-      font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem);
-      font-weight: 600; color: #fff; line-height: 1.2; margin-bottom: 1rem;
-    }
-    .intel-section > .content > h2 em { color: var(--gold); font-style: italic; }
-    .intel-section > .content > .section-intro {
-      color: var(--text-dim); font-size: 14px; line-height: 1.8;
-      max-width: 600px; margin-bottom: 2.5rem; font-weight: 300;
-    }
-
-    .intel-product {
-      border: 1px solid var(--border-gold);
-      background: var(--navy-3);
-      padding: 2.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .intel-product::before {
-      content: "";
-      position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, var(--gold), transparent);
-    }
-    .intel-product-top {
-      display: flex; align-items: flex-start;
-      justify-content: space-between; gap: 2rem;
-      margin-bottom: 1.5rem; flex-wrap: wrap;
-    }
-    .intel-product-id {
-      font-size: 10px; font-weight: 600; letter-spacing: 0.15em;
-      text-transform: uppercase; color: var(--gold);
-      border: 1px solid var(--border-gold);
-      padding: 3px 10px; display: inline-block; margin-bottom: 0.75rem;
-    }
-    .intel-product h3 {
-      font-family: var(--font-display); font-size: 1.6rem;
-      font-weight: 600; color: #fff; line-height: 1.2;
-    }
-    .intel-product h3 em { color: var(--gold); font-style: italic; }
-    .intel-product-meta {
-      display: flex; flex-direction: column; align-items: flex-end;
-      gap: 6px; flex-shrink: 0;
-    }
-    .intel-stat {
-      text-align: right;
-    }
-    .intel-stat-num {
-      font-family: var(--font-display); font-size: 2.2rem;
-      font-weight: 700; color: var(--gold); line-height: 1;
-    }
-    .intel-stat-label {
-      font-size: 10px; color: var(--text-dimmer); text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    .intel-product-desc {
-      color: var(--text-dim); font-size: 14px; line-height: 1.8;
-      margin-bottom: 1.75rem; font-weight: 300; max-width: 640px;
-      border-top: 1px solid var(--border); padding-top: 1.5rem;
-    }
-
-    .intel-features {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1.2rem; margin-bottom: 2rem;
-    }
-    .intel-feature h4 {
-      font-size: 12px; font-weight: 600; color: #fff;
-      letter-spacing: 0.04em; margin-bottom: 4px;
-    }
-    .intel-feature p {
-      font-size: 12px; color: var(--text-dimmer); line-height: 1.6;
-    }
-
-    .intel-sectors {
-      display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 2rem;
-    }
-    .intel-sector-tag {
-      font-size: 11px; color: var(--text-dimmer);
-      border: 1px solid var(--border);
-      padding: 3px 10px; background: var(--navy);
-    }
-
-    .intel-cta {
-      display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
-      padding-top: 1.5rem; border-top: 1px solid var(--border);
-    }
-    .btn-gold {
-      padding: 11px 28px; background: var(--gold); color: var(--navy);
-      font-weight: 600; font-size: 13px; text-decoration: none;
-      transition: all 0.2s; letter-spacing: 0.04em; display: inline-block;
-    }
-    .btn-gold:hover { background: var(--gold-light); }
-    .btn-outline {
-      padding: 11px 28px; border: 1px solid var(--border-gold);
-      color: var(--gold); font-size: 13px; font-weight: 500;
-      text-decoration: none; transition: all 0.2s; letter-spacing: 0.04em;
-      display: inline-block;
-    }
-    .btn-outline:hover { background: rgba(200,169,81,0.1); border-color: var(--gold); }
-    .intel-cta-note {
-      font-size: 12px; color: var(--text-dimmer); font-style: italic;
-    }
-
-    /* ── Engagement discipline ── */
-    .engagement-note {
-      padding: 3rem 0; border-top: 1px solid var(--border);
-    }
-    .engagement-note p {
-      color: var(--text-dim); font-size: 14px; line-height: 1.8;
-      margin-bottom: 1rem; font-weight: 300;
-    }
-    .engagement-links {
-      display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;
-    }
-
-    /* ── Footer ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 3rem 2rem; background: var(--navy-2);
-    }
-    .foot-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; flex-wrap: wrap; gap: 2rem;
-      justify-content: space-between; align-items: flex-start;
-    }
-    .foot-brand {
-      font-family: var(--font-display); font-size: 1.1rem; color: var(--text-dim);
-    }
-    .foot-brand em { color: var(--gold); font-style: italic; }
-    .foot-tagline {
-      font-size: 12px; color: var(--text-dimmer); margin-top: 4px;
-      line-height: 1.6;
-    }
-    .foot-nav { display: flex; flex-direction: column; gap: 6px; }
-    .foot-nav a {
-      font-size: 12px; color: var(--text-dimmer); text-decoration: none;
-      letter-spacing: 0.04em; transition: color 0.2s;
-    }
-    .foot-nav a:hover { color: var(--gold); }
-    .foot-copy {
-      width: 100%; font-size: 11px; color: var(--text-dimmer);
-      padding-top: 1.5rem; border-top: 1px solid var(--border);
-    }
-
-    /* ── Responsive ── */
-    @media (max-width: 640px) {
-      .nav-links { display: none; }
-      .page-header { padding: 4rem 1.2rem 2.5rem; }
-      main { padding: 0 1.2rem 4rem; }
-      .deliverables-grid { grid-template-columns: 1fr; }
-      .intel-product { padding: 1.5rem; }
-      .intel-product-top { flex-direction: column; }
-      .intel-product-meta { align-items: flex-start; }
-      .intel-stat { text-align: left; }
-    }
-  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" />
+  <link rel="stylesheet" href="/site.css" />
 </head>
-
 <body>
-  <a class="skip" href="#main">Skip to content</a>
 
-  <!-- Nav -->
-  <nav>
-    <div class="nav-inner">
-      <a class="nav-logo" href="/index.html">Istawra <em>Consulting</em></a>
-      <ul class="nav-links">
-        <li><a href="/about.html">About</a></li>
-        <li><a href="/advisory.html">Advisory</a></li>
-        <li><a href="/services.html" class="active">Services</a></li>
-        <li><a href="/how-we-think.html">How We Think</a></li>
-        <li><a href="/insights.html">Insights</a></li>
-        <li><a href="/academy.html">Academy</a></li>
-        <li><a class="nav-cta" href="/contact.html">Engage</a></li>
-      </ul>
+<nav id="nav" aria-label="Primary navigation">
+  <a href="/" class="nav-logo">Istawra <em>Consulting</em></a>
+  <ul class="nav-links" role="list">
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/advisory.html">Advisory</a></li>
+    <li><a href="/services.html" class="active">Services</a></li>
+    <li><a href="/how-we-think.html">How We Think</a></li>
+    <li><a href="/insights.html">Insights</a></li>
+    <li><a href="/academy.html">Academy</a></li>
+    <li><a href="/contact.html" class="nav-engage">Engage</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<nav class="nav-overlay" id="navOverlay" aria-label="Mobile navigation" hidden>
+  <a href="/about.html">About</a><a href="/advisory.html">Advisory</a><a href="/services.html">Services</a>
+  <a href="/how-we-think.html">How We Think</a><a href="/insights.html">Insights</a><a href="/academy.html">Academy</a><a href="/contact.html">Engage</a>
+</nav>
+
+<main>
+
+  <header class="page-header" aria-label="Services">
+    <div aria-hidden="true" class="page-header-vline"></div>
+    <div aria-hidden="true" class="page-header-glyph">S</div>
+    <div class="wrap">
+      <div class="page-eyebrow">
+        <span class="rule" aria-hidden="true"></span>
+        <span class="label">Service Constructs</span>
+      </div>
+      <h1 class="page-h1">Three constructs.<br>One <em>integrated</em> practice.</h1>
+      <p class="page-sub">Istawra's services are not discrete products — they are three expressions of the same analytical discipline, applied at different moments in the lifecycle of a sovereign mandate.</p>
     </div>
-  </nav>
+  </header>
 
-  <!-- Page header -->
-  <div class="page-header">
-    <h1>Service Constructs</h1>
-    <p>Istawra services are delivered as governed mandate constructs — not as a menu of consulting activities. Each construct is designed to protect decision integrity and enable execution at speed in complex, high-stakes environments.</p>
-    <p class="sub-note">Engagements are senior-led, explicitly scoped, and governed by design.</p>
-  </div>
-
-  <!-- Main -->
-  <main id="main">
-    <div class="content">
-
-      <!-- Design principles -->
-      <section class="section">
-        <div class="section-label">Service Design Principles</div>
-        <div class="principles-grid">
-          <div class="principle">
-            <h3>Mandate-Based</h3>
-            <p>Every service is defined as a mandate with explicit authority, scope, deliverables, cadence, and escalation rules.</p>
-          </div>
-          <div class="principle">
-            <h3>Senior-Led</h3>
-            <p>Engagements are led by senior advisors accountable for decision quality and outcomes.</p>
-          </div>
-          <div class="principle">
-            <h3>Governed by Design</h3>
-            <p>Decision rights, operating cadence, and controls are established at the outset — not retrofitted after issues arise.</p>
-          </div>
-          <div class="principle">
-            <h3>Execution-Aware</h3>
-            <p>Recommendations are constructed with full awareness of institutional capacity, incentives, and constraints.</p>
-          </div>
+  <!-- SERVICE 01: DECISION ARCHITECTURE -->
+  <article class="service-block" aria-label="Decision Architecture">
+    <div class="wrap">
+      <div class="service-inner">
+        <div class="service-meta" data-reveal>
+          <div class="service-index" aria-hidden="true">01</div>
+          <h2 class="service-name">Decision<br><em>Architecture</em></h2>
+          <div class="service-tagline">Clarity · Options · Integrity</div>
+          <p class="service-desc">Every consequential decision is preceded by a decision landscape — a structured view of the options available, the assumptions they rest on, and what must be true for each path to succeed. Istawra constructs this landscape before the principal commits.</p>
+          <p class="service-desc">We do not produce recommendations in the conventional sense. We produce decision instruments — documents designed to survive scrutiny, protect leadership authority, and remain defensible under conditions that did not exist when the choice was made.</p>
         </div>
-      </section>
-
-      <!-- Core Service Constructs -->
-      <section class="section">
-        <div class="section-label">Core Service Constructs</div>
-        <div class="constructs">
-
-          <div class="construct">
-            <h3>Chairman's Office Advisory</h3>
-            <p>A standing, high-trust advisory construct for decision-makers overseeing complex portfolios across multiple entities.</p>
-            <ul>
-              <li>Priority triage and executive decision briefs</li>
-              <li>Cross-entity governance and escalation management</li>
-              <li>Stakeholder alignment and negotiation support</li>
-              <li>Risk and dependency visibility at leadership level</li>
-            </ul>
-          </div>
-
-          <div class="construct">
-            <h3>Mission Architecture &amp; Activation</h3>
-            <p>A structured engagement to convert ambition into a governed, executable mission.</p>
-            <ul>
-              <li>Mission and success definition</li>
-              <li>Governance, authority, and accountability design</li>
-              <li>Initiative portfolio structuring and sequencing</li>
-              <li>90–180 day activation and readiness planning</li>
-            </ul>
-          </div>
-
-          <div class="construct">
-            <h3>Execution Assurance Retainer</h3>
-            <p>Independent assurance across programs, delivery units, and vendors to protect outcomes, budget, and accountability.</p>
-            <ul>
-              <li>Risk registers, triggers, and mitigation architecture</li>
-              <li>Dependency monitoring and readiness checkpoints</li>
-              <li>Executive assurance packs and escalations</li>
-              <li>Corrective action tracking and closure discipline</li>
-            </ul>
-          </div>
-
-          <div class="construct">
-            <h3>Institutional Capability Building</h3>
-            <p>Design and embed durable institutional delivery systems that persist beyond a single engagement.</p>
-            <ul>
-              <li>Operating model and delivery office design</li>
-              <li>Governance systems and reporting standards</li>
-              <li>Playbooks, templates, and training</li>
-              <li>Capability transfer and institutionalisation</li>
-            </ul>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- Typical Deliverables -->
-      <section class="section">
-        <div class="section-label">Typical Executive Deliverables</div>
-        <div class="deliverables-grid">
-          <div class="deliverable-group">
-            <h3>Decision &amp; Governance</h3>
-            <ul>
-              <li>Executive decision briefs</li>
-              <li>Mission and governance charters</li>
-              <li>Decision logs and authority matrices</li>
-              <li>Board and ministerial packs</li>
-            </ul>
-          </div>
-          <div class="deliverable-group">
-            <h3>Execution &amp; Assurance</h3>
-            <ul>
-              <li>Initiative and dependency maps</li>
-              <li>90–180 day activation plans</li>
-              <li>Risk registers and mitigation plans</li>
-              <li>Executive assurance and progress reports</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-    </div><!-- /content -->
-
-    <!-- ═══════════════════════════════════════════════════════
-         INTELLIGENCE PRODUCTS — SaudiOpp
-         ═══════════════════════════════════════════════════════ -->
-    <div class="intel-section">
-      <div class="content">
-
-        <div class="intel-label"><span></span>Intelligence Products</div>
-        <h2>Structured intelligence for <em>investment decisions</em></h2>
-        <p class="section-intro">
-          Alongside its advisory mandates, Istawra produces structured investment intelligence products — curated, sector-specific databases that give investors, funds, and industrial partners the analytical foundation to act with speed and confidence in Saudi Arabia's strategic industrialisation programme.
-        </p>
-
-        <!-- SaudiOpp card -->
-        <div class="intel-product">
-
-          <div class="intel-product-top">
-            <div>
-              <div class="intel-product-id">Intelligence Product · IP-01</div>
-              <h3>SaudiOpp — <em>Saudi Arabia</em><br/>Investment Intelligence Platform</h3>
+        <div class="service-detail" data-reveal data-delay="1">
+          <div class="service-detail-head">Capabilities</div>
+          <div class="service-capabilities">
+            <div class="capability">
+              <div class="capability-mark" aria-hidden="true"></div>
+              <p class="capability-text"><strong>Mission definition and success architecture</strong> — Translating ambition into a governed definition of success: measurable outcomes, time-bound milestones, and the conditions under which the mission is considered complete.</p>
             </div>
-            <div class="intel-product-meta">
-              <div class="intel-stat">
-                <div class="intel-stat-num">105</div>
-                <div class="intel-stat-label">PSAP Nodes</div>
-              </div>
-              <div class="intel-stat">
-                <div class="intel-stat-num">11</div>
-                <div class="intel-stat-label">Sectors</div>
-              </div>
+            <div class="capability">
+              <div class="capability-mark" aria-hidden="true"></div>
+              <p class="capability-text"><strong>Options analysis and trade-off mapping</strong> — Structured presentation of strategic paths with explicit assumptions, dependencies, risks, and the irreversible commitments each option requires.</p>
+            </div>
+            <div class="capability">
+              <div class="capability-mark" aria-hidden="true"></div>
+              <p class="capability-text"><strong>Stakeholder architecture</strong> — Mapping the decision-making authorities, interests, and constraints of every material actor — ministries, regulators, investors, delivery entities — before they become obstacles.</p>
+            </div>
+            <div class="capability">
+              <div class="capability-mark" aria-hidden="true"></div>
+              <p class="capability-text"><strong>VVIP-ready decision packs</strong> — Outputs designed for principals who have minutes, not hours — distilled, sequenced, and formatted for executive resolution without loss of underlying rigour.</p>
+            </div>
+            <div class="capability">
+              <div class="capability-mark" aria-hidden="true"></div>
+              <p class="capability-text"><strong>Pre-commitment review</strong> — An independent review of any major commitment before signature — contracts, agreements, policy positions — to surface assumptions that have not been tested.</p>
             </div>
           </div>
+          <div class="service-outputs">
+            <div class="service-outputs-head">Typical Outputs</div>
+            <ul class="service-output-list" role="list">
+              <li>Mission architecture document</li>
+              <li>Strategic options paper with trade-off matrix</li>
+              <li>Decision brief (2–4 pages, VVIP format)</li>
+              <li>Stakeholder map and authority matrix</li>
+              <li>Pre-commitment risk assessment</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
 
-          <p class="intel-product-desc">
-            SaudiOpp maps every Private Sector Attraction Programme (PSAP) node across Saudi Arabia's 11 strategic industrial sectors — derived directly from the approved national sector strategies for 2026–2035. Each node is structured as an investment brief: what must be built, why it matters to the Vision 2030 architecture, the global market context, the investment range, the recommended entry mechanism, SAEL accountability milestones, matched international companies, and Saudi partner upgrade paths.
+  <!-- SERVICE 02: GOVERNED DELIVERY -->
+  <article class="service-block section-light" aria-label="Governed Delivery">
+    <div class="wrap">
+      <div class="service-inner reverse">
+        <div class="service-meta" data-reveal>
+          <div class="service-index" aria-hidden="true">02</div>
+          <h2 class="service-name">Governed<br><em>Delivery</em></h2>
+          <div class="service-tagline">Cadence · Accountability · Control</div>
+          <p class="service-desc">The space between a decision and its execution is where national missions are most vulnerable. Unclear accountabilities, absent escalation pathways, and governance structures that collapse under stakeholder complexity — these are the mechanisms of mission failure.</p>
+          <p class="service-desc">Istawra designs the operating architecture that prevents drift: decision rights, reporting cadences, escalation protocols, and the accountability mechanisms that ensure the principal retains executive control without becoming a bottleneck.</p>
+        </div>
+        <div class="service-detail" data-reveal data-delay="1">
+          <div class="service-detail-head">Capabilities</div>
+          <div class="service-capabilities">
+            <div class="capability">
+              <div class="capability-mark" aria-hidden="true"></div>
+              <p class="capability-text"><strong>Governance design</strong> — Decision rights frameworks, committee structures, and escalation pathways calibrated to the mission's stakeholder complexity and the principal's available bandwidth.</p>
+            </div>
+            <div class="capability">
+              <div class="capability-mark" aria-hidden="true"></div>
+              <p class="capability-text"><strong>Operating cadence architecture</strong> — The rhythm of the mission: reporting frequency, review gates, milestone definitions, and the decision moments that require executive resolution.</p>
+            </div>
+            <div class="capability">
+              <div class="capability-mark" aria-hidden="true"></div>
+              <p class="capability-text"><strong>Inter-agency alignment</strong> — When delivery spans ministries, regulators, and private entities, we design the interface protocols and accountability structures that prevent jurisdictional ambiguity from becoming systemic delay.</p>
+            </div>
+            <div class="capability">
+              <div class="capability-mark" aria-hidden="true"></div>
+              <p class="capability-text"><strong>Activation planning</strong> — Converting the chosen strategy into an executable portfolio: work streams, owners, sequencing logic, and the critical path that governs when things must happen.</p>
+            </div>
+            <div class="capability">
+              <div class="capability-mark" aria-hidden="true"></div>
+              <p class="capability-text"><strong>Executive reporting design</strong> — Performance dashboards and periodic packs that give the principal a true picture of mission status — not a curated one — with clear signals for intervention.</p>
+            </div>
+          </div>
+          <div class="service-outputs">
+            <div class="service-outputs-head">Typical Outputs</div>
+            <ul class="service-output-list" role="list">
+              <li>Governance framework and decision rights matrix</li>
+              <li>Operating model and cadence design</li>
+              <li>Activation and sequencing plan</li>
+              <li>Inter-agency interface protocol</li>
+              <li>Executive reporting template and cadence</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- SERVICE 03: EXECUTION ASSURANCE -->
+  <article class="service-block" style="border-block-end: none;" aria-label="Execution Assurance">
+    <div class="wrap">
+      <div class="service-inner">
+        <div class="service-meta" data-reveal>
+          <div class="service-index" aria-hidden="true">03</div>
+          <h2 class="service-name">Execution<br><em>Assurance</em></h2>
+          <div class="service-tagline">Independence · Rigour · Foresight</div>
+          <p class="service-desc">Execution assurance is the practice of independent verification — confirming that the mission is on course, that risks are being managed, that reported progress reflects reality, and that corrective actions are timely and effective.</p>
+          <p class="service-desc">Our assurance work is structurally independent from the delivery chain. We do not manage implementation, which means we can report without institutional bias on whether the mission is achieving what was committed.</p>
+        </div>
+        <div class="service-detail" data-reveal data-delay="1">
+          <div class="service-detail-head">Capabilities</div>
+          <div class="service-capabilities">
+            <div class="capability">
+              <div class="capability-mark" aria-hidden="true"></div>
+              <p class="capability-text"><strong>Readiness assessment</strong> — Before a major activation, we assess whether the preconditions for success are genuinely in place: capabilities, resources, authorities, and stakeholder alignment.</p>
+            </div>
+            <div class="capability">
+              <div class="capability-mark" aria-hidden="true"></div>
+              <p class="capability-text"><strong>Risk monitoring and horizon scanning</strong> — Ongoing identification of risks that have materialised, risks approaching threshold, and emerging threats not yet on the mission's risk register.</p>
+            </div>
+            <div class="capability">
+              <div class="capability-mark" aria-hidden="true"></div>
+              <p class="capability-text"><strong>Periodic assurance packs</strong> — Independent status assessments delivered on a defined cadence — not a summary of what has been reported, but an independent view of what is true.</p>
+            </div>
+            <div class="capability">
+              <div class="capability-mark" aria-hidden="true"></div>
+              <p class="capability-text"><strong>Corrective action tracking</strong> — When issues are identified, we track the corrective actions to closure — not assuming they will be resolved, but verifying that they are.</p>
+            </div>
+            <div class="capability">
+              <div class="capability-mark" aria-hidden="true"></div>
+              <p class="capability-text"><strong>Point-in-time reviews</strong> — Focused reviews at critical mission junctures — before major procurement decisions, regulatory submissions, or political commitments — to surface issues before they become irreversible.</p>
+            </div>
+          </div>
+          <div class="service-outputs">
+            <div class="service-outputs-head">Typical Outputs</div>
+            <ul class="service-output-list" role="list">
+              <li>Readiness assessment report</li>
+              <li>Periodic assurance pack (monthly or quarterly)</li>
+              <li>Risk register and horizon scan</li>
+              <li>Corrective action tracker</li>
+              <li>Point-in-time review brief</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ENGAGEMENT MODEL -->
+  <section class="engagement-model" aria-label="Engagement model">
+    <div class="wrap">
+      <div class="engagement-model-inner">
+        <div data-reveal>
+          <span class="label">Engagement Model</span>
+          <h2 class="section-title" style="margin-top:14px">How mandates<br>are <em>initiated</em></h2>
+          <blockquote class="engagement-note">
+            Istawra maintains a <strong>limited number of concurrent mandates</strong> to protect quality, confidentiality, and executive responsiveness. We do not accept unsolicited briefs.
+          </blockquote>
+        </div>
+        <div class="engagement-facts" data-reveal data-delay="1">
+          <div class="engagement-fact">
+            <div class="engagement-fact-label">Initiation</div>
+            <div class="engagement-fact-value">Engagements begin through trusted institutional channels. The first conversation is a mandate definition discussion — no work commences before scope and boundaries are agreed.</div>
+          </div>
+          <div class="engagement-fact">
+            <div class="engagement-fact-label">Confidentiality</div>
+            <div class="engagement-fact-value">Distribution rules, attribution constraints, and retention policies are established before signal gathering begins. These are not standard NDAs — they are engagement-specific protocols.</div>
+          </div>
+          <div class="engagement-fact">
+            <div class="engagement-fact-label">Duration</div>
+            <div class="engagement-fact-value">Mandates are time-bounded and milestone-anchored. We define exit conditions at the outset and conclude when those conditions are met — not when the relationship becomes comfortable.</div>
+          </div>
+          <div class="engagement-fact">
+            <div class="engagement-fact-label">Capacity</div>
+            <div class="engagement-fact-value">We limit concurrent mandates by design. If capacity is not available, we say so — and in appropriate circumstances, can identify alternative timing or structure.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACADEMY -->
+  <section class="engagement-model" aria-label="Industrial Oversight Training Academy" style="background: var(--c-ink-2);">
+    <div class="wrap">
+      <div class="engagement-model-inner">
+        <div data-reveal>
+          <span class="label">Capability System</span>
+          <h2 class="section-title" style="margin-block-start: 14px;">Industrial Oversight<br>Training <em>Academy</em></h2>
+          <p class="engagement-note">
+            A controlled training system for the teams <strong>responsible for what sovereign industrial programs actually deliver.</strong>
           </p>
-
-          <div class="intel-features">
-            <div class="intel-feature">
-              <h4>Investment Briefs</h4>
-              <p>Full brief per node — market sizing, entry mechanism, investment range, and implementation roadmap.</p>
+          <div style="margin-block-start: 36px; display: flex; gap: 16px; flex-wrap: wrap;">
+            <a href="/academy.html" class="btn btn-gold">View the Academy</a>
+            <a href="/contact.html" class="btn btn-ghost">Initiate Contact</a>
+          </div>
+        </div>
+        <div data-reveal data-delay="1">
+          <div class="engagement-facts">
+            <div class="engagement-fact">
+              <div class="engagement-fact-label">What it produces</div>
+              <div class="engagement-fact-value">Teams that can read a program's delivery architecture and produce a defensible assessment: proceed, hold, redesign, or escalate.</div>
             </div>
-            <div class="intel-feature">
-              <h4>Company Matching</h4>
-              <p>5 global companies matched to each node with engagement logic and specific contact vectors.</p>
+            <div class="engagement-fact">
+              <div class="engagement-fact-label">The method</div>
+              <div class="engagement-fact-value">A fixed three-tool diagnostic sequence — NSCS, SEAM, and PSAP — applied to a sovereign industrial case.</div>
             </div>
-            <div class="intel-feature">
-              <h4>Partner Upgrade Paths</h4>
-              <p>4 Saudi partners per node with concrete steps to reach node-qualification readiness.</p>
+            <div class="engagement-fact">
+              <div class="engagement-fact-label">Delivery</div>
+              <div class="engagement-fact-value">Executive Compressed (2 days) · Practitioner Full (4 days) · Workshop-Linked (modular)</div>
             </div>
-            <div class="intel-feature">
-              <h4>SAEL Milestones</h4>
-              <p>Accountability milestones drawn from the approved GAMI SAEL framework — verifiable, time-bound.</p>
-            </div>
-            <div class="intel-feature">
-              <h4>Filterable by Sector</h4>
-              <p>Browse all 105 nodes by sector, phase, or node type — or search across the full database.</p>
-            </div>
-            <div class="intel-feature">
-              <h4>Downloadable Reports</h4>
-              <p>Individual node briefs and full sector reports available as Word and PDF for approved users.</p>
+            <div class="engagement-fact">
+              <div class="engagement-fact-label">Access</div>
+              <div class="engagement-fact-value">Deployed through institutional channels. Not available through open enrolment.</div>
             </div>
           </div>
-
-          <div class="intel-sectors">
-            <span class="intel-sector-tag">Aerospace &amp; Defense · 33 nodes</span>
-            <span class="intel-sector-tag">Automotive · 14 nodes</span>
-            <span class="intel-sector-tag">Water &amp; Desalination · 10 nodes</span>
-            <span class="intel-sector-tag">Advanced Materials · 9 nodes</span>
-            <span class="intel-sector-tag">Space · 8 nodes</span>
-            <span class="intel-sector-tag">Medical Devices · 6 nodes</span>
-            <span class="intel-sector-tag">Maritime · 6 nodes</span>
-            <span class="intel-sector-tag">Digital Infrastructure · 6 nodes</span>
-            <span class="intel-sector-tag">Logistics · 5 nodes</span>
-            <span class="intel-sector-tag">Quantum · 4 nodes</span>
-            <span class="intel-sector-tag">Semiconductors · 4 nodes</span>
-          </div>
-
-          <div class="intel-cta">
-            <a class="btn-gold" href="https://saudiopp.istawra.com" target="_blank">Browse SaudiOpp →</a>
-            <a class="btn-outline" href="/contact.html">Request Full Access</a>
-            <span class="intel-cta-note">Sector overviews are public. Full briefs available to approved users.</span>
-          </div>
-
-        </div><!-- /intel-product -->
-
-      </div><!-- /content -->
-    </div><!-- /intel-section -->
-
-    <div class="content">
-      <!-- Engagement discipline -->
-      <div class="engagement-note">
-        <div class="section-label">Engagement Discipline</div>
-        <p>Istawra maintains a limited number of concurrent mandates to preserve quality, confidentiality, and executive responsiveness. Formal engagements are initiated offline through trusted institutional channels.</p>
-        <div class="engagement-links">
-          <a class="btn-outline" href="/contact.html">Contact</a>
-          <a class="btn-outline" href="/advisory.html">Advisory Model</a>
         </div>
       </div>
     </div>
+  </section>
 
-  </main>
+  <!-- SAUDIOPP -->
+  <section class="engagement-model" aria-label="SaudiOpp Investment Intelligence" style="background: var(--c-ink-2);">
+    <div class="wrap">
+      <div class="engagement-model-inner">
+        <div data-reveal>
+          <span class="label">Intelligence Product</span>
+          <h2 class="section-title" style="margin-block-start: 14px;">SaudiOpp — Saudi Arabia<br>Investment <em>Intelligence</em></h2>
+          <p class="engagement-note">
+            105 PSAP nodes across Saudi Arabia's 11 strategic sectors — structured as investment briefs with market sizing, entry mechanisms, global company matches, and Saudi partner upgrade paths. <strong>Derived directly from the approved national sector strategies for 2026–2035.</strong>
+          </p>
+          <div style="margin-block-start: 36px; display: flex; gap: 16px; flex-wrap: wrap;">
+            <a href="https://saudiopp.istawra.com" target="_blank" class="btn btn-gold">Browse SaudiOpp</a>
+            <a href="/contact.html" class="btn btn-ghost">Request Full Access</a>
+          </div>
+        </div>
+        <div data-reveal data-delay="1">
+          <div class="engagement-facts">
+            <div class="engagement-fact">
+              <div class="engagement-fact-label">Coverage</div>
+              <div class="engagement-fact-value">105 PSAP nodes across Aerospace &amp; Defense, Automotive, Water, Space, Advanced Materials, Medical Devices, Maritime, Digital Infrastructure, Logistics, Quantum, and Semiconductors.</div>
+            </div>
+            <div class="engagement-fact">
+              <div class="engagement-fact-label">Per node</div>
+              <div class="engagement-fact-value">Full investment brief: market sizing, investment range, entry mechanism, SAEL milestones, 5 global company matches, and 4 Saudi partner upgrade paths.</div>
+            </div>
+            <div class="engagement-fact">
+              <div class="engagement-fact-label">Access</div>
+              <div class="engagement-fact-value">Sector overviews and node summaries are public. Full investment briefs are available to approved users through Istawra.</div>
+            </div>
+            <div class="engagement-fact">
+              <div class="engagement-fact-label">Source</div>
+              <div class="engagement-fact-value">Derived from the approved Saudi national sector strategies 2026–2035. Structured and curated by Istawra Consulting.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="foot-inner">
+  <!-- CTA -->
+  <section class="cta-strip section-light" style="border-top: 1px solid var(--c-light-border);" aria-label="Engagement">
+    <div class="wrap">
+      <div class="cta-strip-inner" data-reveal>
+        <span class="label">Begin the Conversation</span>
+        <h2 class="cta-strip-title">Formal engagements initiated<br>through <em>institutional channels</em></h2>
+        <p class="cta-strip-body">Contact Istawra to discuss mandate fit, timing, and structure. The first conversation is exploratory and without obligation.</p>
+        <div class="cta-strip-actions">
+          <a href="/contact.html" class="btn btn-gold">Initiate Contact</a>
+          <a href="/about.html" class="btn btn-ghost">About the Practice</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="footer" role="contentinfo">
+  <div class="wrap">
+    <div class="footer-top">
       <div>
-        <div class="foot-brand">Istawra <em>Consulting</em></div>
-        <div class="foot-tagline">
-          Sovereign-grade advisory · Institutional governance · Execution assurance
-        </div>
+        <div class="footer-logo">Istawra <em>Consulting</em></div>
+        <div class="footer-tagline">Sovereign-grade advisory<br>Institutional governance<br>Execution assurance</div>
       </div>
-      <nav class="foot-nav">
-        <a href="/about.html">About Istawra</a>
-        <a href="/advisory.html">Advisory Philosophy</a>
-        <a href="/services.html">Service Constructs</a>
-        <a href="/academy.html">Oversight Academy</a>
-        <a href="/contact.html">Initiate Engagement</a>
-      </nav>
-      <nav class="foot-nav">
-        <a href="/how-we-think.html">How We Think</a>
-        <a href="/insights.html">Insights</a>
-        <a href="https://saudiopp.istawra.com" target="_blank">SaudiOpp</a>
-      </nav>
-      <div class="foot-copy">
-        © 2026 Istawra Consulting. All rights reserved. · istawra.com · Riyadh, Kingdom of Saudi Arabia
+      <div>
+        <div class="footer-nav-heading">Practice</div>
+        <ul class="footer-links" role="list">
+          <li><a href="/about.html">About Istawra</a></li>
+          <li><a href="/advisory.html">Advisory Philosophy</a></li>
+          <li><a href="/services.html">Service Constructs</a></li>
+          <li><a href="/academy.html">Oversight Academy</a></li>
+          <li><a href="/contact.html">Initiate Engagement</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-nav-heading">Knowledge</div>
+        <ul class="footer-links" role="list">
+          <li><a href="/how-we-think.html">How We Think</a></li>
+          <li><a href="/insights.html">Insights</a></li>
+          <li><a href="https://saudiopp.istawra.com" target="_blank">SaudiOpp</a></li>
+        </ul>
       </div>
     </div>
-  </footer>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Istawra Consulting. All rights reserved. <em>&nbsp;·&nbsp;</em> istawra.com</span>
+      <span class="footer-copy">Riyadh, Kingdom of Saudi Arabia</span>
+    </div>
+  </div>
+</footer>
 
+<script>
+(function(){
+  'use strict';
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function(){ nav.classList.toggle('anchored', window.scrollY > 56); }, { passive: true });
+  nav.classList.toggle('anchored', window.scrollY > 56);
+  var toggle = document.getElementById('navToggle'), overlay = document.getElementById('navOverlay'), open = false;
+  function setNav(s){ open=s; toggle.classList.toggle('open',open); toggle.setAttribute('aria-expanded',String(open)); overlay.hidden=!open; overlay.classList.toggle('open',open); document.body.style.overflow=open?'hidden':''; }
+  toggle.addEventListener('click', function(){ setNav(!open); });
+  overlay.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setNav(false); }); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'&&open) setNav(false); });
+  var els = document.querySelectorAll('[data-reveal]');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+    els.forEach(function(el){ io.observe(el); });
+  } else { els.forEach(function(el){ el.classList.add('in-view'); }); }
+}());
+</script>
 </body>
 </html>
