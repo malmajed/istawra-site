@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Mudawalat Room — Istawra Consulting</title>
+  <meta name="description" content="One hearing of decision one, animated in eight steps: eleven seats, the guards, the engine, the record and the coaching loop." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F6F4EE; --paper-2:#EDEAE1; --ink:#1A2238; --ink-2:#4A5268; --ink-3:#7E8497; --rule:#D9D3C4;
+  --navy:#14233F; --navy-2:#1E3054; --navy-3:#2A3F6B; --navy-ink:#F3EEE0; --navy-mute:#8E97AD;
+  --gold:#B8901F; --gold-soft:#F1E8CC; --gold-ink:#D9B24C;
+  --live:#2F6B4F; --live-soft:#DDEBE2; --live-ink:#6FC39A;
+  --refuse:#A8452A; --refuse-soft:#F3E1DB; --refuse-ink:#E6866C;
+  --chip:#F7F5EF; --seat:#F3EEE0; --seat-ink:#14233F;
+  --shadow:0 1px 0 rgba(20,35,63,.06), 0 12px 32px -20px rgba(20,35,63,.35);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#111827; --paper-2:#18213A; --ink:#EDE9DE; --ink-2:#B8BCCB; --ink-3:#7E8497; --rule:#2C3651;
+    --navy:#0C1526; --navy-2:#162341; --navy-3:#22345C; --navy-ink:#F3EEE0; --navy-mute:#8E97AD;
+    --gold:#D9B24C; --gold-soft:#3A3115; --gold-ink:#E4C46A;
+    --live:#6FC39A; --live-soft:#173224; --live-ink:#8FD9B2;
+    --refuse:#E6866C; --refuse-soft:#3B1E16; --refuse-ink:#F2A58F;
+    --chip:#1B2542; --seat:#F3EEE0; --seat-ink:#14233F;
+    --shadow:0 1px 0 rgba(0,0,0,.3), 0 12px 32px -20px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#111827; --paper-2:#18213A; --ink:#EDE9DE; --ink-2:#B8BCCB; --ink-3:#7E8497; --rule:#2C3651;
+  --navy:#0C1526; --navy-2:#162341; --navy-3:#22345C; --navy-ink:#F3EEE0; --navy-mute:#8E97AD;
+  --gold:#D9B24C; --gold-soft:#3A3115; --gold-ink:#E4C46A;
+  --live:#6FC39A; --live-soft:#173224; --live-ink:#8FD9B2;
+  --refuse:#E6866C; --refuse-soft:#3B1E16; --refuse-ink:#F2A58F;
+  --chip:#1B2542; --seat:#F3EEE0; --seat-ink:#14233F;
+  --shadow:0 1px 0 rgba(0,0,0,.3), 0 12px 32px -20px rgba(0,0,0,.8);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.55;padding-block:0 48px;padding-inline:clamp(16px,4vw,40px)}
+.wrap{max-width:1180px;margin:0 auto}
+h1,h2,h3{font-family:"Newsreader","Cambria",Georgia,serif;font-weight:500;letter-spacing:-.01em;text-wrap:balance;margin:0}
+.mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+.eyebrow{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+/* masthead */
+.mast{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px 24px;padding-block:22px 18px;border-bottom:1px solid var(--rule)}
+.mast .brand{display:flex;align-items:baseline;gap:14px}
+.mast .brand .ar{font-family:"Newsreader",serif;font-size:22px;color:var(--gold)}
+.mast h1{font-size:clamp(26px,3.4vw,38px)}
+.mast p{margin:0;color:var(--ink-2);max-width:46ch;font-size:15px}
+
+/* stage */
+.stage-wrap{margin-top:22px;display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:0;border:1px solid var(--rule);border-radius:6px;overflow:hidden;box-shadow:var(--shadow);background:var(--navy)}
+@media (max-width:860px){.stage-wrap{grid-template-columns:1fr}}
+.stage{position:relative;background:var(--navy);min-height:360px}
+.stage svg{display:block;width:100%;height:auto;max-width:100%}
+.stage-head{position:absolute;left:18px;top:14px;display:flex;gap:10px;align-items:center;color:var(--navy-mute);font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.stage-head b{color:var(--gold-ink);font-weight:500}
+.side{background:var(--chip);color:var(--ink);padding:22px 22px 18px;display:flex;flex-direction:column;gap:14px;border-left:1px solid var(--rule)}
+@media (max-width:860px){.side{border-left:0;border-top:1px solid var(--rule)}}
+.side .stepno{display:flex;align-items:baseline;gap:10px}
+.side .stepno .n{font-family:"Newsreader",serif;font-size:44px;line-height:1;color:var(--gold);font-variant-numeric:tabular-nums}
+.side .stepno .of{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.side h2{font-size:24px;line-height:1.15;min-height:2.3em}
+.side p.cap{margin:0;color:var(--ink-2);font-size:14.5px;line-height:1.5;min-height:7.5em}
+.side .rule{height:1px;background:var(--rule);margin-block:2px}
+.side .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+button.ctl{appearance:none;border:1px solid var(--rule);background:transparent;color:var(--ink);font:inherit;font-size:13.5px;padding:8px 14px;border-radius:4px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+button.ctl:hover{border-color:var(--gold);color:var(--gold)}
+button.ctl.play{background:var(--navy);color:var(--navy-ink);border-color:var(--navy)}
+button.ctl.play:hover{background:var(--navy-2);color:var(--gold-ink)}
+.side .hint{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);letter-spacing:.04em}
+.progress{height:2px;background:var(--rule);border-radius:2px;overflow:hidden}
+.progress i{display:block;height:100%;width:0;background:var(--gold);transition:width .2s linear}
+.progress.running i{transition:width var(--dur,5s) linear}
+
+/* step strip */
+.strip{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px;margin-top:14px}
+@media (max-width:860px){.strip{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.strip button{appearance:none;border:1px solid var(--rule);background:transparent;color:var(--ink-2);font:inherit;text-align:left;padding:9px 10px;border-radius:4px;cursor:pointer;display:flex;flex-direction:column;gap:2px;min-height:58px}
+.strip button .k{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.12em;color:var(--ink-3)}
+.strip button .t{font-size:13px;line-height:1.25;color:var(--ink)}
+.strip button[aria-current="step"]{border-color:var(--gold);background:var(--gold-soft)}
+.strip button[aria-current="step"] .k{color:var(--gold)}
+.strip button:hover{border-color:var(--gold)}
+
+/* legend of seats */
+section{margin-top:44px}
+section > .eyebrow{display:block;margin-bottom:8px}
+section h2{font-size:clamp(22px,2.6vw,30px);max-width:44ch;margin-bottom:8px}
+section p.lede{margin:0 0 18px;color:var(--ink-2);max-width:66ch}
+.seats{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.seat-card{border:1px solid var(--rule);border-radius:4px;padding:12px 14px;display:grid;grid-template-columns:36px 1fr;gap:10px;align-items:start;background:transparent}
+.seat-card .badge{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.02em;background:var(--seat);color:var(--seat-ink);font-weight:500}
+.seat-card .badge.chair{background:var(--gold);color:#fff}
+.seat-card .badge.later{background:transparent;border:1px dashed var(--ink-3);color:var(--ink-3)}
+.seat-card .badge.chal{background:var(--navy-3);color:var(--navy-ink)}
+.seat-card .nm{font-weight:600;font-size:14.5px}
+.seat-card .who{font-size:13px;color:var(--ink-2)}
+.seat-card .occ{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);margin-top:2px}
+
+/* principles */
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.principle{border-left:3px solid var(--gold);padding:6px 0 6px 16px}
+.principle h3{font-size:20px;margin-bottom:6px}
+.principle p{margin:0;color:var(--ink-2);font-size:14.5px}
+.claims{background:var(--paper-2);border-radius:6px;padding:16px 18px;font-size:14px;color:var(--ink-2)}
+.claims b{color:var(--ink);font-weight:600}
+footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--ink-3);max-width:80ch}
+
+/* ---- SVG scene styling, driven by data-step on .stage ---- */
+.scene text{font-family:"IBM Plex Sans",system-ui,sans-serif;fill:var(--navy-ink)}
+.scene .mono{font-family:"IBM Plex Mono",monospace}
+.scene .muted{fill:var(--navy-mute)}
+.scene .g{fill:var(--gold-ink)}
+.scene .lv{fill:var(--live-ink)}
+.scene .rf{fill:var(--refuse-ink)}
+.fade{transition:opacity .6s ease, transform .8s cubic-bezier(.4,0,.2,1);opacity:1}
+.hid{opacity:0}
+.box{fill:var(--navy-2);stroke:var(--navy-3);stroke-width:1.2;transition:stroke .5s, fill .5s}
+.box.on{stroke:var(--gold-ink)}
+.box.on-live{stroke:var(--live-ink)}
+.table{fill:var(--navy-2);stroke:var(--navy-3);stroke-width:1.6}
+.seat{transition:opacity .5s, transform .5s}
+.seat circle{fill:var(--seat);stroke:none;transition:stroke .4s, stroke-width .4s, fill .4s}
+.seat text{fill:var(--seat-ink);font-family:"IBM Plex Mono",monospace;font-size:9.5px;font-weight:500;text-anchor:middle;dominant-baseline:central}
+.seat.chair circle{fill:var(--gold)}
+.seat.chair text{fill:#fff}
+.seat.later circle{fill:transparent;stroke:var(--navy-mute);stroke-dasharray:3 3;stroke-width:1.2}
+.seat.later text{fill:var(--navy-mute)}
+.seat.chal circle{fill:var(--navy-3)}
+.seat.chal text{fill:var(--navy-ink)}
+.seat.reading circle{stroke:var(--gold-ink);stroke-width:2.5}
+.seat.refused circle{stroke:var(--refuse-ink);stroke-width:2.5}
+.seat.coached circle{stroke:var(--gold-ink);stroke-width:3}
+.seat.speaking circle{stroke:var(--navy-ink);stroke-width:2.5}
+.chip{transition:transform .9s cubic-bezier(.4,0,.2,1), opacity .4s}
+.chip circle{fill:var(--navy-ink);stroke:none;transition:fill .5s}
+.chip.pass circle{fill:var(--live-ink)}
+.chip.fail circle{fill:var(--refuse-ink)}
+.chip.gone{opacity:0}
+.flow{fill:none;stroke-width:1.4;stroke-dasharray:6 5;stroke-dashoffset:0;transition:opacity .5s}
+.flow.gold{stroke:var(--gold-ink)}
+.flow.live{stroke:var(--live-ink)}
+.flow.plain{stroke:var(--navy-mute)}
+.flow.refuse{stroke:var(--refuse-ink)}
+.flow.run{animation:dash 1.2s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-22}}
+.pulse{animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.55}}
+.recline{transition:opacity .5s}
+@media (prefers-reduced-motion: reduce){
+  .fade,.chip,.seat,.box,.flow,.recline{transition:none}
+  .flow.run,.pulse{animation:none}
+  .progress.running i{transition:none}
+}
+</style>
+
+<header class="wrap mast">
+  <div class="brand">
+    <span class="ar">مداولات</span>
+    <h1>The Mudawalat Room</h1>
+  </div>
+  <p>One hearing of decision one, as it runs on a laptop with the internet off: eleven seats, the guards, the engine, the record, and the coaching loop that makes a seat better.</p>
+</header>
+
+<main class="wrap">
+
+<div class="stage-wrap">
+  <div class="stage" id="stage" data-step="1" aria-live="polite">
+    <div class="stage-head"><b>Decision one</b><span>·</span><span>Uncrewed systems case</span><span>·</span><span id="clock">period one</span></div>
+    <svg class="scene" viewBox="0 0 1000 640" role="img" aria-labelledby="sceneTitle">
+      <title id="sceneTitle">An animated board room: eleven seats around a table, a vault of seat files on the left, and the guards, the engine and the session record on the right.</title>
+      <defs>
+        <marker id="m-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--gold-ink)"/></marker>
+        <marker id="m-live" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--live-ink)"/></marker>
+        <marker id="m-plain" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--navy-mute)"/></marker>
+        <marker id="m-refuse" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--refuse-ink)"/></marker>
+      </defs>
+
+      <!-- Vault -->
+      <g id="vault" class="fade">
+        <rect class="box" id="vaultBox" x="24" y="230" width="176" height="180" rx="3"/>
+        <text x="112" y="256" text-anchor="middle" font-size="12.5" font-weight="600">The vault</text>
+        <text x="112" y="272" text-anchor="middle" font-size="10" class="muted mono">45 MUDAWALAT · one folder per seat</text>
+        <g font-size="11">
+          <text x="40" y="300">Mandate card</text><text x="184" y="300" text-anchor="end" class="muted" font-size="9.5">author writes</text>
+          <text x="40" y="322">Coaching notes</text><text x="184" y="322" text-anchor="end" class="muted" font-size="9.5">author writes</text>
+          <text x="40" y="344">Past filings</text><text x="184" y="344" text-anchor="end" class="muted" font-size="9.5">platform writes</text>
+        </g>
+        <text id="vaultNote" class="fade hid g" x="112" y="386" text-anchor="middle" font-size="10.5">read at every hearing · never cached</text>
+        <g id="coachLine" class="fade hid">
+          <rect x="40" y="356" width="144" height="18" rx="2" fill="var(--gold-soft)"/>
+          <text x="112" y="368" text-anchor="middle" font-size="9.5" class="mono" fill="var(--gold)" style="fill:var(--gold)">2026-09-12 · note to MOF</text>
+        </g>
+      </g>
+
+      <!-- You -->
+      <g id="you" class="fade">
+        <rect class="box" id="youBox" x="24" y="470" width="176" height="56" rx="3"/>
+        <text x="112" y="493" text-anchor="middle" font-size="12.5" font-weight="600">You</text>
+        <text x="112" y="510" text-anchor="middle" font-size="10" class="muted">chair, or facilitator, or both</text>
+      </g>
+      <path id="youToVault" class="flow gold hid" d="M112,470 L112,414" marker-end="url(#m-gold)"/>
+      <text id="youToVaultLbl" class="fade hid g" x="122" y="446" font-size="10">coaching note, dated</text>
+
+      <!-- Vault -> table read lines -->
+      <g id="readLines" class="hid fade">
+        <path class="flow gold run" d="M200,300 C260,300 290,240 330,230" marker-end="url(#m-gold)"/>
+        <path class="flow gold run" d="M200,330 C260,330 290,330 330,330" marker-end="url(#m-gold)"/>
+        <path class="flow gold run" d="M200,360 C260,360 290,420 330,430" marker-end="url(#m-gold)"/>
+      </g>
+
+      <!-- Table -->
+      <ellipse class="table" cx="500" cy="330" rx="200" ry="118"/>
+      <g id="artefact" class="fade">
+        <rect x="435" y="300" width="130" height="58" rx="2" fill="var(--navy)" stroke="var(--navy-3)" stroke-width="1"/>
+        <text x="500" y="322" text-anchor="middle" font-size="11" font-weight="600">the artefact</text>
+        <text x="500" y="338" text-anchor="middle" font-size="9.5" class="muted">decision one · released evidence</text>
+        <text id="artefactState" x="500" y="351" text-anchor="middle" font-size="9.5" class="mono muted">draft</text>
+      </g>
+      <g id="challengeLine" class="fade hid">
+        <path id="challengePath" class="flow gold run" d="M555,450 L520,362" marker-end="url(#m-gold)"/>
+        <text id="challengeLbl" x="575" y="418" font-size="10" class="g">the challenge, from what was filed</text>
+      </g>
+      <g id="chairLine" class="fade hid">
+        <path class="flow gold run" d="M500,206 L500,296" marker-end="url(#m-gold)"/>
+        <text x="510" y="262" font-size="10" class="g">hold or revise · commit</text>
+      </g>
+
+      <!-- Seats (positioned by script) -->
+      <g id="seats"></g>
+      <text id="laterLbl" class="fade muted" x="640" y="205" font-size="9.5">joins in period two</text>
+
+      <!-- Chips (filings) -->
+      <g id="chips"></g>
+
+      <!-- Guards -->
+      <g id="guards" class="fade">
+        <rect class="box" id="guardsBox" x="770" y="86" width="206" height="118" rx="3"/>
+        <text x="873" y="110" text-anchor="middle" font-size="12.5" font-weight="600">The guards</text>
+        <g font-size="10" class="muted">
+          <text x="786" y="132">thirty words or more</text>
+          <text x="786" y="147">cites a released figure or layer</text>
+          <text x="786" y="162">no tilting words</text>
+          <text x="786" y="177">no figure outside the evidence</text>
+          <text x="786" y="192">no wrong unit or scope</text>
+        </g>
+      </g>
+      <g id="askAgain" class="fade hid">
+        <path id="askPath" class="flow refuse run" d="M770,190 L750,330" marker-end="url(#m-refuse)"/>
+        <text id="askLbl" x="760" y="250" font-size="10" class="rf" text-anchor="end">refused · asked again, told why</text>
+      </g>
+      <g id="baseline" class="fade hid">
+        <rect x="770" y="240" width="206" height="34" rx="2" fill="var(--refuse-soft)"/>
+        <text x="873" y="254" text-anchor="middle" font-size="9.5" class="mono" style="fill:var(--refuse)">MOE · seat unable to file</text>
+        <text x="873" y="267" text-anchor="middle" font-size="9.5" class="mono" style="fill:var(--refuse)">baseline position entered, labelled</text>
+      </g>
+
+      <!-- Engine -->
+      <g id="engine" class="fade">
+        <rect class="box" id="engineBox" x="770" y="298" width="206" height="96" rx="3"/>
+        <text x="873" y="324" text-anchor="middle" font-size="12.5" font-weight="600">The engine</text>
+        <text x="873" y="342" text-anchor="middle" font-size="10" class="muted">the only writer of state</text>
+        <text x="873" y="357" text-anchor="middle" font-size="10" class="muted">accepts or refuses every action</text>
+        <text id="engineNote" x="873" y="378" text-anchor="middle" font-size="9.5" class="mono lv fade hid">nothing a model says becomes state except here</text>
+      </g>
+      <path id="guardsToEngine" class="flow live hid" d="M776,204 L776,296" marker-end="url(#m-live)"/>
+
+      <!-- Record -->
+      <g id="record" class="fade">
+        <rect class="box" id="recordBox" x="770" y="428" width="206" height="122" rx="3"/>
+        <text x="873" y="452" text-anchor="middle" font-size="12.5" font-weight="600">Session record</text>
+        <text x="873" y="467" text-anchor="middle" font-size="10" class="muted">authoritative · exportable · replayable</text>
+        <g font-size="9.5" class="mono">
+          <text id="rec1" class="recline hid" x="786" y="490">D1 · 8 live filings (qwen3:14b), 1 baseline</text>
+          <text id="rec2" class="recline hid" x="786" y="505">D1 · challenge · chair ruled: revise</text>
+          <text id="rec3" class="recline hid" x="786" y="520">D1 · artefact committed · sunset · rationale</text>
+          <text id="rec4" class="recline hid" x="786" y="535">seat · occupant · origin, on every filing</text>
+        </g>
+      </g>
+      <path id="engineToRecord" class="flow plain hid" d="M873,394 L873,426" marker-end="url(#m-plain)"/>
+      <path id="engineToTable" class="flow live hid" d="M770,346 L704,336" marker-end="url(#m-live)"/>
+
+      <!-- copy back to vault -->
+      <g id="copyBack" class="fade hid">
+        <path class="flow plain run" d="M873,550 L873,600 L112,600 L112,414" marker-end="url(#m-plain)"/>
+        <text x="500" y="592" text-anchor="middle" font-size="10" class="muted">copy of each filing → Past filings, newest first · a copy, not state</text>
+      </g>
+
+      <!-- Coaching result -->
+      <g id="coachResult" class="fade hid">
+        <text x="500" y="562" text-anchor="middle" font-size="10.5" class="g">next hearing: the finance filing opens with the binding period-one figure</text>
+      </g>
+    </svg>
+  </div>
+
+  <aside class="side">
+    <div class="stepno"><span class="n" id="stepN">1</span><span class="of">of 8 · one hearing</span></div>
+    <h2 id="stepTitle">The room convenes.</h2>
+    <p class="cap" id="stepCap"></p>
+    <div class="progress" id="prog"><i></i></div>
+    <div class="row">
+      <button class="ctl" id="btnBack" type="button" aria-label="Previous step">‹ Back</button>
+      <button class="ctl play" id="btnPlay" type="button">Play</button>
+      <button class="ctl" id="btnNext" type="button" aria-label="Next step">Next ›</button>
+    </div>
+    <div class="hint">← → to step · space to play or pause</div>
+  </aside>
+</div>
+
+<nav class="strip" id="strip" aria-label="Steps of one hearing"></nav>
+
+<section>
+  <span class="eyebrow">Who sits</span>
+  <h2>Eleven seats. Nine are played by a local model at decision one; one is a person; one joins in period two.</h2>
+  <p class="lede">The short names are the ones on the seat folders in the vault, and each line is the seat's mandate as its card states it. A seat is an institution, not a mouthpiece: it argues from what it protects, the authority it holds, and its constraint. Which kind of occupant sits in which seat is decided per seat per session, and the record keeps seat, occupant and origin apart.</p>
+  <div class="seats" id="seatList"></div>
+</section>
+
+<section>
+  <span class="eyebrow">What the picture holds to</span>
+  <h2>Two writers, kept apart.</h2>
+  <div class="two">
+    <div class="principle">
+      <h3>The seats' author writes the files; the engine writes state.</h3>
+      <p>The vault shapes what each model seat is told. The guards decide what reaches the engine. The engine alone writes what happened. A copy of each filing goes back into the seat's file so the seat reads its own history next time. The models are never trained or altered; what develops is each seat's written record, which anyone can open and read.</p>
+    </div>
+    <div class="principle">
+      <h3>AI has no substantive decision authority. It is the memory and the challenger.</h3>
+      <p>It holds the record of how each seat has argued; it plays the independent challenger and the evidence discipline; it fills a seat that is empty on the day, under a label. The system's rules refuse unsupported claims from anyone, people and models alike. Rules enforce; AI argues and challenges; people decide.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">Seen, not projected</span>
+  <h2>This hearing was run on 12 and 13 September 2026 with the laptop's connection off.</h2>
+  <div class="claims">
+    <b>What was seen.</b> Nine seats filed on the first decision from a local model reading its card from the vault. A fault planted in the education ministry's card produced a refused filing, a second refusal, and a labelled baseline; the other eight stood as live. One coaching note to the finance seat, written in Obsidian, changed that seat's next filing without a restart. A hearing took about forty seconds, plus about twenty when seats were asked again.
+    <br><br>
+    <b>What this page does not claim.</b> That a full session has been run; two decisions of six are mapped in the room and the rest exist in the engine. That the seats argue as the ministries argue; until an institution validates its seat, its file is an institutional-perspective memory. That the figures are market prices; they are the case's authored teaching figures. The full account, with the order of work and its gates, is on the page <a href="../">The laptop is the main line</a>.
+  </div>
+</section>
+
+<footer>Mudawalat (مداولات, the deliberations) · Istawra Consulting for the KAPSARC School of Public Policy · proposal for discussion, September 2026. Nothing here claims that KAPSARC or the Center of Government has endorsed, scheduled or seen it.</footer>
+</main>
+
+<script>
+(function(){
+  const SEATS = [
+    {id:"MIM",  short:"MIM / NIDLP", name:"Industry ministry sponsor", who:"Sponsor and chair. Sequence what the Kingdom will hold later without sacrificing the service now.", occ:"a person in the chair (a 32b model when no one chairs)", kind:"chair"},
+    {id:"ENERGY", short:"Saudi Energy", name:"Energy operator", who:"Operator. Hold the service floor: 1,000 accepted packages a year and 90 per cent timeliness.", occ:"local model · qwen3:14b", kind:"model"},
+    {id:"MOF",  short:"MOF", name:"Finance ministry", who:"Affordability by payer. Protect the allocation envelope.", occ:"local model · qwen3:14b", kind:"model"},
+    {id:"GACA", short:"GACA", name:"Aviation regulator", who:"Regulator. Authorised flight and trial protocol.", occ:"local model · qwen3:14b", kind:"model"},
+    {id:"RDIA", short:"RDIA", name:"Research and innovation funder", who:"Research distinct from purchased technical work.", occ:"local model · qwen3:14b", kind:"model"},
+    {id:"MISA", short:"MISA", name:"Investment promotion authority", who:"Investment attraction versus work taking root.", occ:"local model · qwen3:14b", kind:"model"},
+    {id:"MOE",  short:"MOE", name:"Education ministry", who:"Skills programme. Training is not retained competence.", occ:"local model · qwen3:14b", kind:"model"},
+    {id:"KAPSARC", short:"KAPSARC", name:"KAPSARC evidence seat", who:"Evidence discipline and epistemic classification.", occ:"local model · qwen3:14b", kind:"model"},
+    {id:"HRDF", short:"HRDF", name:"Early-career engineer", who:"Workforce outcomes for named people on named work.", occ:"local model · qwen3:14b", kind:"model"},
+    {id:"EXPRO", short:"EXPRO", name:"Independent challenger", who:"Challenger. Hold the strongest rival package.", occ:"local model · qwen3:32b", kind:"chal"},
+    {id:"GAMI", short:"GAMI", name:"Defence industrial-policy authority", who:"Industrial-policy voice on dual use from period two. Does not commit defence budget.", occ:"joins in period two", kind:"later"},
+  ];
+  const STEPS = [
+    {t:"The room convenes.", c:"Eleven seats around the artefact for decision one. The chair is a person. Nine seats are played by a language model running on the laptop, with no internet connection. One seat joins in period two. The evidence on the table is only what has been released so far."},
+    {t:"Each seat reads its file.", c:"Before a model seat speaks it reads its folder in the vault: the mandate card (what the institution protects, the authority it holds and does not, its constraint), the dated coaching notes, and its own past filings. Read at every hearing, never cached. The models themselves are never trained or altered."},
+    {t:"Each seat files a position.", c:"Every filing goes to the guards before anyone at the table sees it. A person in a seat is treated exactly the same way. Nothing a model says reaches the room, or the record, by itself."},
+    {t:"The guards judge.", c:"Thirty words or more; a citation from what is released or on the artefact; no tilting words; no figure outside the released evidence; no wrong unit or scope. A filing that fails is refused and the seat is asked again, told why. Twice, and the seat is marked unable to file and its baseline position is entered, under a label that stays in the record. On 13 September a fault planted in the education ministry's card did exactly this."},
+    {t:"The engine writes what happened.", c:"Filings that pass become the seat's recorded position, under the seat's identity and the occupant's label. The engine is a deterministic reducer over typed actions: it accepts or refuses every action, and it alone writes state. There is no action a model can submit on its own."},
+    {t:"The challenge, and the chair.", c:"The independent challenger argues against what was actually filed, from released evidence only. The chair hears the room, rules on the challenge, holds or revises the artefact, and commits. A model's filing changes the world only by persuading that decision, which the engine then applies."},
+    {t:"A copy goes back to the vault.", c:"Each filing is written into its seat's Past filings, newest first, with the challenge it drew and whether it was live or baseline. A copy, not state: precedent the seat may read next time, never binding. The authoritative record stays with the engine."},
+    {t:"You write one coaching note.", c:"A dated note to the finance seat, written in Obsidian, read at the next hearing without a restart. On 13 September the finance filing changed from a recital of the mandate to an argument that opens with the binding period-one figure. A seat gets better because its file grows, and the reason it argues as it does is always inspectable."},
+  ];
+  const DUR = 5200;
+  const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // --- build seats around the table
+  const cx=500, cy=330, rx=228, ry=148;
+  const order = ["MIM","ENERGY","MOF","MOE","GACA","EXPRO","RDIA","MISA","KAPSARC","HRDF","GAMI"];
+  const angles = {}; order.forEach((id,i)=>{ angles[id] = -90 + i*(360/order.length); });
+  const pos = {};
+  const seatsG = document.getElementById("seats");
+  const seatEl = {}; let bottomTier=0;
+  SEATS.forEach(s=>{
+    const a = angles[s.id]*Math.PI/180;
+    const x = cx + rx*Math.cos(a), y = cy + ry*Math.sin(a);
+    pos[s.id] = {x,y};
+    const g = document.createElementNS("http://www.w3.org/2000/svg","g");
+    g.setAttribute("class","seat "+s.kind);
+    g.setAttribute("transform",`translate(${x.toFixed(1)},${y.toFixed(1)})`);
+    const r = s.kind==="chair" ? 24 : 21;
+    g.innerHTML = `<circle r="${r}"/><text>${s.short.length>7 ? s.id : s.short}</text>`;
+    const label = document.createElementNS("http://www.w3.org/2000/svg","text");
+    label.setAttribute("font-size","9"); label.setAttribute("class","muted");
+    const c=Math.cos(a), sn=Math.sin(a), w=s.name.length*5.1;
+    let lx=0, ly=(y<cy?-30:34), anchor="middle";
+    if(c>0.35 && x+27+w<760){ lx=27; ly=3; anchor="start"; }
+    else if(c<-0.35 && x-27-w>212){ lx=-27; ly=3; anchor="end"; }
+    else if(sn>0.9){ ly = (bottomTier++%2===0) ? 34 : 46; }
+    label.setAttribute("x",lx); label.setAttribute("y",ly); label.setAttribute("text-anchor",anchor);
+    label.textContent = s.name;
+    g.appendChild(label);
+    seatsG.appendChild(g); seatEl[s.id]=g;
+  });
+  // paths that depend on seat positions
+  (function(){ const m=pos.MOE; document.getElementById("askPath").setAttribute("d", `M770,196 L${(m.x+24).toFixed(0)},${(m.y-16).toFixed(0)}`); document.getElementById("askLbl").setAttribute("x", 764); document.getElementById("askLbl").setAttribute("y", Math.round((196+m.y)/2)-4);
+    const e=pos.EXPRO; document.getElementById("challengePath").setAttribute("d", `M${e.x.toFixed(0)},${(e.y-24).toFixed(0)} L${(cx+30).toFixed(0)},362`); document.getElementById("challengeLbl").setAttribute("x", e.x+30); document.getElementById("challengeLbl").setAttribute("y", e.y-40); })();
+  // GAMI label placement
+  const later = document.getElementById("laterLbl");
+  later.setAttribute("x", pos.GAMI.x); later.setAttribute("y", pos.GAMI.y+46); later.setAttribute("text-anchor","middle");
+
+  // --- chips: one per model seat (and challenger)
+  const chipsG = document.getElementById("chips");
+  const chipEl = {};
+  SEATS.filter(s=>s.kind==="model"||s.kind==="chal").forEach((s,i)=>{
+    const g = document.createElementNS("http://www.w3.org/2000/svg","g");
+    g.setAttribute("class","chip gone");
+    g.innerHTML = `<circle r="6"/>`;
+    chipsG.appendChild(g); chipEl[s.id]={el:g, i};
+  });
+  function chipAt(id, x, y){ chipEl[id].el.style.transform = `translate(${x}px, ${y}px)`; }
+  function chipsHome(){ Object.keys(chipEl).forEach(id=>{ const p=pos[id]; chipAt(id, p.x + (cx-p.x)*0.16, p.y + (cy-p.y)*0.22); }); }
+  function chipsToGuards(){ Object.keys(chipEl).forEach(id=>{ const k=chipEl[id].i; chipAt(id, 796 + k*20, 222); }); }
+  function chipsToEngine(){ Object.keys(chipEl).forEach(id=>{ const k=chipEl[id].i; chipAt(id, 796 + k*20, 288); }); }
+  chipsHome();
+
+  // --- scene state
+  const $ = id => document.getElementById(id);
+  const show = (id,on)=>{ $(id).classList.toggle("hid", !on); };
+  const boxOn = (id,cls)=>{ const b=$(id); b.classList.remove("on","on-live"); if(cls) b.classList.add(cls); };
+  const seatCls = (id, cls)=>{ const g=seatEl[id]; g.classList.remove("reading","refused","coached","speaking"); if(cls) g.classList.add(cls); };
+  const allModelSeats = SEATS.filter(s=>s.kind==="model"||s.kind==="chal").map(s=>s.id);
+
+  function render(step){
+    // reset
+    ["vaultNote","coachLine","youToVault","youToVaultLbl","readLines","challengeLine","chairLine","askAgain","baseline","engineNote","guardsToEngine","engineToRecord","engineToTable","copyBack","coachResult"].forEach(id=>show(id,false));
+    ["vaultBox","youBox","guardsBox","engineBox","recordBox"].forEach(id=>boxOn(id,null));
+    ["rec1","rec2","rec3","rec4"].forEach(id=>show(id,false));
+    Object.keys(seatEl).forEach(id=>seatCls(id,null));
+    Object.keys(chipEl).forEach(id=>{ chipEl[id].el.classList.remove("pass","fail"); chipEl[id].el.classList.add("gone"); });
+    $("artefactState").textContent = "draft";
+    $("clock").textContent = "period one";
+    chipsHome();
+
+    if(step>=2){ boxOn("vaultBox","on"); show("vaultNote",true); }
+    if(step===2){ show("readLines",true); allModelSeats.forEach(id=>seatCls(id,"reading")); }
+    if(step===3){ Object.keys(chipEl).forEach(id=>chipEl[id].el.classList.remove("gone")); allModelSeats.forEach(id=>seatCls(id,"speaking")); boxOn("guardsBox","on"); requestAnimationFrame(()=>requestAnimationFrame(chipsToGuards)); }
+    if(step===4){ Object.keys(chipEl).forEach(id=>{ chipEl[id].el.classList.remove("gone"); chipEl[id].el.classList.add(id==="MOE"?"fail":"pass"); }); chipsToGuards(); boxOn("guardsBox","on"); seatCls("MOE","refused"); show("askAgain",true); show("baseline",true); }
+    if(step===5){ Object.keys(chipEl).forEach(id=>{ if(id==="MOE") return; chipEl[id].el.classList.remove("gone"); chipEl[id].el.classList.add("pass"); }); chipsToGuards(); requestAnimationFrame(()=>requestAnimationFrame(chipsToEngine)); boxOn("engineBox","on-live"); show("guardsToEngine",true); show("engineNote",true); show("engineToRecord",true); show("rec1",true); show("rec4",true); show("baseline",true); }
+    if(step===6){ boxOn("engineBox","on-live"); show("challengeLine",true); show("chairLine",true); seatCls("EXPRO","speaking"); seatCls("MIM","speaking"); show("engineToTable",true); show("rec1",true); show("rec2",true); show("rec3",true); show("rec4",true); $("artefactState").textContent = "committed · with sunset and rationale"; }
+    if(step===7){ boxOn("recordBox","on"); show("copyBack",true); ["rec1","rec2","rec3","rec4"].forEach(id=>show(id,true)); $("artefactState").textContent = "committed · with sunset and rationale"; }
+    if(step===8){ boxOn("youBox","on"); show("youToVault",true); show("youToVaultLbl",true); show("coachLine",true); seatCls("MOF","coached"); show("coachResult",true); ["rec1","rec2","rec3","rec4"].forEach(id=>show(id,true)); $("clock").textContent = "next hearing"; }
+
+    $("stage").dataset.step = step;
+    $("stepN").textContent = step;
+    $("stepTitle").textContent = STEPS[step-1].t;
+    $("stepCap").textContent = STEPS[step-1].c;
+    document.querySelectorAll("#strip button").forEach((b,i)=>{ if(i===step-1) b.setAttribute("aria-current","step"); else b.removeAttribute("aria-current"); });
+  }
+
+  // --- controls
+  let step = 1, playing = false, timer = null;
+  const prog = $("prog"), bar = prog.querySelector("i");
+  function armProgress(){ prog.classList.remove("running"); bar.style.width="0"; void bar.offsetWidth; if(playing && !reduce){ prog.style.setProperty("--dur", DUR+"ms"); prog.classList.add("running"); bar.style.width="100%"; } }
+  function go(n){ step = ((n-1+8)%8)+1; render(step); armProgress(); if(playing){ clearTimeout(timer); timer=setTimeout(()=>go(step+1), DUR); } }
+  function setPlaying(p){ playing=p; $("btnPlay").textContent = p ? "Pause" : "Play"; clearTimeout(timer); if(p){ armProgress(); timer=setTimeout(()=>go(step+1), DUR); } else { armProgress(); } }
+  $("btnNext").addEventListener("click", ()=>{ setPlaying(false); go(step+1); });
+  $("btnBack").addEventListener("click", ()=>{ setPlaying(false); go(step-1); });
+  $("btnPlay").addEventListener("click", ()=>setPlaying(!playing));
+  document.addEventListener("keydown", e=>{ if(e.target.matches("input,textarea")) return; if(e.key==="ArrowRight"){ setPlaying(false); go(step+1); } else if(e.key==="ArrowLeft"){ setPlaying(false); go(step-1); } else if(e.key===" "){ e.preventDefault(); setPlaying(!playing); } });
+  document.addEventListener("visibilitychange", ()=>{ if(document.hidden && playing) setPlaying(false); });
+
+  // --- strip
+  const strip = $("strip");
+  STEPS.forEach((s,i)=>{ const b=document.createElement("button"); b.type="button"; b.innerHTML=`<span class="k">STEP ${i+1}</span><span class="t">${s.t}</span>`; b.addEventListener("click",()=>{ setPlaying(false); go(i+1); }); strip.appendChild(b); });
+
+  // --- seat list
+  const list = $("seatList");
+  SEATS.forEach(s=>{
+    const d=document.createElement("div"); d.className="seat-card";
+    d.innerHTML = `<span class="badge ${s.kind}">${s.short.length>7 ? s.id : s.short}</span><div><div class="nm">${s.name}</div><div class="who">${s.who}</div><div class="occ">${s.occ}</div></div>`;
+    list.appendChild(d);
+  });
+
+  render(1);
+  if(!reduce) setPlaying(true);
+})();
+</script>
+
+</body>
+</html>
