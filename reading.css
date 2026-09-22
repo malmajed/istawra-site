@@ -4,3 +4,7 @@ html{scroll-behavior:smooth}body{font-size:18px;line-height:1.8;background:#faf9
 @media(max-width:760px){body{font-size:17px}header,main,footer{padding-left:22px;padding-right:22px}header{gap:24px}header nav{display:grid;grid-template-columns:repeat(4,1fr);width:100%;gap:4px 10px}nav a{font-size:12px;min-height:40px}h1{font-size:46px}.hero{padding-top:30px}.band,.card{padding:26px}.reading-map{padding:20px}.reading-map ol{grid-template-columns:1fr}.reading-chapter{padding:24px!important}.reading-chapter p,.reading-chapter li{font-size:17px}.reading-chapter ul,.reading-chapter ol{padding-left:22px}.reading-chapter h2{font-size:30px}.lead{font-size:20px}.tiles span{font-size:20px;width:30px;line-height:36px}.brand small{letter-spacing:4px;font-size:11px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 @media print{header,.review,footer,.reading-map,.reading-progress,.back-top,summary{display:none!important}body{background:white;font-size:12pt}main{max-width:none;padding:0}.reading-chapter{border:0;padding:0!important;box-shadow:none}details>*,details:not([open])>*{display:block!important}.card,.band{break-inside:avoid}.band{background:white;color:#1f2d3d}.band p,.band h2{color:#1f2d3d}}
+
+/* Keep primary navigation readable on narrow screens. */
+header .brand{flex-shrink:0}header nav a{white-space:nowrap}
+@media(max-width:760px){header nav{grid-template-columns:repeat(3,minmax(0,1fr))}}

@@ -3,7 +3,7 @@
   const main = document.querySelector('main');
   if (!main) return;
   const file = location.pathname.split('/').pop() || 'index.html';
-  const longPages = ['approach.html','advisory.html','academy.html','oversight-is-a-discipline.html'];
+  const longPages = ['oversight-is-a-discipline.html'];
   if (location.port === '4186') document.body.classList.add('private-workspace');
   if (!longPages.includes(file)) return;
   main.classList.add('long-reading');
