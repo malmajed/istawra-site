@@ -1,4 +1,5 @@
 
+.article-body p,.article-body h2,.article-body h3,.article-body figcaption{white-space:pre-line}
 .insights-journey{margin-block:40px;padding:28px;border:1px solid var(--line)}.insights-journey p,.insight-group-intro{max-width:760px;color:var(--muted)}.insights-journey ol{padding-inline-start:24px}.insights-journey a{display:inline-block;padding-block:10px;color:var(--teal)}.insight-group{margin-top:56px}.insight-group>h2{max-width:850px;scroll-margin-top:130px}
 .insights-intro{max-width:760px;font-size:22px;color:var(--muted)}
 .insight-list{margin-top:40px}.insight-card{display:grid;grid-template-columns:110px 1fr;gap:30px;border-top:1px solid var(--line);padding-block:32px}
