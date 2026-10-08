@@ -1,0 +1,13 @@
+
+.insights-journey{margin-block:40px;padding:28px;border:1px solid var(--line)}.insights-journey p,.insight-group-intro{max-width:760px;color:var(--muted)}.insights-journey ol{padding-inline-start:24px}.insights-journey a{display:inline-block;padding-block:10px;color:var(--teal)}.insight-group{margin-top:56px}.insight-group>h2{max-width:850px;scroll-margin-top:130px}
+.insights-intro{max-width:760px;font-size:22px;color:var(--muted)}
+.insight-list{margin-top:40px}.insight-card{display:grid;grid-template-columns:110px 1fr;gap:30px;border-top:1px solid var(--line);padding-block:32px}
+.insight-index{font-size:clamp(40px,6vw,68px);color:var(--teal);line-height:1.2}.insight-card h3{font-size:clamp(24px,3vw,32px);max-width:850px}.insight-card p{max-width:720px;color:var(--muted)}
+.insight-meta{font-size:14px;color:var(--muted);line-height:1.8}.insight-link{display:inline-block;min-height:44px;padding-block:10px;color:var(--teal);font-weight:600}
+.reading-header{max-width:920px;margin-bottom:36px}.reading-header h1{font-size:clamp(30px,4.4vw,52px);line-height:1.35}.reading-header .insights-intro{font-size:20px}
+.reading-note{border-inline-start:3px solid var(--teal);padding-inline-start:20px;color:var(--muted);max-width:800px}
+.article-body{max-width:760px;margin-inline:auto;font-size:21px;line-height:2.1;overflow-wrap:anywhere}.article-body p{margin-block:0 1.25em}.article-body h2{font-size:27px;line-height:1.5;margin-bottom:30px}
+.article-related{margin-top:60px;border-top:1px solid var(--line);padding-top:28px}.article-related ul{padding-inline-start:24px}.article-related a{display:inline-block;padding-block:12px;color:var(--teal)}
+.article-body h3{font-size:25px;line-height:1.5;margin-block:36px 20px}.article-body figure{margin:36px 0}.article-body figure img{display:block;width:100%;height:auto;background:var(--paper,#FAF9F5)}.article-body figcaption{font-size:16px;line-height:1.8;margin-top:12px}.article-connections{max-width:850px;margin-top:48px;border-top:1px solid var(--line);padding-top:24px}.article-connections a{color:var(--teal);display:inline-block;padding-block:10px}.article-connections p{color:var(--muted)}
+@media(max-width:650px){.insight-card{grid-template-columns:1fr;gap:8px;padding-block:24px}.insight-index{font-size:30px}.article-body{font-size:19px}.insights-intro{font-size:19px}}
+@media print{body>header,footer,.skip,.breadcrumbs,.article-related{display:none}.article-body{max-width:none;font-size:12pt;line-height:1.8}.reading-header h1{font-size:22pt}body{color:#000}}
