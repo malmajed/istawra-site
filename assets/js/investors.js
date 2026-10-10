@@ -104,9 +104,43 @@
     }
     if (document.getElementById('inv-capability').checked) lines.push('', data.brief_extra, ...data.extra_questions.map(q => '- ' + q), data.capability_body);
     lines.push('', data.brief_footer);
-    const url = URL.createObjectURL(new Blob(['\uFEFF' + lines.join('\n')], {type: 'text/plain;charset=utf-8'}));
+    // Formatted, printable brief (HTML) instead of plain text. Nothing is sent or stored.
+    const lang = document.documentElement.lang || 'en', rtl = lang.startsWith('ar');
+    const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    const blocks = []; let cur = [];
+    for (const l of lines) { if (l === '') { if (cur.length) blocks.push(cur); cur = []; } else cur.push(l); }
+    if (cur.length) blocks.push(cur);
+    const title = blocks.length ? blocks.shift()[0] : data.brief_title;
+    const body = blocks.map(b => {
+      let html = '', list = [];
+      const flush = () => { if (list.length) { html += '<ul>' + list.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>'; list = []; } };
+      b.forEach((l, i) => {
+        if (l.startsWith('- ')) { list.push(l.slice(2)); return; }
+        flush();
+        html += (i === 0 ? '<h2>' : '<p>') + esc(l) + (i === 0 ? '</h2>' : '</p>');
+      });
+      flush();
+      return '<section>' + html + '</section>';
+    }).join('');
+    const date = new Date().toLocaleDateString(rtl ? 'ar-SA' : 'en-GB', {year: 'numeric', month: 'long', day: 'numeric'});
+    const doc = '<!doctype html><html lang="' + esc(lang) + '" dir="' + (rtl ? 'rtl' : 'ltr') + '"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>' + esc(title) + '</title>'
+      + '<style>body{margin:0;background:#FAF9F5;color:#1F2D3D;font:16px/1.6 "IBM Plex Sans","IBM Plex Sans Arabic","Segoe UI",Tahoma,Arial,sans-serif}'
+      + '.page{max-width:760px;margin:0 auto;padding:48px 36px 60px;background:#fff;border-left:1px solid #DCE0E2;border-right:1px solid #DCE0E2;min-height:100vh;box-sizing:border-box}'
+      + '.mark{display:flex;gap:2px;margin-bottom:6px}.mark span{width:20px;height:24px;background:#1F2D3D;color:#fff;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center}.mark span:first-child{background:#0F6F6F}'
+      + '.sub{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#5A6675;margin:0 0 36px}'
+      + 'h1{font-size:28px;line-height:1.3;margin:0 0 6px}.date{color:#5A6675;font-size:13px;margin:0 0 30px}'
+      + 'section{border-top:1px solid #DCE0E2;padding:18px 0 6px}h2{font-size:17px;margin:0 0 8px;color:#0F6F6F}p{margin:0 0 8px}'
+      + 'ul{margin:4px 0 10px;padding-' + (rtl ? 'right' : 'left') + ':20px}li{margin:0 0 4px}'
+      + 'footer{border-top:2px solid #1F2D3D;margin-top:30px;padding-top:12px;font-size:13px;color:#5A6675}'
+      + '.print{position:fixed;top:16px;' + (rtl ? 'left' : 'right') + ':16px;background:#0F6F6F;color:#fff;border:0;padding:10px 16px;font:inherit;font-size:14px;cursor:pointer}'
+      + '@media print{body{background:#fff}.page{border:0;padding:0}.print{display:none}}</style></head><body>'
+      + '<button class="print" onclick="window.print()">' + (rtl ? 'طباعة أو حفظ PDF' : 'Print or save as PDF') + '</button>'
+      + '<div class="page"><div class="mark" aria-label="Istawra Services">' + 'ISTAWRA'.split('').map(c => '<span>' + c + '</span>').join('') + '</div><p class="sub">Istawra Services</p>'
+      + '<h1>' + esc(title) + '</h1><p class="date">' + esc(date) + '</p>' + body
+      + '<footer>istawra.com · engage@istawra.com</footer></div></body></html>';
+    const url = URL.createObjectURL(new Blob([doc], {type: 'text/html;charset=utf-8'}));
     const link = document.createElement('a');
-    link.href = url; link.download = `istawra-investor-brief-${document.documentElement.lang}.txt`;
+    link.href = url; link.download = `istawra-investor-brief-${lang}.html`;
     document.body.appendChild(link); link.click(); link.remove();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
     status.textContent = data.downloaded;

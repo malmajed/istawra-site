@@ -1,1 +1,0 @@
-fetch('site-content.json').then(r=>r.json()).then(d=>{document.querySelector('h1').textContent=d.headline;document.querySelector('.lead').textContent=d.introduction}).catch(()=>{});

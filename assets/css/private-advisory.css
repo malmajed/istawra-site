@@ -1,0 +1,18 @@
+/* Private Advisory: the header link becomes one static floating navy circle.
+   No symbol, rotation, animation or popup. Prefix: pa- */
+.pa-anchor{display:block;flex-shrink:0;visibility:hidden;pointer-events:none}
+.pa-circle{position:fixed;z-index:900;box-sizing:border-box;display:flex;align-items:center;justify-content:center;
+  width:108px;height:108px;padding:12px;margin:0;border:0;border-radius:50%;
+  background:#1F2D3D;color:#FAF9F5!important;text-decoration:none!important;text-align:center;
+  font-family:'IBM Plex Sans',Arial,sans-serif;font-size:14px;font-weight:600;line-height:1.35;
+  cursor:pointer;touch-action:none;user-select:none;-webkit-user-select:none;animation:none;transition:none}
+.pa-circle[lang=ar]{font-family:'IBM Plex Sans Arabic',Tahoma,sans-serif;font-size:15px;line-height:1.6}
+.pa-circle:hover{background:#0F6F6F}
+.pa-circle:focus-visible{outline:3px solid #0F6F6F;outline-offset:4px}
+.pa-circle.pa-dragging{cursor:grabbing}
+@media(max-width:640px){
+  .pa-circle{width:88px;height:88px;padding:8px;font-size:12.5px;line-height:1.3}
+  .pa-circle[lang=ar]{font-size:13.5px;line-height:1.5}
+}
+@media print{.pa-circle,.pa-anchor{display:none!important}}
+@media(max-width:600px){.pa-anchor{order:3;flex-basis:100%}}
