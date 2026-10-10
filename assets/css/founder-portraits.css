@@ -1,0 +1,7 @@
+/* Owner-supplied portraits: preserve the complete photograph and natural proportions. */
+.founder-profile{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,288px);gap:36px;align-items:start}
+.founder-profile__copy{min-width:0}
+.founder-profile__portrait{margin:0;width:100%;max-width:288px;justify-self:end}
+.founder-profile__portrait img{display:block;width:100%;height:auto;max-width:100%;border-radius:0;box-shadow:none}
+.founder-profile--advisory{margin-block:24px 36px}
+@media(max-width:720px){.founder-profile{grid-template-columns:minmax(0,1fr);gap:24px}.founder-profile__portrait{max-width:240px;justify-self:start}}
