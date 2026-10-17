@@ -1,0 +1,7 @@
+ 'use strict';
+(()=>{const root=document.querySelector('.ap-refresh');if(!root)return;const media=matchMedia('(prefers-reduced-motion: reduce)'),map=root.querySelector('.ap-map'),play=document.getElementById('ap-play'),note=document.getElementById('ap-motion-note');let timer;
+function select(id,animate){root.querySelectorAll('[data-stage]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.stage===id)));root.querySelectorAll('[data-stage-panel]').forEach(p=>{p.hidden=p.dataset.stagePanel!==id;p.classList.remove('is-entering');if(!p.hidden&&animate&&!media.matches)p.classList.add('is-entering');});}
+root.querySelectorAll('[data-stage]').forEach(b=>b.addEventListener('click',()=>select(b.dataset.stage,true)));select('0',false);root.querySelector('.ap-controls').hidden=false;
+root.querySelectorAll('.ap-map a').forEach((a,i)=>a.addEventListener('click',()=>select(String(i),true)));
+play.addEventListener('click',()=>{if(media.matches)return;clearTimeout(timer);map.classList.remove('is-playing');void map.offsetWidth;map.classList.add('is-playing');timer=setTimeout(()=>map.classList.remove('is-playing'),2150);});
+function sync(){play.hidden=media.matches;note.hidden=!media.matches;if(media.matches){clearTimeout(timer);map.classList.remove('is-playing');root.querySelectorAll('.is-entering').forEach(p=>p.classList.remove('is-entering'));}}media.addEventListener('change',sync);sync();function openHash(){if(/^#ap-stage-[0-5]$/.test(location.hash))select(location.hash.slice(-1),false);}window.addEventListener('hashchange',openHash);openHash();})();
